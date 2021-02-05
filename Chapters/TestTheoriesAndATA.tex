@@ -634,7 +634,10 @@ Suppose we have two set of indices $m_u \in M_u$ and $m_l \in M_l$ for upper and
 Notice that any of the linear constraints showed in the previous subsections can be represented as a generic constraint either of the form \eqref{eq:LRgenConupper} or \eqref{eq:LRgenConlower}.
 The definition of $z_m$ as a positive real number let the solver look for solutions that makes the sum of $z_m$ go to zero and hence satisfy all the constraints. 
 
-To help the test assembler to control the trade-off between optimality and feasibility of the final solution, we let them to choose the Lagrange multiplier $(1-\beta)$, where $0\leq\beta\leq1$. For example, if the assembler prefers a solution more accurate in the ability estimation sacrificing the fulfillment of tougher constraints they might choose a $\beta>0.5$ Viceversa if they need to respect all the requirements in the desiderata they will select a lower $\beta$. For a balanced solution, the $\beta$ must be equal to $0.5$. In chapter \ref{sec:CCATA} we will refer to the model without Lagrange relaxation \eqref{eq:optModel} as the \emph{strict} model, instead, the model of type \eqref{eq:LRoptModel} will be called \emph{relaxed} model.
+To help the test assembler to control the trade-off between optimality and feasibility of the final solution, we let them to choose the Lagrange multiplier $(1-\beta)$, where $0\leq\beta\leq1$.
+For example, if the assembler prefers a solution more accurate in the ability estimation sacrificing the fulfillment of tougher constraints they might choose a $\beta>0.5$ Viceversa if they need to respect all the requirements in the desiderata they will select a lower $\beta$.
+For a balanced solution, the $\beta$ must be equal to $0.5$.
+In chapter \ref{sec:CCATA} we will refer to the model without Lagrange relaxation \eqref{eq:optModel} as the \emph{strict} model, instead, the model of type \eqref{eq:LRoptModel} will be called \emph{relaxed} model.
 
 
 
