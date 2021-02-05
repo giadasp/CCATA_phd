@@ -1,0 +1,21 @@
+\BOOKMARK [1][-]{section*.1}{Preface}{}% 1
+\BOOKMARK [0][-]{chapter.1}{Test theories}{}% 2
+\BOOKMARK [1][-]{section.1.1}{Classical test theory}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.2}{Item response theory}{chapter.1}% 4
+\BOOKMARK [0][-]{chapter.2}{Automated test assembly}{}% 5
+\BOOKMARK [1][-]{section.2.1}{The item bank}{chapter.2}% 6
+\BOOKMARK [1][-]{section.2.2}{Types of assembly models}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.3}{Single test assembly}{chapter.2}% 8
+\BOOKMARK [2][-]{subsection.2.3.1}{Standard form of a test assembly problem}{section.2.3}% 9
+\BOOKMARK [2][-]{subsection.2.3.2}{Decision variables}{section.2.3}% 10
+\BOOKMARK [2][-]{subsection.2.3.3}{The model for assembling a single test}{section.2.3}% 11
+\BOOKMARK [1][-]{section.2.4}{Multiple simultaneous test assembly}{chapter.2}% 12
+\BOOKMARK [2][-]{subsection.2.4.1}{The model for assembling multiple tests}{section.2.4}% 13
+\BOOKMARK [0][-]{chapter.3}{INVALSI automated test assembly}{}% 14
+\BOOKMARK [1][-]{section.3.1}{The item banks}{chapter.3}% 15
+\BOOKMARK [1][-]{section.3.2}{Desiderata}{chapter.3}% 16
+\BOOKMARK [1][-]{section.3.3}{The ATA software}{chapter.3}% 17
+\BOOKMARK [2][-]{subsection.3.3.1}{ATA models}{section.3.3}% 18
+\BOOKMARK [2][-]{subsection.3.3.2}{Practical steps for ATA use}{section.3.3}% 19
+\BOOKMARK [1][-]{section.3.4}{INVALSI ATA models}{chapter.3}% 20
+\BOOKMARK [1][-]{chapter*.18}{Bibliography}{chapter.3}% 21

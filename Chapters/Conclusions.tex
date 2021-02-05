@@ -1,0 +1,18 @@
+\chapter{Conclusions and further research}\label{sec:conclusions}
+
+
+
+In Chapter \ref{ch:Julia} a framework for deriving a pre-test design and for doing simulation studies on IRT models estimation methods have been described together with the cubic-spline method for interpolation and extrapolation of the masses used in the quadrature to the starting knots.
+Moreover, the results of the simulation showed that \texttt{Julia} is a programming framework with a potential to be exploited by statisticians interested in optimization, of which parameters estimation involving likelihood maximization is a special case. In particular the package \texttt{JuMP} helps the user to interface itself to the large number of solvers available on the market, both commercial (e.g. \texttt{CPLEX} and \texttt{Gurobi}) and open-source (e.g. \texttt{NLopt} and \texttt{Ipopt}).
+
+We want to point out that the software we used as a benchmark, that is the \texttt{R} package \texttt{mirt} offers a multitude of options for latent regression models such as multidimensional models and different EM algorithms (such as stochastic EM and Monte Carlo EM), we suggest to refer to the documentation of the package for further details. Also, their output is very rich; it produces standard errors and other model diagnostics. Our code, instead, provides only the estimates of the latent variable, the final weights of the latent distribution, the calibrated IRT item parameter and their bootstrapped standard errors, since it is out of the scope of this work to inspect model diagnostics and other statistics. 
+
+The analysis of the empirical distribution functions of the item parameters showed that the bootstrap is a powerful, prior free, tool to inspect the uncertainty of the item parameters because is able to capture the full characterization of the variability of the items due to the sample error. We believe that a better specification of the parametric scheme would improve also the accuracy of the parameters estimation.
+
+Furthermore, looking at the number of iterations for each case under analysis we can say that the cubic-spline method for extrapolating the rescaled masses on the original knots of the ability distribution is a valid alternative to Wood's empirical histogram in terms of convergence and accuracy of estimates, mostly in the non-normal case.
+Finally, the results showed that \texttt{Julia} could compete with \texttt{R} in terms of computational performance.
+
+
+
+
+

@@ -1,0 +1,420 @@
+\chapter{Automated test assembly}\label{sec:ata}
+
+In the late 1970s the transition from paper-and-pencil to computer based tests has began in the United States, increasing the efficiency and the accuracy of the assessment tools. First of all the administration of tests by computers streamlined the process of data collection and recording allowing to have scores immediately available
+and free of data entry errors. Secondly, skills and variables that couldn't be
+assessed or measured by paper-and-pencil tests like higher-level thinking skills,
+complex problem-solving and response times now are easily recorded and evaluated thanks to the computers. The growing number of credentialing exams for allowing the practice of a profession, admission tests for granting the access to the universities and standardized
+national tests for comparing abilities among different settings increased
+the importance of the use of test scores and hence the content and statistical
+features of the tests became crucial for the test validity and reliability.
+
+
+Automated test assembly was born in this framework where fulfilling several specific requirements on the tests such as reducing the length of the test, maximizing the precision of the ability estimates, building tests with the same difficulty level
+and more over were needed. In practice by ATA models a test developer can impose any content and
+statistical criteria, from here called constraints, by specifying them in the form
+of linear (in)equalities. Also, a test developer could choose an objective function
+to serve as the goal for test assembly. Therefore the computer can find a set of
+test items that optimally meet these specifications.
+It is clear that test assembly is at the heart of the test development
+process but the automatically produced test is only a first draft of tests that could
+then be reviewed and re-examined by committees.
+
+
+At the time when the test is assembled, input is required from
+three other processes: test specification, item construction and test data
+analysis. A good test needs good specifications, good items and good data.
+
+
+\section{The item bank}\label{sec:the-item-bank}
+%Before entering in the test assembly framework we should fix some notation and describe how the items are usually stored in a "database" called \emph{item bank} or \emph{item pool}
+Once the calibration has been done, the items and their estimated and structural properties are stored in the \emph{item bank} (or item pool). Afterwards, we can move on to the test assembly procedure in which the items will be selected depending on those distinctive characteristics.
+
+
+Table \ref{fig:tabitembank} shows an example of the structure of an item bank with $I$ items, where the items are displayed by row while in the columns we find the items features, from left to right: the identifier (\textsl{ID}), the IRT difficulty parameter ($b$) together with its standard error ($b_{se}$), CTT difficulty (\textsl{p-value}), content attributes (\textsl{TYPE}, \textsl{PROCESS}, \textsl{DOMAIN}), and relational attributes that specifies if the item belongs or not to a specific set (\textsl{FRIEND SET 1}, \textsl{FRIEND SET 2}, \textsl{ENEMY SET 1}, \textsl{ENEMY SET 2}).
+
+Examinees can get different sets of items because, thanks to the calibration via IRT, the items are set on the same scale and the examinees' scores can be compared.
+
+
+
+\begin{sidewaystable}
+	\scriptsize
+	\begin{tabular}{llllllccccccc}
+		\hline
+		i & \textsl{ID} & $b$ & $b_{se}$ & \textsl{ES} & \textsl{FORMAT} & \textsl{PROCESS} & \textsl{DOMAIN} & \textsl{ITEM SET 1} & \textsl{ITEM SET 2} & \textsl{ENEMY SET 1} & \textsl{ENEMY SET 2} & \textsl{ENEMY SET 3} \\ \hline
+		1 & M02KL & -2.0 & 1.02 & 0.6& Matching & Problem solving & Numbers& 1 & 0 & 1 & 0 & 0 \\
+		2 & M35KL & -1.5 & 0.12 & 0.2& Multiple-choice & Knowing & Space and figures & 1& 0& 1 & 0 & 0 \\
+		$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
+		$I-2$ & M03PF & 1.2 & 0.05 & 0.4 & Open-ended & Knowing & Numbers & 0& 1& 1 & 0 & 1 \\
+		$I-1$ & M08PF & 0.06 & 0.98 & 0.35 & Multiple-choice & Knowing & Numbers & 0& 1& 1 & 0 & 1 \\
+		$I$ & M10ML & 0.75 & 0.4 & 0.12 & Multiple-choice & Knowing & Space and figures & 0 & 0 & 1
+	\end{tabular}
+	\caption{Example of item bank.\label{fig:tabitembank}}
+\end{sidewaystable}
+
+
+
+\section{Types of assembly models}\label{sec:assembly-models}
+
+Given an item bank containing a sufficient number of calibrated items, is it possible to assemble one or more test forms which features can be similar or diverge. When we need to assemble only one test form we are speaking about \emph{single tests assembly} models while if the tests are more than one the models are for \emph{multiple tests assembly}, in particular if the obtained ones are similar under their psychometric characteristics they are called \emph{parallel} \footnote{Other details in Section \ref{sec:multiple-test-assembly}.}.
+In this work we will focus on the latter category of automated test assembly models.
+
+
+To solve this type of problems in the last decades three modes of automated test assembly became prevalent: sequential, simultaneous single or multiple test assembly and adaptive tests.
+By the first two, test forms are entirely built before the administration of the test while in the adaptive framework each test form is assembled during the testing procedure.
+
+
+\subsubsection{Sequential test assembly}
+
+The straightforward technique for assembling single or multiple test forms is
+to populate the forms with items in a sequential way. This is being done by
+selecting items or groups of items and removing them from the pool, then the
+model is adapted to the new pool to try to fit the next form. In the case of assembling parallel forms, this method
+has two serious disadvantages. First, if the forms are assembled one after the
+other, the value of the objective function for the solution of the model tends
+to decrease due to the fact that the items with the best values will be selected
+first. As a consequence, the forms cannot be parallel. A second disadvantage of
+this approach is the possible infeasibility of later models in the sequence. On
+the other hand by this type of model a large range of functions can be
+optimized e.g. the linear structure of the problem can be relaxed. Most of these
+problems nowadays are solved using ad hoc greedy and heuristic techniques.
+
+
+\subsubsection{Simultaneous test assembly}
+
+In the sequential approach an incremental number of different models must be optimized in order to obtained multiple forms causing the disadvantages cited in the last paragraph. Those can be overcome by applying simultaneous test assembly models in which the solution, and hence the test forms, is obtained by solving only one model. They are usually represented by 0-1 integer programming problems and solved by linear programming techniques. The model can be reformulated as a mathematical optimization problem using decision variables. Decision variables are variables defined such that the solution of the optimization problem (i.e., the set of values for which the objective function is optimal and all constraints are satisfied) identifies the best decision that can be made. The decision variables $\{x\}_{it}$ are binary (0-1) since they represent the inclusion (1) or exclusion (0) of the item $i$ in the test $t$. In the last decades, the algorithms needed to solve such optimization problems were improved, and nowadays powerful implementations of them are available as commercial or open-source software.
+
+\subsubsection{Adaptive tests}
+
+In the adaptive approach one item is optimally picked from the pool at a time. The person's ability estimate is updated during the test, and each next item is chosen to be maximally informative at the last ability update. The test is then tailored to the candidate. Because the ability estimates converge to the person's true ability level, item selection improves during the test and the ideal of a test with maximum information at the person's true ability level is approached. In the early 1990s computerized adaptive testing (CAT) was implemented in large-scale testing programs, and nowadays large numbers of subjects are tested worldwide using this type of test assembly. One of the most important benefits of this method is that it's more efficient, i.e. it is possible to get more precise ability estimates with less items than the previous standard approaches, but at the cost that it's quite impossible to ensure the congruence between tests since all the test takers will get a different set of items from the pool.
+
+The description of different approaches to assemble tests is not finished here. Because of its advantages the approach dealt with in this report is the simultaneous tests assembly mode.
+In Section \ref{sec:single-test-assembly} and Section \ref{sec:multiple-test-assembly} we introduce the reader to the standard test assembly models used to build first, a single test form and secondly, as a generalization, multiple test forms.
+%\subsubsection{Linear programming}
+
+%\newpage
+
+\section{Single test assembly}\label{sec:single-test-assembly}
+
+As already discussed, a new testing program starts with formulating the set of specifications for the test to be met, that here we call \emph{desiderata}. Sometimes they are verbally expressed as a set of learning objectives or a list of dos and don'ts for the test developer but they can also be well-structured in tables specifying how many items should have a certain content or even better the distribution of items according to their specific characteristics.
+
+Once the desiderata have been collected, they must be translated into a standardized language used in test assembly problems. The standard form in these problems is an \textit{objective function} to be optimized subject to a number of \textit{constraints}, where the latter define a possibly feasible set of tests for a given item bank, and the former expresses our preferences for the tests in this feasible set. If the specifications have been formulated in a simple, concise but complete way it is possible to determine whether they are objectives or constraints. These requirements are really crucial for a correct translation of the desiderata into the standard language for test assembly problems: disambiguations and possible complications may arise in test design if these principles are not satisfied. An example of verbal test specifications is described in the Table \ref{tab:exspec}, which is partially extracted from \cite{VanDerLinden2005}.
+
+\begin{table}
+	\centering
+	\begin{tabular}{|ll|}
+		\hline & \\
+		1. & Average \textit{p}-value of the test between .40 and .60  \\
+		2. & Number of items on applications equal to 24  \\
+		3. & Reliability of the test should be as high as possible \\
+		4. & Items 73 and 100 never in the same test \\
+		5. & Test information function as close as possible to the target  \\
+		6. & Items 33, 45 and 12 must be in the same test  \\
+		&  \\
+		\hline
+	\end{tabular}
+	\caption{Example of desiderata.}\label{tab:exspec}
+\end{table}
+
+The specifications in Table \ref{tab:exspec} may represent either objectives or constraints, for example points 1,2,4 are constraints while 3 and 5 are objectives. It is clear now that the objectives involve maximize or minimize some attributes, such as minimize the gap between the test information function at some $\theta$ point to its target (5) or maximise the reliability of the test (3) and on the other hand constraints impose a bound on an attribute of the test or of the items, such as limiting the difficulty of the test (1), fixing the number of items having certain characteristics (2) or considering enemy sets (4) or also item (friend) sets (6). An exhaustive classification of specifications together with examples of not well expressed desiderata can be found at pages 34-39 of \cite{VanDerLinden2005}.
+
+
+
+\subsection{Standard form of a test assembly problem}
+
+If a set of desiderata is well specified they can always be represented in the standard form of Table \ref{tab:stform}.
+
+\begin{table}
+	\centering
+	\begin{tabular}{|ll|}
+		\hline	&  \\
+		optimize & \textit{Objective function} \\
+		subject to & \\
+		& \textit{Constraint 1} \\
+		& \textit{Constraint 2} \\
+		& $\vdots$  \\
+		& \textit{Constraint N}  \\
+		&  \\
+		\hline
+	\end{tabular}
+	\caption{Standard form of a test assembly problem.}\label{tab:stform}
+\end{table}
+
+Only one objective can be optimized at a time; if we have more than one function to optimize some tricks can be applied to transform the objectives into constraints. On the other hand, there is no upper limit for the number of constraints, provided our solver is able to handle the problem. If at least one combination of items that meets all the constraints does exist then the set of these combinations is called \emph{feasible set}; if this set is empty we say that the model in \emph{infeasible}. The subset of tests in the feasible set that optimize the objective function is called \emph{optimal feasible solution}.
+
+\subsection{Decision variables}
+
+Modeling a test assembly problem does not imply only defining objectives and constraints, but we need also the so called \emph{decision variables} which represent the possible combination of items that compose the test form in a mathematical formulation. If we need to assemble a single test from a pool of $I$ items, we can choose as decision variables $I$ binary variables in the form:
+\begin{equation*}\label{eq:Mmod:Mol}
+x_{i}=
+\begin{cases}
+1 & \mbox{if item }i \mbox{ is in the test},\\
+
+
+0 & \mbox{otherwise}.
+
+
+\end{cases}
+\end{equation*}
+
+We can also write the $x_i$ in an algebraic way using the vector $x$ of length $I$. Therefore we have $2^I$ possible combinations of values the vector $x$ can take. These combinations decrease in number if we add constraints to the model. In the following section we will use also non binary variables like integer o continuous, which are often useful to reduce the number of objectives in the problem. Once the decision variables have been identified, the process of modeling a test assembly problem goes through the steps of modeling the constraints and objectives and solving the model looking for an optimal solution.
+In the following section we will present the basic formulations for some common types of constraints and objectives. The last step consists of solving the model by using a computer program which implements some mathematical or numerical algorithms. In our case the software used is the ATA software supplied by CITO (NL), discussed in Section \ref{sec:invalsi-automated-test-assembly-models}.
+
+\subsection{The model for assembling a single test}
+The models presented in this section are based mainly on item response theory attributes and we will make an almost exhaustive list of categories of constraints that can be added to a model for single test assembly together with possible objective functions.
+
+The standard model for the assembly of a single test with a generic quantitative objective from a pool of $I$ items indexed by $i=1,\ldots,I$ is
+\begin{subequations}
+	
+	\begin{equation}\label{eq:Sobj}
+	\mbox{optimize } {\sum_{i=1}^I q_i x_{i}} \quad \mbox{(objective)}
+	\end{equation}
+	subject to	
+	\begin{alignat}{4}
+	\label{eq:Scat}
+	&n^{\min}_{c} \ &\le & \sum_{i \in V_c} x_i &\le \ & n^{\max}_{c},  \ & \forall c \quad & \mbox{(categorical constraints)}\\
+	\label{eq:Squan}
+	&b^{\min}_{q} \ &\le & \sum_{i=1}^I q_i x_i &\le \ & b^{\max}_{q},  \ & 			 \quad & \mbox{(quantitative constraints)}\\
+	\label{eq:Slen}
+	&n^{\min} 	  \ &\leq & \sum_{i=1}^I x_i    &\le \ & n^{\max}, 	  \ &			 \quad & \mbox{(test length)}\\
+	\label{eq:Sene}
+	&             \ &    & \sum_{i \in V_e} x_i&\le \ & 1, 			  \ & \forall e \quad & \mbox{(enemy sets)}
+	\end{alignat}
+	
+	Then, definition of variables
+	\begin{equation*}\label{eq:SDV2}
+	x_i \in \{0,1\}, \ \forall i \quad \mbox{(decision variables)}
+	\end{equation*}
+	\label{eq:Smod}
+\end{subequations}
+where the sums in the constraints may be bounded only on one side, in which case we only need one of the two inequalities.
+
+For a qualitative variable we use $V_c$ to represent the set of indices of the variable of the items in subset $c$. Allowing the test to have a number of items with certain qualitative attribute represented by $V_c$ between $n^{\min}_{c}$ and $n^{\max}_{c}$ means adding a \textit{categorical constraint} to the model. An example of categorical constraint is ``the test must contain at least 10 items in problem solving'', where the set of items in the pool that has the attribute ``problem solving'' is represented by $V_\text{problem solving}$ and $n^{\max}_\text{problem solving}=10$.
+
+On the other hand, if we want to bound the value of a quantitative variable (i.e. that can take numerical values) addressed by the symbol $q$ between the values $b^{\min}_{q}$ and 	$b^{\max}_{q}$ we are constraining the model adding a \textit{quantitative constraint} where $q_i$ is the value that the item $i$ takes for that variable. Suppose we want to assemble a test with the following criterion ``the maximum of words must be 300'', $q_i$ will serve as the number of words displayed by the item $i$ and $b^{\max}_{q}=300$.
+
+The interpretation of the \textit{test length} constraint is straightforward as it is a special case of a quantitative constraint where $q_i=1$ for each $i=1,\ldots,I$.
+
+If there are \textit{enemy sets} in our pool then the items in one of these sets, called $V_e$, cannot be picked together, e.g. the desideratum ``items 23 and 46 cannot be in the same test'' means that items 23 and 46 are enemies and both are in the enemy set $V_e$, therefore the sum of the corresponding decision variables $x_{23}$ and $x_{46}$ cannot be more than 1.
+
+\subsubsection{Item sets}\label{sec:item-sets}
+Tests with sets of items organized around common stimuli (known as item sets or friend sets) are popular because of the efficiency of their format. By combining more than one item with the same stimulus, we are able to ask questions using more complex stimuli, such as reading passages, descriptions of cases, or problems with data in a set of tables or graphs, without having to sacrifice too many items for the test to meet the time limit. But the presence of such sets in the item pool complicates the process of assembling the test. In particular, if the items are grouped in $S$ item sets or stimuli indexed by $s$, there are three ways to deal with this problem (see \cite{VanDerLinden2005}).
+
+\begin{itemize}
+	\item The \textit{power set method} that consists in summarizing all the quantitative and qualitative attributes by summing or averaging them taking as groups the item sets; if we only need to constraint the test at the set/stimuli level the problem decreases in size since you don't have $I$ decision variables anymore but just $S$. This method is not efficient if you have variables that cannot be summarized, such as standard errors and if you want to keep some constraints at item level as you need to consider again the original decision variables $x_i$ increasing the size of the model.
+	\item The \textit{pivot-item method} in which each set is represented by a pivot decision variable $x_{i^*_s}$ arbitrarily chosen. Therefore, we can use the variable for a pivot item as a carrier of the attributes of both its stimulus and item set, and we can drop the stimulus variables in the model.
+	\item The \textit{two-stage method} that is a sequential approach with two phases, in the first stimuli are selected and secondly the model choses items with those stimuli.
+	
+\end{itemize}
+Given the earlier warnings about sequential approaches we do not suggest the two-stage method and since all the variables in our item bank are summarizable (e.g. the item information function is additive so it is possible to sum it for all the items in the stimulus) we prefer to adopt the power set method which helps to decrease the size of the problem.
+\par{
+	The power-set formulation needs a phase of preprocessing of the item bank that, in our work is automatically performed by \texttt{ATA}.
+	Instead, for the formal representation of the model, we refer to \cite{VanDerLinden2005}, Section 7.2.
+}
+
+\subsubsection{Single test MINIMAX}\label{sec:single-test-minimax}
+Once we defined all the constraints and checked that the model is feasible we need to choose an objective to optimize. A first option is to choose absolute targets for the TIF, targets are the values that a goal TIF assumes on a fixed number of $\theta$ points along the $\theta$ scale, these values must be chosen by test specialists who knows how much precision is required to estimate the abilities of the students at each ability level. This is the reason why absolute targets are used almost exclusively when tests are assembled to be parallel with respect to a known reference test. Formalizing this requirements in the standard form of test assembly models will produce a multi-objective test assembly problem that must be reformulated using the MINIMAX approach explained below.
+
+
+In particular with the following addition to the model \eqref{eq:Smod} we ask that the TIF of the resulting test approximates with minimum negative and positive deviations (i.e. with the highest precision) the chosen goal TIF in a finite set of points $V$ on the $\theta$ scale, which we denote as $T_{k}$ with $k \in V$:
+\begin{subequations}[intermezzo]
+	\begin{equation}
+	\mbox{minimize } \ y \quad \mbox{(objective)}
+	\end{equation}
+	subject to
+	\begin{alignat}{2}
+	\label{eq:SMINIMAX1}
+	\sum_{i=1}^I I_i(\theta_{k}) x_{i} & \le T_{k}+ y, &\ \forall k \in V \\
+	\label{eq:SMINIMAX2}
+	\sum_{i=1}^I I_i(\theta_{k}) x_{i} & \ge T_{k}- y, &\ \forall k \in V
+	\end{alignat}
+	\begin{equation*}
+	y \ge 0,
+	\end{equation*}
+	\label{eq:SMINIMAX}
+\end{subequations}
+More $\theta$ points we choose more the TIF of the assembled test will meet the auspicable one, usually 3-5 points are enough to have a good approximation.
+
+\subsubsection{Single test MAXIMIN}\label{sec:single-test-maximin}
+If a reference test or absolute targets are not available an alternative approach is trying to achieve the best predictive validity for the test, that is maximising the TIF in some chosen theta points. This goal can be met not only setting the location of the peaks of the TIF but also defining its shape in the entire $\theta$ scale, which is to say imposing relative targets.
+
+
+So, denoting with $R_k$ the relative targets for each $\theta_k$ with $k$ in the chosen set $V$ of ability points in which we want to control the shape of the TIF, we must fix one of the relative targets to a value (e.g. $R_1=1$) and all the other target values must be adjusted correspondingly trying to reproduce the wanted shape.
+
+
+Like the absolute target model, this method leads to have more than one objective function and also in this case it is possible to rely on a simplifying approach called maximin. The model can be formalized as following:
+\begin{subequations}
+	\begin{equation}
+	\mbox{maximise } \ y \quad \mbox{(objective)}
+	\end{equation}
+	subject to
+	\begin{equation}\label{eq:SMAXIMIN1}
+	\sum_{i=1}^I I_i(\theta_{k}) x_{i} \ge yR_{k}, \ \forall t,k \in V
+	\end{equation}
+	\begin{equation*}
+	y \ge 0,
+	\end{equation*}
+	\label{eq:SMAXIMIN}
+\end{subequations}
+Also here the practice suggests that the minimum number of $\theta$ points in which maximize the TIF must be 3 or 5.
+
+
+\section{Multiple simultaneous test assembly}\label{sec:multiple-test-assembly}
+%\par The models presented in the previous chapters are to assemble single test, however
+
+In order to discourage the phenomenon of cheating it is necessary to administer different items to the test takers. This can be achieved building more than one test form that contains different items preserving some overall mutual psychometric features, such as the same test difficulty or same content structure such as same percentage of items of a certain stimulus. These tests are called \emph{parallel} (or interchangeable) and the procedure aimed to perform this task is called ``multiple test assembly''. In particular, test forms are defined to be \emph{weakly parallel} if their information functions are identical \cite{Same77}. On the other hand, test forms are \emph{strongly parallel} if they have the same test length and exactly the same test characteristic function \cite{Lord80}.
+
+As a consequence, we typically have problems with more objectives than those presented in Section \ref{sec:single-test-assembly} for single test assembly. For example, if we assemble $T$ tests and each test has to meet a target for its information function at $K$ ability points (the same points for each test $t$, with $t=1,\dots, T$), the problem has at least $T \times K$ objectives. However, these large multi-objective test assembly problems can be solved using a direct generalization of the approaches for single test assembly. In the following, we will present a general model for simultaneous assembly of a set of tests (that is, as a solution to a single model) that produces an optimal solution.
+This type of assembly requires a reorganization of the problem using a different version of the decision variables. These variables have double indices\footnote{We use a matrix representation only for a better visual idea, actually they are still vectors but of bigger size.}, one for the items in the pool and the other for the test forms. For the current problem, the variables become
+
+\begin{equation*}\label{eq:MDV}
+x_{it} =
+\begin{cases}
+1, & \mbox{if item } i \mbox{ is assigned to test }t\\
+
+
+0, & \mbox{otherwise}
+\end{cases}
+\end{equation*}
+for all $i$ and $t$. As before, we need to complement these variables with a set of constraints that keep their values consistent. The adapted single test assembly model is presented here followed by constraints that arise only in the case of multiple test assembly.
+
+\subsection{The model for assembling multiple tests}
+Using the above decision variables, any model for a single test can be reformulated as a model for multiple tests. To illustrate this statement, we reformulate the standard model for a single test in \eqref{eq:Sobj}-\eqref{eq:Sene}. The model is
+
+\begin{subequations}
+	\begin{equation}\label{eq:Mobj}
+	\mbox{optimize } \sum_{t=1}^T{\sum_{i=1}^I q_{it} x_{it}} \quad \mbox{(objective)}
+	\end{equation}
+	subject to	
+	\begin{alignat}{4}
+	\label{eq:Mcat}
+	&n^{\min}_{ct} \ &\le & \sum_{i \in V_c} x_{it} &\le \ & n^{\max}_{ct}, \ &\forall c,t  \quad & \mbox{(categorical constraints)}\\
+	\label{eq:Mquan}
+	&b^{\min}_{qt} \ &\le & \sum_{i=1}^I q_i x_{it} &\le \ & b^{\max}_{qt}, \ & \forall t   \quad & \mbox{(quantitative constraints)}\\
+	\label{eq:Mlen}
+	&n^{\min}_t    \ &\leq& \sum_{i=1}^I x_{it}    &\le \ & n^{\max}_t, \     & \forall t   \quad &\mbox{(test length)}\\
+	\label{eq:Mene}
+	&              &    & \sum_{i \in V_e} x_{it}&\le \ & 1,          \     & \forall t,e \quad &\mbox{(enemy sets)}
+	\end{alignat}
+	
+	Then, definition of variables
+	
+	\begin{equation*}\label{eq:MDV2}
+	x_{it} \in \{0,1\}, \ \forall i,t \quad \mbox{(decision variables)}
+	\end{equation*}
+	\label{eq:Mmod}
+\end{subequations}
+% $\sum_{i \in V_1} x_{it} = n_{1f}$, for all $t$, (categorical attributes) (6.8)
+% $\sum_{i \in V_0} x_{it} =0$ , for all $t$, (categorical attributes) (6.9)
+% $q_i x_{it} \le b^{\min}_{qt}$ , for all $i$ and $t$, (quantitative attributes) (6.10) $b^{\min}_{qt} x_{it} \le q_i$, for all $i$ and $t$, (quantitative attributes) (6.11)
+
+The changes in \eqref{eq:Mmod} relative to the original model in \eqref{eq:Sobj}-\eqref{eq:Sene} are:
+\begin{enumerate}
+	\item the replacement of the variables $x_i$ by $x_{it}$;
+	\item the extension of the objective function to the case of $T$ tests;
+	\item the indexing of the bounds in the constraints by $t$ to enable to assemble tests with different specifications.
+\end{enumerate}
+
+The generalization of the objective function in \eqref{eq:Mobj} is simple and consists of taking an (unweighted) sum over the tests.
+
+
+
+\subsubsection{Item sets}
+The power-set method presented in \ref{sec:item-sets} can be easily generalized to the case of multiple tests assembly, for the sake of brevity we prefer to skip the details and still refer to the van der Linden book \cite{VanDerLinden2005}, section 7.2.
+\subsubsection{Item use}
+If we want to control the minimum or the maximum number, respectively $n^{\min}_i$ and $n^{\max}_i$, of tests in which an item $i$ can be assigned, we have to consider the following constraints:
+\begin{subequations}[resume]
+	\begin{equation}\label{eq:Mmod:Muse}
+	n^{\min}_i \le \sum_{t=1}^T x_{it} \le n^{\max}_i, \ \forall i, \quad \mbox{(item use)}
+	\end{equation}
+\end{subequations}
+
+\subsubsection{Test Overlap}\label{sec:test-overlap}
+Since we are creating more than one test form we are not only concerning the properties of each form singularly but also the relationship between them, one of these is the \emph{test overlap}, that is the number of items two forms share. Sometimes it is not important to control for this specification especially if an item use constraint has been fixed. However, if we do not want any overlap between all the pairs, as an example, we have to add these constraints to \eqref{eq:Mmod}
+\begin{subequations}[resume]
+	\begin{equation}\label{eq:Mmod:noOL}
+	\sum_{t=1}^T{x_{it}} \leq 1, \ \forall i, \quad \mbox{(no overlap)}
+	\end{equation}
+\end{subequations}
+
+The latter is not enough if the test developer wants to keep the same but not null level of overlap between all the possible pairs of tests.
+In this case, the model has to be modified not only adding new constraints but also a substantial number of variables (luckily binary).
+In particular controlling for test overlap means adding quadratic constraints of the form:
+\begin{subequations}[intermezzo]
+	\begin{equation*}
+	o^{\min}_{tt'} \le \sum_{i=1}^I{x_{it}x_{it'}} \le o^{\max}_{tt'}, \ \forall t \neq t', \quad \mbox{(fixed overlap NON LINEAR)}
+	\end{equation*}
+\end{subequations}
+
+Those types of constraints must be linearized in order to use the standard LP solvers, so they must be replaced by the following variables
+\begin{equation*}\label{eq:Mmod:Mol}
+z_{itt'}=
+\begin{cases}
+1 & \mbox{if item }i \mbox{ is both in test }t \mbox{ and test } t' \mbox{ (i.e. }x_{it}=x_{it'}=1 \mbox{)} \\
+
+0 & \mbox{otherwise}.
+
+
+\end{cases}
+\end{equation*}
+
+This modification increases the size of the model of $I*{{T}\choose{2}}$ binary variables.
+Together with the new variables the constraints must be replaced by
+\begin{subequations}[resume]
+	\begin{equation}	\label{eq:Mmod:MOL}
+	o^{\min}_{tt'} \le \sum_{i=1}^I{z_{itt'}} \le o^{\max}_{tt'}, \ \forall t \neq t', \quad \mbox{(fixed overlap LINEAR)}
+	\end{equation}
+	Integrality constraints:
+	\begin{alignat}{2}
+	\label{eq:Mmod:Mic1}
+	z_{iit'} & \ge x_{it}+x_{it'}-1 \ & \forall i,t \neq t'\\
+	\label{eq:Mmod:Mic2}
+	2 z_{iit'} & \le x_{it}+x_{it'} \ & \forall i,t \neq t'\\
+	\nonumber
+	%\label{eq:Mmod:MolDV}
+	z_{itt'} & \in \{0,1\}, \ & \forall i,t \neq t' 	
+	\end{alignat}
+	
+\end{subequations}
+
+The last two constraints are necessary to keep the values of $z_{itt'}$ consistent with their definitions.
+\subsubsection{Multiple MINIMAX}
+An example of an objective for multiple test assembly is the generalization of the MINIMAX principle presented in \ref{sec:single-test-minimax}, formally
+\begin{subequations}
+	\begin{equation}
+	\mbox{minimize } \ y \quad \mbox{(objective)}
+	\end{equation}
+	subject to
+	\begin{alignat}{2}
+	\label{eq:MMINIMAX1}
+	\sum_{i=1}^I I_i(\theta_{kt}) x_{it} & \le T_{kt} + w_ty, \ & \forall t,k \in V_t\\
+	\label{eq:MMINIMAX2}
+	\sum_{i=1}^I I_i(\theta_{kt}) x_{it} & \ge T_{kt} - w_ty, \ & \forall t,k \in V_t
+	\end{alignat}
+	\begin{equation*}
+	y \ge 0
+	\end{equation*}
+	\label{eq:MMINIMAX}
+\end{subequations}
+
+where the target values $T_{kt}$ are indexed by $t$ to allow us to set different targets for different tests. In addition, as different set of values $V_t$ for each test can be given, we can specify the target values at a different set of $\theta$ values for each test. Finally, we have added weights $w_t$ to have the option of weighting deviations from target values differently for several tests. If our goal is to assemble parallel tests, the targets and weights will be equal for all $t$.
+
+\subsubsection{Multiple MAXIMIN}
+
+The approach used in section \ref{sec:single-test-maximin} may be generalized to the case of multiple test assembly with this mix of objective and constraints
+\begin{subequations}
+	\begin{equation}
+	\mbox{maximise } \ y \quad \mbox{(objective)}
+	\end{equation}
+	subject to
+	
+	\begin{equation}\label{eq:MMAXIMIN2}
+	\sum_{i=1}^I I_i(\theta_{kt}) x_{it} \ge yR_{kt}, \ \forall t,k \in V_t
+	\end{equation}
+	\begin{equation*}
+	y \ge 0,
+	\end{equation*}
+	\label{eq:MMAXIMIN}
+\end{subequations}
+
+where the $R_{kt}$ may be chosen equal between tests, i.e. $R_{kt}=R_{k't'}$ with $t \ne t'$ and $\forall k=k'$ ensuring the parallelism.
+%where the $\epsilon_{kt}$ may be chosen to ensure that the TIFs of upcoming tests are inside a certain interval around the maximum possible, it may be also equal to 0 for all $k$ and $t$ and therefore the constraints \eqref{eq:MMINIMAX2} will be withdrawn. Usually the $\theta$s in the constraints are taken as the points in the ability continuum in which we want the TIFs are maximized.

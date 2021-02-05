@@ -1,0 +1,336 @@
+% Chapter 1
+
+\chapter{Chapter1} % Main chapter title
+
+\label{Chapter1} % For referencing the chapter elsewhere, use \ref{Chapter1} 
+
+%----------------------------------------------------------------------------------------
+
+% Define some commands to keep the formatting separated from the content 
+\newcommand{\keyword}[1]{\textbf{#1}}
+\newcommand{\tabhead}[1]{\textbf{#1}}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\file}[1]{\texttt{\bfseries#1}}
+\newcommand{\option}[1]{\texttt{\itshape#1}}
+
+%----------------------------------------------------------------------------------------
+
+
+\section{Introduction to item response theory}
+%copied from song 2003 thesis
+%-----------------------------------------------------
+ In practical test development, we need to be able to predict the statistical and psychometric properties of any test that we may build when administered to any target group of examinees.\\
+ We need to describe the items by item parameters and the examinees by examinee parameters in such a way that we can predict probabilistically the response of any examinee to any item, even if similar examinees have never taken similar items before. As an especially clear illustration of the need of such a theory, consider the basic problem of tailored testing, or adaptive testing: different items are administered to different individuals such that each individual gets items with difficulty of each close enough to the performance level of this individual. To do this even approximately, we should be able to estimate the examinee’s ability from any set of items that may be given to him/her.\\ 
+The first developed Classical test theory (CTT) (see \cite{abookonCTT} is not suited to the above tasks. For the case of adaptive testing, classical indices of reliability, validity, and item quality are relevant when all examinees confront the same set of test items. But an adaptive test is different from one test-taker to another. A theory appropriate for adaptive tests and for prediction of response based on single item was discussed by \cite{Birnbaum1958} as latent trait theory, and appeared in \cite{Lord1968} major treatise on test theory. \cite{Lord1980} gave a complete account of this theory, now called \emph{item response theory (IRT)}.The central feature of IRT is the specification of a mathe­matical function relating the probability of an examinee’s response on a test item to an underlying ability (usually denoted as $\theta$ ). Such a function is called the item respons function, or \emph{item characteristic curve (ICC)} (by \cite{tucker1946}.\\
+The first item response function addressed in history is the dichotomous format in which responses are scored either as correct or incorrect. Throughout this thesis, we only discuss this format. See \cite{vdlhambleton1997} for the discussions of polytomous IRT models. Intuitively, the ICC has to be monotonically increasing in $\theta$, with a lower and upper asymptote at 0 and 1, respectively. This suggests a choice from the class of cumulative distribution functions (cdf’s). Such choices made in IRT history include the normal-ogive response function and the logistic response function. In the 1940s and 1950s, the emphasis was on the normal-ogive function, but this function was replaced by the logistic function in the late 1950s, because of the computational difficulties inherent in using the normal distribution for this purpose. Today, IRT models using logistic response functions dominate the educational and psychological measurement field.\\
+With the aim to introduce the reader to the basic principles and models of item response theory (IRT) and to derive all the properties of the of the test and item information functions I'm going to summarize the main results contained in the chapters 17-20 of \cite{Lord1968} so if you want to use this content for a theoretical reference you have to cite the true authors, that are Lord, Novick and Birnbaum and their book. For a reader expert in IRT and test assembly I suggest to skip the following two chapters and go directly to the Chapter 3. 
+%---------------------------------------------------------------------------------------------
+\subsection{The distribution function of the dichotomous responses}
+We consider here tests consisting of items each to be scored 0 or 1, with $u_i$ as the generic symbol for the score on item $i$ and with $\boldsymbol{u}' = (u_1,\ldots,u_i,\ldots,u_n)$ representing the set of scores, or the response-pattern, on a test of $n$ items.\\
+This notation tacitly refers to scores of some one individual subject; when necessary, scores of a subject indexed $j$ can be denoted more explicitly by $\boldsymbol{u}'_j = (u_{1j},\ldots,u_{ij},\ldots,u_{nj})$.\\
+Item scores $u_i$ are related to an ability $\theta$ by functions that give the probability of each possible score on an item for a randomly selected examinee of given ability. These functions are 
+\begin{equation}
+Q_i(\theta)=\mathbb{P}[U_i=0 \ | \ \theta]
+\end{equation}
+and the so called \textit{item characteristic curve (ICC)}
+\begin{equation}
+P_i(\theta)=\mathbb{P}[U_i=1 \ | \ \theta]=1-Q_i(\theta) \qquad \text{(ICC)}
+\end{equation}
+These formulas are conveninetly combined in the probability distribution function of $U_i$:
+\begin{equation}
+f_i(u_i \ | \ \theta) = \mathbb{P}[U_i=u_i \ | \ \theta]=P_i(\theta)^{u_i}Q_i(\theta)^{1-u_i}= \begin{cases} P_i(\theta), & \mbox{if } u_i=1\\ Q_i(\theta), & \mbox{if } u_i=0 \end{cases}
+\end{equation}
+where $f_i$ is defined in a person or in a person-by-replications space. \\
+We also note that $\mathbb{E}[U_i \ | \ \theta]=1 \cdot f_i(1 \ | \ \theta)+ 0 \cdot f_i(0 \ | \ \theta) =P_i(\theta)$.
+One assumption found most useful in test theory and its applications, as well as the simplest assumption mathematically, is \emph{local independence}. This assumption implies the mathematical condition of \textit{statistical independence between responses} by a subject to different items; it is represented by the usual probability product form
+\begin{equation}
+\begin{split}
+\mathbb{P}[\boldsymbol{U}=\boldsymbol{u} \ | \ \theta] &= \mathbb{P}[ U_1=u_1, \ldots , U_n=u_n \ | \ \theta] \\
+																																																																						&=\mathbb{P}[ U_1=u_1 \ | \ \theta]\cdots \mathbb{P}[ U_n=u_n \ | \ \theta] \\
+																																																																						&=\prod_{i=1}^nP_i(\theta)^{u_i}Q_i(\theta)^{1-u_i}.
+\end{split}
+\end{equation} 
+
+\subsection{The logistic test model (2PL)}
+A function which has advantages of mathematical convenience in several areas of application, is the logistic (cumulative) distribution function
+\begin{equation}
+\Psi(x)=\frac{e^x}{1+e^x}=\frac{1}{1+e^{-x}}, \qquad -\infty <x <\infty
+\end{equation}
+The inverse function is $x = log [\Psi/ (1 - \Psi)]$. For simple descriptive purposes, any graph of a cumulative normal distribution function $\Phi(x)$ would serve equally well to illustrate this function, since it has been shown (\cite{Haley1952}, p. 7) that
+\begin{equation}
+|\Phi(x)-\Psi(1.7x)| <0.01 \qquad \forall x
+\end{equation}
+For notational convenience, however, I shall often write the logistic model using the symbol $D$ for the number $1.7$.
+The probability density function (pdf) correspondinf to the logistic cdf is
+\begin{equation}
+\psi(x)=\frac{e^{-x}}{(1+e^{-x})^2}=\Psi(x)[1-\Psi(x)]=tanh^{-1}(x)
+\end{equation}
+The \textit{logistic test model}, or the so called \textit{2-parameters logistic model (2PL)} is determined by assuming that item characteristic curves have the form of a logistic cumulative distribution function:
+\begin{equation}
+P_i(\theta)=\Psi[Da_i(\theta-b_i)]=\frac{1}{[1+\exp(-Da_i(\theta-b_i))]}
+\end{equation}
+\begin{equation}
+Q_i(\theta)=1-\Psi[Da_i(\theta-b_i)]=\frac{1}{[1+\exp(Da_i(\theta-b_i))]}
+\end{equation}
+\begin{equation}
+\frac{P_i(\theta)}{Q_i(\theta)}=\exp[Da_i(\theta-b_i)]
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+\frac{\partial}{\partial\theta}P_i(\theta)&=\psi[Da_i(\theta-b_i)]\\
+	               &=\left[ \frac{\partial}{\partial\theta}Da_i(\theta-b_i) \right]\Psi[Da_i(\theta-b_i)]\{1-\Psi[Da_i(\theta-b_i)]\}\\
+	               &=Da_iP_i(\theta)Q_i(\theta)\\
+\end{split}
+\end{equation}
+Logistic ogives are strictly monotonic functions, going left to right, the ogve always gets higher nd higher, never is completely horizontal and nver goes down. Atsomepointr the logstc ogive must change from being concave upward to concave downward. That point is called ''the inflection point'', it is also the point where the slope of the ogive is at its maximum. The horizontal position of the inflection point is called the $b$ parameter.
+Instead the $a$ parameter is related to the slope of either ogive at the inflection point or in other words at the $b$ value.
+For the 2PNO we have $a_i=\sqrt{2\pi}m 	\approx2.5m$
+We may view the logistic form for an item characteristic curve as a mathematically convenient, close approximation to the classical normal form, introduced to help solve or to avoid some mathematical or theoretical problems that arise with the normal model. Or we may view it as the form of a test model
+that is of equal intrinsic interest and of very similar mathematical form.
+The probability distribution function of a response $u_i$ in a logistic test model is
+\begin{equation}
+\begin{split}
+f_i(u_i \ | \ \theta)&=P_i(\theta)^{u_i}Q_i(\theta)^{1-u_i}\\
+	       &=Q_i(\theta)\left[ \frac{P_i(\theta)}{Q_i(\theta)} \right]^{u_i}\\
+	       &=\frac{\exp[Da_i(\theta-b_i)u_i]}{1+\exp[Da_i(\theta-b_i)]}
+\end{split}
+\end{equation}
+and, under the assumption of local independence, the probability distribution function of a response pattern $\boldsymbol{u}'=(u_1,\ldots,u_n)$ is
+\begin{equation}
+\begin{split}
+\mathbb{P}[\boldsymbol{U}=\boldsymbol{u}\ | \ \theta]=\prod_{i=1}^n f_i(u_i \ | \ \theta)&=\prod_{i=1}^n{Q_i(\theta)} \ \prod_{i'=1}^n {\exp [Da_{i'}(\theta-b_{i'})u_{i'}]} \\
+	   &=\left[ \prod_{i=1}^n{Q_i(\theta)} \right] \left[ \exp \left(\theta D \sum_{i=1}^n{a_i u_i} \right) \right]\left[ \exp \left( -D \sum_{i=1}^n{a_i b_i u_i} \right) \right]
+\end{split}
+\end{equation}
+The principal features of mathematical simplicity that characterize the logistic test model are, as we shall see, implicit in this last form. In particular, "all the information about $\theta$ available in a response pattern $\boldsymbol{u}$ (in a sense to be specified) is given by the particular test score formula
+\begin{equation}
+x=x(\boldsymbol{u})=\sum_{i=1}^n a_i u_i
+\end{equation}
+which does not depend on the difficulty parameters $b_i$.
+\subsection{The Rasch test model (1PL)}
+If we assume a common value for the discriminating powers of the items, each $a_i = 1$, say, and take $D = 1$, we obtain the form
+\begin{equation} \label{eq:1plICC}
+P_i(\theta)=\Psi(\theta-b_i)=\frac{1}{1+\exp(b_i-\theta)} 
+\end{equation}
+ We see that the model ~\ref{eq:1plICC} is a special case of the logistic model, the so called \textit{1-parameter logistic model (1PL)} in which all items have the same discriminating powers and guessing, $a_i=1, \ c_i=0 \ \forall i$, and all items can vary only in their difficulties.
+We can write it by using a trasformed version of the ability parameter and an item difficulty parameter
+\begin{equation}
+\theta^{*}=e^\theta \qquad \text{and} \qquad b^{*}_i=e^{b_i }
+\end{equation}
+Then we have
+\begin{equation}\label{eq:raschICC}
+P_i(\theta)=P_i^*(\theta^*)=\frac{1}{\left( 1+ \frac{b_i^*}{\theta^*}\right)}=\frac{\theta^*}{b_i^*}\frac{1}{\left( 1+ \frac{\theta^*}{b_i^*} \right)} 
+\end{equation}
+\cite{Rasch1960} has developed the test model of the restricted logistic form \ref{eq:raschICC}. Whenever this special logistic model holds, the considerable body of theoretical and practical methods developed by Rasch is applicable.
+\subsection{The 3-parameters logistic model (3PL)}
+Even subjects of very low ability will sometimes give correct responses to multiple-choice items, just by chance. One model for such items has been suggested by a highly schematized psychological hypothesis. This model assumes that if an examinee has ability $\theta$, then the probability that he will know the correct answer is given by a normal ogive function $\Phi[a_i(\theta-b_i)]$ it further assumes that if he does not know it he will guess, and, with probability $c_i$, will guess correctly. It follows from these assumptions that the probability of an incorrect response is
+\begin{equation}
+Q_i(\theta)=\{ 1- \Phi[a_i(\theta-b_i)] \} (1-c_i)
+\end{equation}
+and that the probability of a correct response is the item characteristic curve
+\begin{equation}\label{eq:3pnoICC}
+P_i(\theta)=c_i +(1-c_i)\Phi[a_i(\theta-b_i)]
+\end{equation}
+The function \ref{eq:3pnoCC} approaches its minimum $c_i$ as $\theta$ decreases. Its graph
+is that of a normal ogive curve except that the range of ordinates 0 to 1 is replaced by the range $c_i$ to 1, that means that $c_i$ is am horizontal asinthote for the ICC.
+The effect of the $c$-value is to squeeze the ogive into a smaller vertical range. The reduced range is equal to $(\-c_i)$, it reduces the slope of the ogive at every point of the $\theta$ scale, other thing being equal. In the 3PL model we have the following relation between the parameters:% page 35 Warn
+\begin{equation}
+a=\frac{1}{\Psi^{-1}(\theta)-b}
+\end{equation}
+``here goes a picture ``
+Similarly with the logistic model, we may take account of guessing probabilities by using modified item characteristic curves, which here assume the form
+\begin{equation} \label{eq:3plICC}
+P_i(\theta)=c_i +(1-c_i)\Psi[Da_i(\theta-b_i)] \qquad \text{(3PL-ICC}
+\end{equation}
+\subsection{Calculations of Distributions of Test Scores}
+In most practical work with cognitive tests, response patterns are represented only by test scores having the particular form 
+\begin{equation}\label{eq:weisum}
+x=x(\boldsymbol{u})=\sum_{i=1}^n w_i u_i
+\end{equation}
+of weighted sums of item responses, where the $w_i$ are specified numerical weights.
+In this section, we shall present some useful theoretical and computational methods for calculating distributions of test scores of this form. \\
+Most commonly, the weights are specified as equal, either as $w_i = 1$, where calculation of $x$ then gives the\emph{number of correct responses}, or as $w_i = 1/n$, where calculation of $x$ then gives the \emph{proportion of correct responses}. In the following paragraphs, we shall see that in important cases a suitably chosen linear (or weighted-sum) score formula can be used to provide estimators with optimal or nearly optimal precision and classification rules of good discriminating power.
+The principal result that \cite{lord1968} presented is the normal approximation to the cdf $F(x \ | \ \theta )$ for score formulas $x$ of any weighted sum form. The theoretical basis for such normal approximations in the general case consists of the central limit theorems available for sums of nonidentical independent random variables (see, for example, \cite{Lindgren196}, p. 147, and \cite{Loeve1955}, p. 288).
+The resulting approximation formulas for $F(x\ | \ \theta)$ depend on the given test model only through the mean and variance of $X$ for each $\theta$:
+\begin{equation}\label{eq:expscore}
+\mathbb{E}[X \ | \ \theta]=\sum_{i=1}^n{\mathbb{E}[w_i U_i \ | \ \theta]}=\sum_{i=1}^n{w_iP_i(\theta)}
+\end{equation}
+\begin{equation}\label{eq:varscore}
+\mathbb{V}[X \ | \ \theta]=\sum_{i=1}^n{\mathbb{V}[w_i U_i \ | \ \theta]}=\sum_{i=1}^n{w_i^2 P_i(\theta)Q_i(\theta)}
+\end{equation}
+Then the approximation formula is
+\begin{equation}
+F[x \ | \ \theta]\xrightarrow[n \to \infty]{}\Phi \left\{ \frac{x-\mathbb{E}[X \ | \ \theta]}{\sqrt{\mathbb{V}[X \ | \ \theta]}}\right\}
+\end{equation}
+In connection with various specific test models and problems of application
+below, the preceding general formulas for the moments of scores will be specialized and substituted in the last relation. \\
+Instead, if we consider the moments of item responses we will have the following equations
+\subsubsection{Moments of item responses:} %p.415 
+\begin{equation}
+\mathbb{E}[U_i \ | \ \theta]=P_i(\theta), \qquad \mathbb{V}[U_i \ | \ \theta]=P_i(\theta)Q_i(\theta)
+\end{equation}
+\texttt{for the 3PL model} \\\
+\begin{equation}
+\mathbb{E}[U_i \ | \ \theta]=c_i+(1-c_i)\Psi[D a_i(\theta - b_i)]=\Psi[D a_i(\theta - b_i)]+c_i\Psi[-D a_i(\theta - b_i)]
+\end{equation}
+\begin{equation}
+\mathbb{V}[U_i \ | \ \theta]=(1-c_i)\psi[D a_i(\theta - b_i)]+ c_i(1-c_i)\Psi[-D a_i(\theta - b_i)]^2
+\end{equation}
+\subsubsection{Moments of terms in locally best composite scores (see section 19.3 \cite{lord1968} how to obtain these type of scores and their properties)}%p.416
+\begin{equation}
+w_i(\theta)=\frac{P'_i(\theta)}{P_i(\theta)Q_i(\theta)} \quad \text{\textit{(locally best weights)}}
+\end{equation}
+\begin{equation}
+\mathbb{E}[w_i(\theta)U_i \ | \ \theta]=\frac{P'_i(\theta)}{P_i(\theta)Q_i(\theta)}P_i(\theta)=\frac{P'_i(\theta)}{Q_i(\theta)}
+\end{equation}
+\begin{equation}
+\mathbb{V}[w_i(\theta)U_i \ | \ \theta]=\left[\frac{P'_i(\theta)}{P_i(\theta)Q_i(\theta)}\right]^2 P_i(\theta)Q_i(\theta)=\frac{P'_i(\theta)^2}{P_i(\theta)Q_i(\theta)}
+\end{equation}
+\texttt{for the 3PL model}
+\begin{equation}
+w_i(\theta)=Da_i\Psi[D a_i(\theta - b_i)-\log c_i]
+\end{equation}
+\begin{equation}\label{eq:compexp}
+\mathbb{E}[w_i(\theta)U_i \ | \ \theta]=Da_i\Psi[D a_i(\theta - b_i)]
+\end{equation}
+\begin{equation}\label{eq:compvar}
+\mathbb{V}[w_i(\theta)U_i \ | \ \theta]=(1-c_i)D^2a_i ^2\psi[D a_i(\theta - b_i)- \log c_i]\psi[D a_i(\theta - b_i)]
+\end{equation}
+\subsubsection{Moments of composite scores}
+Dividing each weight $w_i$ in a scoring formula by the same positive constant (for example, the sum of the weights) does not change the ratio between respective weights, which is the essential feature of
+the scoring formula. Therefore we may express any composite score formula in the form
+\begin{equation}
+x=\frac{\sum_{i=1}^n{w_iu_i}}{\sum_{i=1}^n{w_i}}
+\end{equation}
+For example using locally best weights thus we may write the moments of any composite score $x$ as, say,
+\begin{equation}
+\mathbb{E}[X \ | \ \theta]=\frac{\sum_{i=1}^n{P_i(\theta)}}{\sum_{i=1}^n{w_i}}=\mu(\theta)
+\end{equation}
+and
+\begin{equation}
+\mathbb{V}[X \ | \ \theta]=\frac{\sum_{i=1}^n{w_i^2P_i(\theta)Q_i(\theta)}}{\left( \sum_{i=1}^n{w_i}\right)^2}=\mu(\theta)=\sigma^2(\theta)
+\end{equation}
+
+\subsection{Item and Test information functions}
+In this section I will show the role of the information function in summarizing the properties of a given scoring formula as an estimator of the latent trait $\theta$ of our respondents.
+I shall present these methods in terms of the normal approximation to the distribution of scoring formulas $x = x(\boldsymbol{u})$, and in terms of point and confidence limit estimators $\hat{\theta}$ of $\theta$.\\
+The precision properties of estimators based on a given scoring formula are usefully represented by (1) the variance of the scoring
+formula $\mathbb{V}[X \ | \ \theta]$, and (2) the derivative $\frac{\partial}{\partial \theta}\mathbb{E}[X \ | \ \theta]$, which specifies how the mean of the scoring formula depends on $\theta$.\\
+In particular, these precision properties are summarized in the \emph{information function of a given scoring formula}
+\begin{equation}\label{eq:infoscore}
+I[\theta,x(\boldsymbol{u})]=\frac{1}{\mathbb{V}[X \ | \ \theta]} \left\{ \frac{\partial}{\partial \theta}\mathbb{E}[X \ | \ \theta]\right\}^2
+\end{equation}
+where $x = x(\boldsymbol{u})$ denotes any given test scoring formula based on any given test
+model. The \emph{model} may be represented by its pdf's $\mathbb{P}[\boldsymbol{U} = \boldsymbol{u} \ | \ \theta]$ or just the cdf's $F(x\ | \ \theta)$ of the given score.\\
+For brevity, we shall write $I[\theta,x(\boldsymbol{u})]=I(\theta,x)$.\\
+For example one can choose as score formula a composite score, then the expected value and the variance of the score will be, $\mu(\theta)$ and $\sigma^2(\theta)$, as defined in \eqref{eq:compexp} and \eqref{eq:compvar}.\\
+It should be noted that the symbol $x$ appears here not as a variable argument of $I(\theta,x)$, but as an abbreviation for "the probability distributions $F(x, \theta)$ of the scoring formula $x$", in terms of which $I(\theta,x)$ is defined. The definition is of course made with reference to some specified mental test, in terms of which the scoring formula is defined; thus, for a given scoring formula, $I(\theta,x)$ is a function of $\theta$ only.\\
+This definition of information is extended to such cases of nonlinear $x$ by taking $\mu(\theta)$ and
+$\sigma^2(\theta)$ to represent the asymptotic moments of $x$ and $\hat{\theta}$. These asymptotic moments are moments of the limiting normal distributions, which are in theory, and in relevant examples, distinct from the limits of exact moments of $x$ or $\hat{\theta}$.\\
+If $x(\boldsymbol{u})$ has any weighted-sum form like \eqref{eq:weisum} then we may substitute
+\eqref{eq:expscore} and \eqref{eq:varscore} in \eqref{eq:infoscore} and obtain
+\begin{equation}\label{eq:info1}
+I(\theta,x)=\frac{\left\{ \sum_{i=1}^n w_i P'_i(\theta) \right\}^2}{ \sum_{i=1}^n w^2_iP_i(\theta)Q_i(\theta)}
+\end{equation}
+As a case of the score formula $x(\boldsymbol{u})$ we may take a single term $w_iu_i$ of such
+a score formula or a single item response $u_i$, either of which gives the \emph{item information function (IIF)}
+\begin{equation}\label{eq:IIF}
+I(\theta,u_i)=I(\theta,w_iu_i)=\frac{P'_i(\theta)^2 }{P_i(\theta)Q_i(\theta)}
+\end{equation}
+By application of Cauchy inequality in general we have that
+\begin{equation}\label{eq:disequality}
+I(\theta,x)\leq \sum_{i=1}^n{I(\theta, u_i)}=I(\theta)
+\end{equation}
+with equality if and only if
+\begin{equation}
+w_i=\frac{P'_i(\theta) }{P_i(\theta)Q_i(\theta)}=w_i(\theta), \qquad \forall i=1,\ldots, n
+\end{equation}
+excepting for the usual allowed positive constant factor. That is \emph{equality
+obtains if and only if the $w_i$ are locally best weights at $\theta$} that is the case of logistic test models and if $x=\sum_{i=1}^na_iu_i$.
+So we can call the right member of \eqref{eq:disequality} the \emph{test information function (TIF)}.
+We may note that $I(\theta)$ is determined by the test model, since it is only the sum of the information functions of its items, and that it is not dependent on any choice of a score formula.
+Because of these facts and because of the relation \eqref{eq:disequality}, it constitutes an upper bound on each and all of the information functions $I(\theta,x)$ that may be obtained by the various possible choices of test score formulas of the weighted sum form.
+Also, since the TIF exhibits a basic general additivity property of the information structures of tests in relation to their items, it is a basis for solving a number of problems of appraising and designing of tests, test items, and score formulas and estimators, as we shall show further. \\
+In the case of 3PL model, since we have
+\begin{equation}
+P_i(\theta)=c_i +(1-c_i)\Psi[Da_i(\theta-b_i)]
+\end{equation}
+\begin{equation}
+P'_i(\theta)=(1-c_i)Da_i\psi[Da_i(\theta-b_i)]
+\end{equation}
+and
+\begin{equation}
+P_i(\theta)Q_i(\theta)=(1-c_i)\{\psi[Da_i(\theta-b_i)]+c_i\Psi[-Da_i(\theta-b_i)]^2 \}
+\end{equation}
+Hence the information function of an item in the logistic test model with guessing probabilities is
+\begin{equation}\label{eq:3plIIF}
+I(\theta,u_i)=\frac{(1-c_i)D^2a_i^2\psi^2[Da_i(\theta-b_i)]}{\psi[a_i(\theta-b_i)]}+c_i\Psi[-a_i(\theta-b_i)]^2
+\end{equation}
+An alternative but equivalent form is
+\begin{equation}\label{eq:3plIIF}
+I(\theta,u_i)=\{D^2a_i^2(1-c_i)\psi[Da_i(\theta-b_i)] \} \{ \Psi[a_i(\theta-b_i)-\log c_i]\}
+\end{equation}
+In this form, the information function is expressed as a product in which the first factor is the information function of a corresponding hypothetical logistic item with the same parameters, except that $c_i = 0$; this hypothetical item's characteristic curve is thus the probability of a correct response without guessing,
+in According to this interpretation, the factor $(1 - c_i)$ decreases the factor described by exactly
+the probability $c_i$ that a subject of any ability who cannot answer correctly without guessing will answer correctly by guessing. The final factor is a cumulative logistic distribution function whose median is $b_i+ (\log c_i)/Da_i$, which lies below bg by an amount proportional to $\log (1/c_i)$; if $c_i$ is very small, this factor is near unity when 0 is not far below $ b_i$
+
+\subsubsection{Features of the IIF}
+The point on $\theta$ where the IIF is highest is not a the $b$-value as one might expect (except when $c=0$), it is given by
+\begin{equation}
+\theta_{\max_I(\theta,u_i) }=b_i+\frac{I}{Da} \left[ \left( 0.5+0.5 \sqrt{1+8c_i} \right) \right]
+\end{equation}
+That point is always to the right of the $b$-value, (except when $c=0$,it is at the $b$ value), but never farther to the right than $0.41/a$.\\
+The IIF is symmetrical when $c=0$ and skewed to the right when $c\neq0$. The larger is $c$, the greater the right-skew. The right-skew occurs because the $c$-value detroys more infomration at low levels. This results makes sense because examinees at low $\theta$s will guess more than axaminess at high $\theta$s.
+
+
+\subsection{Item parameters calibration}
+%copied from song 2003 dissertation
+%-----------------------------------------------------------
+One of the key uses of IRT is model-based inferences. Examples of such inferences include using an estimate of an individual’s proficiency as a source of information for college admissions, estimating population characteristics in large-scale assessments to
+inform educational policy decisions, and using IRT to drive current implementations of computerized adaptive testing.In both conventional paper-and-pencil test and adaptive testing, the estimation of ability of an examinee (and the choice of the next item in adaptive testing) requires knowledge of parameters of the item response curves-the a's, b’s, and c’s. But in practice the item parameters $\Xi_i = (a_i, b_i, c_i)$ are often unknown. Thus estimates of item parameters should be determined from a pretest data (in a conventional test), or before the testing process begins (in adaptive testing). This is usually done by giving all of the items to comparable, large samples of candidates, in a standard testing situation. This process is called “calibration”.It is very common in psychological and educational assessment to estimate item parameters from the responses of such a ‘calibration sample’ of examinees, then treat those estimates as if they were known, true item parameters. These estimated items are then placed into exams to evaluate the ability level of target examinees using regular maximum likelihood methods or empirical Bayesian methods.The literature on parameter estimation in IRT models indicates that large samples are essential for test calibration. A sample of 1,000 candidates is generally viewed as minimal, and 2,000 as adequate (Green, Bock, Humphreys, Linn, and Reckase, 1984; Zwick, Thayer, and Wingersky 1995). This could be very costly in practice, and in many areas of testing, large samples may not be readily available for calibration.
+%-------------------------------------------------------------------
+\subsubsection{JML}
+
+%see 17.9 in lord novick 1968
+in lord novick 1968
+\subsubsection{MML}
+in An Evaluation of MarginalMaximum Likelihood Estimation forthe Two-Parameter Logistic ModelFritz DrasgowUniversity of Illinois for 2PL
+\subsection{$\theta$ estimation}
+%see 20.3 in lord novick 1968
+\subsubsection{MLE estimator}
+\subsubsection{EAP estimator}
+%(p. 155 Yan2016).
+%remove $i$ index and use $s$ for MST steps (begin of step)
+When a latent trait estimate for a person $i$ is desired a common option is the \emph{expected a posteriori estimation} (EAP).
+Given person $i$'s response vector $\mathbf{u}_i$, the EAP estiamte uses the posterior density of $\theta$, given $\mathbf{u}_i$, and thus require Bayes' theorem. The posterior density is found as
+\begin{equation}
+p(\theta | \mathbf{U_i}=\mathbf{u}_i,\omega)=\frac{L\left(\mathbf{U}_i=\mathbf{u}_i|\theta,\omega \right)p\left(\theta\right)}{L\left(\mathbf{U}_i=\mathbf{u}_i|\omega\right)}
+\end{equation}
+where $p\left(\theta\right)$ is a prior density for $\theta$ and the marginal likelihood $L\left(\mathbf{U}_i=\mathbf{u}_i|\omega\right)$ is
+\begin{equation}
+L\left(\mathbf{U}_i=\mathbf{u}_i|\omega\right)=\int\limits_{-\infty}^{+\infty}L\left(\mathbf{U}_i=\mathbf{u}_i|\theta,\omega\right)p\left(\theta\right)d\theta.
+\end{equation}
+The EAP estimate is found by taking the expectation of $\theta$ over the posterior density; that is,
+
+\begin{subequations}\label{eq:eapest}
+\begin{align}
+\hat{\theta}^{\text{EAP}}_i&=\int\limits_{-\infty}^{+\infty}\theta\text{ }p\left(\theta |\mathbf{U}_i=\mathbf{u}_i,\omega \right)d\theta \\
+&=\frac{\int\limits_{-\infty}^{+\infty}\theta L\left(\mathbf{U}_i=\mathbf{u}_i|\theta,\omega\right)p\left(\theta\right)d\theta}{\int\limits_{-\infty}^{+\infty}L\left(\mathbf{U}_i=\mathbf{u}_i|\theta,\omega\right)p\left(\theta\right)d\theta}
+\end{align}
+\end{subequations}
+
+
+In practice, these integrals are usually approximated by numerical quadrature,
+where the $\theta$ continuum is discretized at $Q$ values such that the integrals are approximated by the sum of the areas of trapezoids built by the straight lines that connect the values of the functions in the quadrature points we chose.
+\begin{equation}
+\hat{\theta}^{\text{EAP}}_i \cong \frac{ \sum_{q=1}^{Q-1} \left(\theta_{q+1}-\theta_q \right) \left(\frac{\theta_q L\left(\mathbf{U}_i=\mathbf{u}_i|\theta_q,\omega\right)p\left(\theta_q\right) + \theta_{q+1} L\left(\mathbf{U}_i=\mathbf{u}_i|\theta_{q+1},\omega\right)p\left(\theta_{q+1} \right)}{2}\right)}{\sum_{q=1}^{Q-1}\left(\theta_{q+1}-\theta_q \right) \left(\frac{L\left(\mathbf{U}_i=\mathbf{u}_i|\theta_q,\omega\right)p\left(\theta_q\right) + L\left(\mathbf{U}_i=\mathbf{u}_i|\theta_{q+1},\omega\right)p\left(\theta_{q+1} \right)}{2}\right)}
+\end{equation}
+Using the same approach as in \cite{BockMislevy1982} we recover the variance of the posterior distribution as following:
+\begin{subequations}\label{eq:eapvar}
+\begin{align}
+\mathbb{V}[\hat{\theta}^{\text{EAP}}_i]&=\int\limits_{-\infty}^{+\infty}\left(\theta-\hat{\theta}^{\text{EAP}}\right)\text{ }p\left(\theta |\mathbf{U}_i=\mathbf{u}_i,\omega \right)d\theta \\
+&=\frac{\int\limits_{-\infty}^{+\infty}\left(\theta-\hat{\theta}^{\text{EAP}}\right) L\left(\mathbf{U}_i=\mathbf{u}_i|\theta,\omega\right)p\left(\theta\right)d\theta}{\int\limits_{-\infty}^{+\infty}L\left(\mathbf{U}_i=\mathbf{u}_i|\theta,\omega\right)p\left(\theta\right)d\theta}
+\end{align}
+\end{subequations}
+If we can assume a gaussian distribution $p(\theta)$ fot $\theta$ then we can approximate \eqref{eq:eapest} by the usual Gauss-Hermite quadrature. In this way we can derive not only the expected value and variance of the posterior density but also its values at each quadrature point.

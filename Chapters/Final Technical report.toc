@@ -1,0 +1,36 @@
+\contentsline {section}{Preface}{1}{section*.1}
+\contentsline {chapter}{\numberline {1}Test theories}{3}{chapter.1}
+\contentsline {section}{\numberline {1.1}Classical test theory}{3}{section.1.1}
+\contentsline {section}{\numberline {1.2}Item response theory}{4}{section.1.2}
+\contentsline {chapter}{\numberline {2}Automated test assembly}{9}{chapter.2}
+\contentsline {section}{\numberline {2.1}The item bank}{10}{section.2.1}
+\contentsline {section}{\numberline {2.2}Types of assembly models}{10}{section.2.2}
+\contentsline {subsubsection}{Sequential test assembly}{10}{section*.3}
+\contentsline {subsubsection}{Simultaneous test assembly}{12}{section*.4}
+\contentsline {subsubsection}{Adaptive tests}{12}{section*.5}
+\contentsline {section}{\numberline {2.3}Single test assembly}{13}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Standard form of a test assembly problem}{14}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Decision variables}{14}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}The model for assembling a single test}{15}{subsection.2.3.3}
+\contentsline {subsubsection}{Item sets}{16}{section*.6}
+\contentsline {subsubsection}{Single test MINIMAX}{17}{section*.7}
+\contentsline {subsubsection}{Single test MAXIMIN}{17}{section*.8}
+\contentsline {section}{\numberline {2.4}Multiple simultaneous test assembly}{18}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}The model for assembling multiple tests}{19}{subsection.2.4.1}
+\contentsline {subsubsection}{Item sets}{20}{section*.9}
+\contentsline {subsubsection}{Item use}{20}{section*.10}
+\contentsline {subsubsection}{Test Overlap}{20}{section*.11}
+\contentsline {subsubsection}{Multiple MINIMAX}{21}{section*.12}
+\contentsline {subsubsection}{Multiple MAXIMIN}{22}{section*.13}
+\contentsline {chapter}{\numberline {3}INVALSI automated test assembly}{23}{chapter.3}
+\contentsline {section}{\numberline {3.1}The item banks}{23}{section.3.1}
+\contentsline {section}{\numberline {3.2}Desiderata}{24}{section.3.2}
+\contentsline {section}{\numberline {3.3}The ATA software}{26}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}\texttt {ATA} models}{27}{subsection.3.3.1}
+\contentsline {subsubsection}{Calibration design}{27}{section*.14}
+\contentsline {subsubsection}{Expected score}{30}{section*.15}
+\contentsline {subsubsection}{Calibration design / expected score}{31}{section*.16}
+\contentsline {subsubsection}{Expected score / maximum information}{31}{section*.17}
+\contentsline {subsection}{\numberline {3.3.2}Practical steps for \texttt {ATA} use}{32}{subsection.3.3.2}
+\contentsline {section}{\numberline {3.4}INVALSI ATA models}{33}{section.3.4}
+\contentsline {section}{Bibliography}{35}{chapter*.18}

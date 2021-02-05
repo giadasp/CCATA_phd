@@ -1,0 +1,233 @@
+% Chapter 3
+
+\chapter{Chance constrained test assembly} % Main chapter title
+
+\label{Proposed assembly models} % For referencing the chapter elsewhere, use \ref{Chapter1} 
+Intro...
+%----------------------------------------------------------------------------------------
+
+
+
+
+\section{Assumption of Normality}
+\subsection{One sided chance constraints}
+ A chance constrained formulation would replace \eqref{eq:LP} with a problem of the following kind:
+ \begin{subequations} 
+ \begin{equation*}
+ \text{optimize } c^T \boldsymbol{x}
+ \end{equation*}
+subject to 
+ \begin{equation}\label{eq:CCcon}
+ \quad \mathbb{P} \left[ \ \boldsymbol{\omega}^{T}\boldsymbol{x} \leq ub \ \right] \geq 1-\alpha \quad{\text{(one sided linear CC)}}
+ \end{equation}
+  \end{subequations} 
+ where $\omega$ is a vector of random variables.
+ The direct computation approach is the (historically) first one used to solve chance constrained problems, since it was proposed by Charnes et al., who introduced this approach in \cite{charnes1958cost}. Even today it finds widespread application, due to its ease of use and low demand on computational power compared to other stochastic programming formulations.\\
+ The major disadvantage of this approach is that they such constraints remain computationally intractable because is NP-hard to test if the constraint is satisfied. However for constraint of the form of \eqref{eq:CCcon} (and for other two more complicated cases we explain later) if $\omega$ has an elliptical log-concave distribution \cite{14 in lubin 2016}, of which the (multivariate) Gaussian distributed is an example, they become computationally tractable since they are converted in second-order cone constraints.
+ \par Thereupon we assume the uncertain variables $\xi$ underlie a multivariate normal distribution with expectation vector $\boldsymbol{\mu}$ and covariance matrix ${\boldsymbol{\Sigma}}$. The cdf of an univariate standard Gaussian random variable is denoted by $\Phi(\cdot)$, whereas the pdf is denoted by $\phi(\cdot)$.
+ \par Let $\boldsymbol{L}\boldsymbol{L}^{T}=\boldsymbol{\Sigma}$ be the Cholesky decomposition of $\boldsymbol{\Sigma}$. Under the previous assumption the chance constraint \eqref{eq:CCcon} is equivalent to 
+ \begin{equation}\label{eq:CCeq}
+ \left| \left| L^T\boldsymbol{x}  \right| \right| {}_2 \leq \frac{ub-\boldsymbol{\mu}^{T} \boldsymbol{x}}{\Phi^{-1}(1-\alpha)}
+ \end{equation}
+ which is a convex second order conic constraint. \\
+ This constraint can be additionally simplified if the random variables are independent that is $\boldsymbol{\Sigma}$ is diagonal (i.e. $\boldsymbol{\Sigma}=\text{diag}(\sigma^2_{11},\ldots,\sigma^2_{II})$). In this case it becomes
+ \begin{equation}\label{eq:CCeq}
+ \left| \left| \boldsymbol{\Sigma}^{1/2} \boldsymbol{x} \right| \right| {}_2 \leq \frac{ub-\boldsymbol{\mu}^{T} \boldsymbol{x}}{\Phi^{-1}(1-\alpha)}
+ \end{equation}
+ where $\left| \left|\boldsymbol{\Sigma}^{1/2} \boldsymbol{x} \right| \right| {}_2$ is nothing else than $\sqrt{\sum_{i=1}^I{(\sigma_{ii}x_{i})^2}}$. \\
+ The last equivalences can be proved in the following way. \\
+ Recall that $\boldsymbol{\omega}^{T}\boldsymbol{x}$ is normally distributed with mean $\boldsymbol{\mu}^{T}\boldsymbol{x}$ and variance $\boldsymbol{x}^{T}\boldsymbol{\Sigma} \boldsymbol{x}$. Then
+ \begin{equation}
+ \begin{split}
+ \mathbb{P}\left[\boldsymbol{\omega}^{T}\boldsymbol{x} \leq ub \right] &=\mathbb{P}\left[\boldsymbol{\omega}^{T}\boldsymbol{x} - \boldsymbol{\mu}^{T}\boldsymbol{x} \leq ub - \boldsymbol{\mu}^{T}\boldsymbol{x}\right] \\
+ &= \mathbb{P}\left[ \frac{\boldsymbol{\omega}^{T}\boldsymbol{x} - \boldsymbol{\mu}^{T}\boldsymbol{x}}{\sqrt{\boldsymbol{x}^{T}\boldsymbol{\Sigma} \boldsymbol{x}}} \leq \frac{ub  - \boldsymbol{\mu}^{T}\boldsymbol{x}}{\sqrt{\boldsymbol{x}^{T}\boldsymbol{\Sigma} \boldsymbol{x}}} \right] \\
+ &= \Phi\left(ub  - \boldsymbol{\mu}^{T}\boldsymbol{x}{\sqrt{\boldsymbol{x}^{T}\boldsymbol{\Sigma} \boldsymbol{x}}} \right) 
+\end{split}
+ \end{equation}
+ where $\Phi$ is the standard normal cumulative distribution function
+ Therefore the chance constraint is satisfied if and only if
+  \begin{equation}
+ \Phi\left( ub  - \boldsymbol{\mu}^{T}\boldsymbol{x}{\sqrt{\boldsymbol{x}^{T}\boldsymbol{\Sigma} \boldsymbol{x}}} \right) \geq 1- \alpha
+\end{equation}
+or, since $\phi^{-1}$ is monotonically increasing,
+ \begin{equation}
+ ub  - \boldsymbol{\mu}^{T}\boldsymbol{x} \sqrt{\boldsymbol{x}^{T}\boldsymbol{\Sigma} \boldsymbol{x}} \geq \Phi^{-1}\left(1- \alpha\right) 
+\end{equation}
+ which is 
+ \begin{equation}
+ \boldsymbol{\mu}^{T}\boldsymbol{x}+\Phi^{-1}\left(1- \alpha\right) \sqrt{\boldsymbol{x}^{T}\boldsymbol{\Sigma} \boldsymbol{x}} \geq ub
+ \end{equation}
+that is equivalent to \eqref{eq:CCeq}
+\par Therefore we can express \eqref{eq:CCeq} by the following mix of additional variable $y$ and constraints:
+\begin{subequations}
+ \begin{equation}
+y \geq \left| \left| L^Tx  \right| \right| {}_2
+\end{equation}
+ \begin{equation}
+ub-\boldsymbol{\mu}^{T} \boldsymbol{x} \geq \Phi^{-1}(1-\alpha)y
+\end{equation}
+\label{eq:CCeq2}
+\end{subequations}
+Or in the independence case
+\begin{subequations}
+	\begin{equation}
+	y \geq \left| \left| \boldsymbol{\Sigma}^{1/2}\boldsymbol{x}  \right| \right| {}_2
+	\end{equation}
+	\begin{equation}
+	ub-\boldsymbol{\mu}^{T} \boldsymbol{x} \geq \Phi^{-1}(1-\alpha)y
+	\end{equation}
+	\label{eq:CCeq2}
+\end{subequations}
+% $−g(u)T\boldsymbol{\mu}\sqrt{}g(u)T{\boldsymbol{\Sigma}} g(u)\ge\Phi^{-1}( \alpha)$. Additionally,$\partial\partial uiPr{g(u,\xi)≤0}=\Phi(−g(u)T\boldsymbol{\mu} \sqrt{}g(u)T{\boldsymbol{\Sigma}} g(u))(\boldsymbol{\mu} Tg(u))g(u)T{\boldsymbol{\Sigma}} \partial \partial uig(u)−(\boldsymbol{\mu} T \partial \partial uig(u))g(u)T{\boldsymbol{\Sigma}} g(u)(g(u)T{\boldsymbol{\Sigma}} g(u))$ 32.Proof:For this proof we employ that for a multivariate Gaussian distributed uncertain variable $\xi$ it holds that $g(u)T\xi$ is also Gaussian distributed with expectation$g(u)T\boldsymbol{\mu}$ and variance $g(u)T{\boldsymbol{\Sigma}} g(u)$. A short calculation reveals $Pr{g(u,\xi)≤0}=Pr{g(u,\xi)−g(u)T\boldsymbol{\mu}\sqrt{}g(u)T{\boldsymbol{\Sigma}} g(u)≤−g(u)T\boldsymbol{\mu}\sqrt{}g(u)T{\boldsymbol{\Sigma}} g(u)}$(4.1.1) $= \Phi(−g(u)T\boldsymbol{\mu}\sqrt{}g(u)T{\boldsymbol{\Sigma}} g(u))$,(4.1.2)i.e.,$Pr{g(u,\xi)≤0} \ge \alpha$ is equivalent to $\Phi(−g(u)T\boldsymbol{\mu}\sqrt{}g(u)T{\boldsymbol{\Sigma}} g(u))\ge \alpha$. Furthermore, the function $\Phi :R→R$is bijective and, therefore, $\Phi^{-1}(·)$ exists and the last statement is equivalent to $−g(u)T\boldsymbol{\mu}\sqrt{}g(u)T{\boldsymbol{\Sigma}} g(u)\ge\Phi^{-1}( \alpha)$, which completes the first part of the proof. For the second part,calculating the derivative of (4.1.2) immediately yields the desired result.
+\subsection{Two-sided chance constrains}
+Sometimes it's useful to force the probability of an event to be in a certain closed interval, in this case we can put an additional constraint in the model \eqref{eq:CCCcon} like the following
+ 	\begin{equation}\label{eq:CCcon1s2}
+	\quad \mathbb{P}(\boldsymbol{\omega}^{T}\boldsymbol{x} \geq lb)\geq 1-\beta 
+	\end{equation}
+and if $c < b$ we can reformulate the new restricted model  \eqref{eq:CCcon}+\eqref{eq:CCcon1s2} by combining the two directions of the inequality in one single constraint of the form
+ 	\begin{equation}\label{eq:CCcon2s}
+ \quad \mathbb{P}(lb \leq \boldsymbol{\omega}^{T}\boldsymbol{x} \leq ub)\geq 1-\alpha^* \quad{\text{(two-sided linear CC)}}
+ \end{equation}
+ where we put $\alpha^*=\alpha+\beta$ for convenience. \\
+ In \cite{Lubin et al. two.sided linear con...} the authors derived a second order conic outer approximation of this constraint showing also that the set $(ub,lb,\boldsymbol{x})$ of solutions is convex (Lemma 4). \\
+ Below we report the Lemma 16 using our notation.
+ \par Let $\omega \sim N(\boldsymbol{\mu}, \boldsymbol{\Sigma})$ be a jointly distributed Gaussian random vector with mean $\boldsymbol{\mu}$ and positive definite covariance matrix $\boldsymbol{\Sigma}$ and $0 < \alpha^* \leq 0.5$. Let $\boldsymbol{L}\boldsymbol{L}^T=\boldsymbol{\Sigma}$ be the Cholesky decomposition of $\boldsymbol{\Sigma}$. the following extended formulation, with the additional variable $y$,
+ 
+ \begin{subequations}
+ 	\begin{equation}
+ 	y \geq \left| \left| L^Tx  \right| \right| {}_2
+ 	\end{equation}
+ 	\begin{equation}
+ 	ub-\boldsymbol{\mu}^{T} \boldsymbol{x} \geq \Phi^{-1}(1-\alpha^*)y
+ 	\end{equation}
+ 	\begin{equation}
+ 	lb-\boldsymbol{\mu}^{T} \boldsymbol{x} \leq \Phi^{-1}(\alpha^*)y
+ 	\end{equation}
+ 	\begin{equation}
+ 	lb-ub \leq 2 \Phi^{-1}(\alpha^*/2)y
+ 	\end{equation}
+ 	\label{eq:CCeq2s}
+ \end{subequations}
+   that is a second order conic approximation of the constraint \eqref{eq:CCcon2s} and in fact guarantees 
+   \begin{equation}
+   \quad \mathbb{P}(lb \leq \boldsymbol{\omega}^{T}\boldsymbol{x} \leq ub)\geq 1-1.25\alpha^* 
+   \end{equation}
+   So by choosing a new proper arbitrary small $\alpha^*$ is it possible to solve the two-sided version of the chance constraints by using their second order conic representation.
+ 
+%\section{Distributionally robust chance constraints}
+%In the previous problems \eqref{eq:CCcon} and \eqref{eq:CCcon2s} we assume that the vector $\omega$ is jointly normally distributed with known mean vector $\boldsymbol{\mu}$ and covariance matrix $\boldsymbol{\Sigma}$, i.e. $\omega \sim N(\boldsymbol{\mu}, \boldsymbol{\Sigma})$.
+%This distribution is obviously an approximation since the parameters of the distribution are usually estimated by data, often we can say that with a certain confidence the vector $(\boldsymbol{\mu},\boldsymbol{\Sigma})$ fall in some uncertainty set $U$, in particular we allow $U$ to be partitioned in the product of $U_{\boldsymbol{\mu}}$ and $U_{\boldsymbol{\Sigma}}$, i.e. $U=U_{\boldsymbol{\mu}} \times U_{\boldsymbol{\Sigma}}$.
+%This means that $(\boldsymbol{\mu},\boldsymbol{\Sigma}) \in U$ iff $\boldsymbol{\mu} \in U_{\boldsymbol{\mu}}$ and $\boldsymbol{\Sigma} \in U_{\boldsymbol{\Sigma}}$.\\
+%\par Under these assumptions
+% \begin{subequations} 
+%	\begin{equation*}
+%	\text{optimize } c^Tx 
+%	\end{equation*}
+%	subject to 
+%	\begin{equation}\label{eq:CCcon}
+%	\quad \mathbb{P}(c \leq \boldsymbol{\omega}^{T}x \leq b)\geq 1-\alpha \quad{\text{(two-sided linear CC)}}
+%	\end{equation}
+%	
+%\end{subequations}
+\subsection{Chance constrained MINIMAX for parallel tests assembly}
+The vector $1-\alpha$ contains a prescribed set of constants that are probability measures of the extent to which constraint violations are admitted i.e. the set of constraints may be violated, but at most $\alpha$ proportion of the times.
+Here $A$, $b$, $c$ are not necessarily constant but have, in general, some or all of their elements as random variables. This work will consider only the case in which some elements of $A$ can be random.
+In particular we will consider \\
+$i=1,\ldots,I$ (items) \\
+$t=1,\ldots,T$ (tests) \\
+$k \in V$ (theta points, same for all $t$) \\
+$x_{it}$ binary decision variables \\
+$\eta_{ki}\equiv I_i(\theta_k)$ random variables representing the item information function for item $i$ at $\theta_k$ obtained by bootstrapping the calibration process **see section...**.  \\
+
+
+$\{ \eta_{k1}, \ldots,\eta_{kI} \} \sim N(\boldsymbol{\mu}_k,\boldsymbol{\Sigma}_k)$ (i.e. we assume that the $\left( \eta_{ki} \right) $ are jointly distributed like a Gaussian random vector with mean $\boldsymbol{\mu}_k$ and covariance matrix $\boldsymbol{\Sigma}_k$).\\
+$T_{kt} $ objective values for the test information functions, computed via an unconstrained test assembly \\
+$0 \leq \alpha \leq 0.5, \varepsilon \geq 0$ \\
+
+\begin{subequations}
+\begin{equation}
+	\mbox{minimize } \ y \quad \mbox{(objective)}
+\end{equation}	
+	subject to
+\begin{equation}\label{eq:CC1}
+\mathbb{P} \left[ \ \boldsymbol{\eta}^*_{k} \boldsymbol{x}_{t}  \leq T_{kt} + w_t y \ \right ] \geq 1- \alpha
+\quad \forall t,k \in V \end{equation}
+\begin{equation}\label{eq:CC2}
+\mathbb{P} \left[ \ \boldsymbol{\eta}^*_{k} \boldsymbol{x}_{t}  \geq T_{kt} - w_t y \ \right] \geq 1- \alpha \quad \forall t,k \in V
+\end{equation}
+%\begin{equation}\label{eq:CC1}
+%\mathbb{P} \left[ \ \sum_{i=1}^I \left( \eta^*_{ki} \ x_{it} \right) \leq T_{kt} + w_t y \ \right ] \geq 1- \alpha
+%\quad \forall t,k \in V_t \end{equation}
+%\begin{equation}\label{eq:CC2}
+%\mathbb{P} \left[ \ \sum_{i=1}^I \left( \eta^*_{ki} \ x_{it} \right) \geq T_{kt} - w_t y \ \right] \geq 1- \alpha \quad \forall t,k \in V_t
+%\end{equation}
+\end{subequations}
+Following the equivalence principle \eqref{eq:CCeq2} the above constraints will be converted as follows:
+\begin{subequations}
+	\begin{equation}
+	v \geq \left| \left| {\boldsymbol{L}_k}^T \boldsymbol{x}_{.t}\right| \right| {}_2 
+	\end{equation}
+	\begin{equation}
+	T_{kt} + y -\boldsymbol{\mu}_k \boldsymbol{x}_{t} \geq \Phi^{-1}(1-\alpha)v
+	\end{equation}
+	\begin{equation}
+		T_{kt} - y  -\boldsymbol{\mu}_k \boldsymbol{x}_{t} \leq \Phi^{-1}(\alpha)v
+	\end{equation}
+	%\begin{equation}
+	%T_{kt} + y -\sum_{i=1}^I{\mu_{ki} x_{it}} \geq \Phi^{-1}(1-\alpha)v
+	%\end{equation}
+	%\begin{equation}
+	%T_{kt} - y  -\sum_{i=1}^I{\mu_{ki} x_{it}} \leq \Phi^{-1}(\alpha)v
+	%\end{equation}
+
+	\label{eq:CCeqTIF}
+\end{subequations}
+where ${\boldsymbol{L}_k}^T$ is the matrix that comes from the Choleski decomposition of $\boldsymbol{\Sigma}_k$ and $\boldsymbol{x}_{t}=\{x_{1t},\ldots,x_{It}\}$. \\
+In Julia
+\lstinputlisting{Julia/CC1CC2.jl}
+\subsection{Chance constrained MAXIMIN for parallel tests assembly}
+\begin{subequations}
+	\begin{equation}
+	\mbox{minimize } \ y \quad \mbox{(objective)}
+	\end{equation}	
+	subject to
+	\begin{equation}\label{eq:CC1}
+	\mathbb{P} \left[ \ \boldsymbol{\eta}^*_{k} \boldsymbol{x}_{t}  \leq  y +\varepsilon \ \right ] \geq 1- \alpha
+	\quad \forall t,k \in V \end{equation}
+	\begin{equation}\label{eq:CC2}
+	\mathbb{P} \left[ \ \boldsymbol{\eta}^*_{k} \boldsymbol{x}_{t}  \geq y -\varepsilon\ \right] \geq 1- \alpha \quad \forall t,k \in V
+	\end{equation}
+	%\begin{equation}\label{eq:CC1}
+	%\mathbb{P} \left[ \ \sum_{i=1}^I \left( \eta^*_{ki} \ x_{it} \right) \leq T_{kt} + w_t y \ \right ] \geq 1- \alpha
+	%\quad \forall t,k \in V_t \end{equation}
+	%\begin{equation}\label{eq:CC2}
+	%\mathbb{P} \left[ \ \sum_{i=1}^I \left( \eta^*_{ki} \ x_{it} \right) \geq T_{kt} - w_t y \ \right] \geq 1- \alpha \quad \forall t,k \in V_t
+	%\end{equation}
+\end{subequations}
+If $n^{\min}_t$ is sufficiently high for all $t$ and we can assume the normal distribution for all the $\eta_{ki}$ than the previous model is equivalent to:
+\begin{subequations}
+	\begin{equation}
+	\text{maximize} \ y
+	\end{equation}
+	\begin{equation}
+	y \geq \left| \left| {\boldsymbol{L}_k}^T \boldsymbol{x}_{.t}\right| \right|{}_2 
+	\end{equation}
+		\begin{equation}
+		\boldsymbol{\mu}_k \boldsymbol{x}_t \leq y + \varepsilon - \Phi^{-1}(1-\alpha)y \quad \forall t,k
+		\end{equation}
+		\begin{equation}
+		\boldsymbol{\mu}_k \boldsymbol{x}_t \geq y - \varepsilon - \Phi^{-1}(\alpha)y \quad \forall t,k
+		\end{equation}
+%	\begin{equation}
+%	\sum_{i=1}^I{\mu^{(k)}_i x_{it}} \leq y + \varepsilon - \Phi^{-1}(1-\alpha)y \quad \forall t,k
+%	\end{equation}
+%	\begin{equation}
+%	\sum_{i=1}^I{\mu^{(k)}_i x_{it}} \geq y - \varepsilon - \Phi^{-1}(\alpha)y \quad \forall t,k
+%	\end{equation}
+
+	\label{eq:CCeqTIF}
+\end{subequations}
+where ${\boldsymbol{L}_k}^T$ is the matrix that comes from the Choleski decomposition of $\Sigma^{(k)}$, $\epsilon$ can be chosen to ensure that the TIFs of outcoming tests are inside a certain interval around the maximum possible. Usually the $\theta_k$s in which the IIFs are computed and hence also their moments $\mu^{(k)}_i$  $\Sigma^{(k)}$ are taken as the points in the ability continuum in which we want the TIFs are maximized, such as the mean of $\theta$ in the population.
+
+
+
