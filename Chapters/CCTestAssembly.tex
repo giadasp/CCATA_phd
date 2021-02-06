@@ -1,81 +1,59 @@
+% Chapter 3
+
 \chapter{Chance-constrained test assembly}
-\label{sec:CC}
+\label{ch:CC}
 
-The test information function (TIF) is a key object both in the IRT and in the test assembly framework.
-Most of the automated test assembly models (ATA) are based on this quantity that usually appears in the objective function, being the goal for the optimization model.
-As explained in Section \ref{ch:ATA} the IIFs are considered as given values.
-This approach may lead to several issues such as infeasibility of the MINIMAX or MAXIMIN model, e.g. if it is not possible to find $T$ parallel tests that have TIFs inside a fixed interval around the targets.
-Another issue is the incorrect interpretation of the assembly results.
-For example, if the calibration algorithm had produced wrong estimates for the item parameters and hence the item information functions are not accurate enough, the TIF of the assembled test might be overestimated.
-Regarding the latter issue, a good test assembly model would consider the variation of the item parameter estimates in order to build test forms in a conservative fashion, i.e., it would produce tests with a maximum plausible lower bound of the TIF.  
+The test information function (TIF) is a key object both in the IRT and in the test assembly framework. Most of the automated test assembly models (ATA) are based on this quantity that usually appears in the objective function, being the goal for the optimization model. As explained in Section \ref{ch:ATA} the IIFs are considered as given values. This approach may lead to several issues such as infeasibility of the MINIMAX or MAXIMIN model, e.g. if it is not possible to find $T$ parallel tests that have TIFs inside a fixed interval around the targets. Another issue is the incorrect interpretation of the assembly results. For example, if the calibration algorithm had produced wrong estimates for the item parameters and hence the item information functions are not accurate enough, the TIF of the assembled test might be overestimated. Regarding the latter issue, a good test assembly model would consider the variation of the item parameter estimates in order to build test forms in a conservative fashion, i.e., it would produce tests with a maximum plausible lower bound of the TIF.  
 
-There is a need for better treatment of this problem in test assembly models.
-My attempt in this dissertation is to incorporate uncertainty in the optimization models most seen in practice and in literature for simultaneous multiple test assembly using the modern techniques of the stochastic programming framework.
-Chance-constraints (or probabilistic constraints) are a natural solution to the mentioned problems.
-They are among the first extensions proposed in the stochastic programming framework to deal with constraints where some of the coefficients are uncertain \parencite{charnes1963deterministic,krokhmal2002portfolio}.
-In particular, by adjusting a conservative parameter $\alpha$, also called \emph{risk level}, it is possible to modulate the level of fulfilment of some probabilized constraints enabling the user to relax or to tighten the feasibility of the problem.
-Narrowing our focus on the MAXIMIN test assembly model introduced in \ref{sec:ata}, a percentile optimization model would maximize a reasonable lower bound of the TIF, its $\alpha$-quantile, approximated by the $\lceil \alpha R \rceil$-th ranked value of the TIF computed on the $R$ bootstrap replications of the estimates of item parameters.
+There is a need for better treatment of this problem in test assembly models. My attempt in this dissertation is to incorporate uncertainty in the optimization models most seen in practice and in literature for simultaneous multiple test assembly, using the modern techniques proper of the stochastic programming framework. Chance-constraints (or probabilistic constraints) are a natural solution to the mentioned problems. They are among the first extentions proposed in the stochastic programming framework to deal with constraints where some of the coefficients are uncertain \parencite{charnes1963deterministic,krokhmal2002portfolio}. In particular, by adjusting a conservative parameter $\alpha$, also called \emph{risk level}, it is possible to modulate the level of fulfilment of some probabilized constraints enabling the user to relax or to tighten the feasibility of the problem. Narrowing our focus on the MAXIMIN test assembly model introduced in Section \ref{sec:ata}, a percentile optimization model would maximize a reasonable lower bound of the TIF, its $\alpha$-quantile, approximated by the $\lceil \alpha R \rceil$-th ranked value of the TIF computed on the $R$ bootstrap replications of the estimates of item parameters.
 %In case of infeasibility another approach would be relax some constraints by randomizing their fulfillment.
 
-An introduction to the idea of chance-constrained modeling is provided in the first Section together with a brief literature review of the issues and of the existing methods to solve this type of problems.
-Subsequently, a chance-constrained version of the MAXIMIN test assembly model is proposed and, since this novel model cannot be approximated by a linear formulation, a heuristic based on simulated annealing \parencite{goffe1996simann} has been developed.
-This technique can handle large-scale models and non-linear functions.
-A Lagrangian relaxation formulation helps to find the most feasible/optimal solution and, thanks to a random variable, more than one neighborhood of the space is explored avoiding to being trapped in a local optimum.
-Moreover, the proposed heuristic can solve a wide class of optimization problems characterized by having binary optimization variables and a separable objective function.
-Furthermore, the details of the results of the retrieval of the empirical distribution function of the TIF are provided in Section \ref{sec:edfTIF}.
+An introduction to the idea of chance-constrained modeling is provided in Section \ref{sec:ccmod} together with a brief literature review of the issues and of the existing methods to solve this type of problems. Subsequently, a chance-constrained version of the MAXIMIN test assembly model is proposed and, since this novel model cannot be approximated by a linear formulation, a heuristic based on simulated annealing \parencite{goffe1996simann} has been developed. This technique can handle large-scale models and non-linear functions. A Lagrangian relaxation formulation helps to find the most feasible/optimal solution and, thanks to a random variable, more than one neighbourhood of the space is explored avoiding to being trapped in a local optimum. Moreover, the proposed heuristic can solve a wide class of optimization problems characterized by having binary optimization variables and a separable objective function. Furthermore, the details of the results of the retrieval of the empirical distribution function of the TIF are provided in Section \ref{sec:edfTIF}.
 
-Several simulations of ATA problems are performed and the solutions are compared to CPLEX 12.8.0 Optimizer, a benchmark solver in the linear programming field. 
-In particular, since our heuristic is able also to solve the classical ATA models we compare the results of the optimization in both the framework: exact and chance-constrained.
-The described algorithms are coded in the open-source framework Julia.
-A package written in Julia has been released \footnote{\url{http:\\github.com\\giadasp\\ATA.jl}}.
+Several simulations of ATA problems are performed and the solutions are compared to CPLEX 12.8.0 Optimizer\footnote{\url{http://www.cplex.com}}, a benchmark solver in the linear programming field. We used CPLEX through the JuMP interface\footnote{\url{http://www.juliaopt.org/JuMP.jl/0.18/}}. In particular, since our heuristic is able also to solve the classical ATA models we compare the results of the optimization in both the framework: exact and chance-constrained. The described algorithm is coded in the open-source framework Julia. A package written in Julia has been released \footnote{\url{http://github.com/giadasp/CCATA_Final}, available in private mode, ask to \href{mailto:giada.spaccapanico2@unibo.it}{giada.spaccapanico2@unibo.it} for the access permission.}.
 
-\section{Chance-constrained modelling}
+At the end, we show the results of an application of our model on real data taken from the Italian national standardized assessment program of the scholastic year 2018/2019.
 
-In the past five decades, the developments in the theory of choice under risk in financial applications, e.g. portfolio optimization where the prices of instruments are random variables (see \textcite{rockafellar2000optimization,rockafellar2001uryasev}),  followed the expected mean-variance approach \parencite{chen1973quadratic,freund1956introduction,scott1972practical}).In risk management and in reliability applications, the decision maker must select a combination of assets for building a portfolio by maximizing their utility function.
-The latter is defined in terms of the expected mean and variance of the returns or of the prices of the instruments which are uncertain coefficients in the linear objective or constraints of the optimization model.
-More recently, instead, the regulations for finance businesses require to reformulate the problem in terms of percentiles of loss distributions.
-These requirements gave rise to the theory of \emph{chance-constraints}, also called probabilistic constraints, originally proposed by \textcite{Charnes1959}. 
+\section{Chance-constrained modeling}\label{sec:ccmod}
 
-The probabilistic constraints present coefficients which are assumed to be randomly distributed and they are subject to some predetermined threshold $\alpha$ of the constraints fulfilment.
-Modifying $\alpha$ it is possible to relax or tighten some constraints modulating the level of conservativeness of the model.
+The theory of chance-constrained modeling has been deeply explored in the financial scientific field. Specifically, in risk management and reliability applications the decision maker must select a combination of assets for building a portfolio by maximizing their utility function. Since the prices of instruments are usually random variables, the theory of choice and portfolio optimization under risk was born \parencite[see][]{rockafellar2000optimization,rockafellar2001uryasev}. In the past five decades, this sort of problems followed the expected mean-variance approach \parencite{chen1973quadratic,freund1956introduction,scott1972practical}. In particular, the utility function is defined in terms of the expected mean and variance of the returns or of the prices of the instruments which are uncertain coefficients in the linear objective or constraints of the optimization model. More recently, instead, the regulations for finance businesses require to reformulate the problem in terms of percentiles of loss distributions. These requirements gave rise to the theory of \emph{chance-constraints}, also called probabilistic constraints, originally proposed by \textcite{Charnes1959}. 
+
+The probabilistic constraints present coefficients which are assumed to be randomly distributed and they are subject to some predetermined threshold $\alpha$ of the constraints fulfilment. Modifying $\alpha$ it is possible to relax or tighten some constraints modulating the level of conservativeness of the model.
 The standard form of a mixed-integer optimization problem can be represented by  
-
-		\begin{alignat}{4}\label{eq:optModel2}	\underset{\mathbf{x}}{\arg \min} \quad & f(\mathbf{x}) &&\quad  & \\
-	\nonumber
-	\text{subject to} \quad & g_j(\mathbf{x}) \leq 0 &&\quad & j=1,\ldots,J
-	\end{alignat}
-	\begin{equation}\nonumber
-		 \mathbf{x} \in \mathbb{Z}^p \times \mathbb{R}^{n-p}   
-	\end{equation}
-
-where $f(\cdot)$ is the objective function to be optimized, $\mathbf{x}$ is the vector of $p$ integer and $n-p$ continuous optimization variables. Both $f(\cdot)$ and $g(\cdot)$ are scalar functions.\\
-The optimization domain is $D=\text{dom}(f) \cap \bigcap_{j=1}^J \text{dom}(g_j)$ and the set \\ $\mathbf{X}=\left\{\mathbf{x} : \mathbf{x} \in D, g_j(\mathbf{x}) \leq 0 \ \forall j \right\}$ is called \emph{feasible set}, i.e. a solution $\mathbf{x}$ is feasible if it is in the optimization domain and satisfies the constraints. Starting from \eqref{eq:optModel2}, a chance-constraints reformulation will add the following set of constraints:
-
-\begin{equation}\label{eq:CCcon}
-\mathbb{P}\left[g_k(\mathbf{x},\boldsymbol{\xi})\leq 0\right] \geq 1-\alpha \quad k=1,\ldots,K
+\begin{alignat}{4}\label{eq:optModel2}	\underset{\mathbf{x}}{\arg \min} \quad & f(\mathbf{x}) &&\quad  & \\
+\nonumber
+\text{subject to} \quad & g_j(\mathbf{x}) \leq 0 &&\quad & j=1,\ldots,J
+\end{alignat}
+\begin{equation}\nonumber
+\mathbf{x} \in \mathbb{Z}^p \times \mathbb{R}^{n-p},   
 \end{equation}
 
-where $\boldsymbol{\xi}$ is a vector of random variables. This formulation seeks a decision vector $\mathbf{x}$  that minimizes the function $f(\mathbf{x})$ while satisfying the chance constraints $g_k(\mathbf{x},\boldsymbol{\xi})\leq 0$ with probability at least $1-\alpha$. Such constraints imply having a function to compute (or better approximate) the probability and a solver which can deal with that function. Whenever a MAXIMIN principle is applied, they can be seen as \emph{percentile optimization} problems \parencite{krokhmal2002portfolio} because the probability in \eqref{eq:CCcon} is replaced by the $\alpha$-th percentile of the distribution function of $g_k(\mathbf{x},\boldsymbol{\xi})$ and these percentiles must be maximized.
+\noindent where $f(\cdot)$ is the objective function to be optimized, $\mathbf{x}$ is the vector of $p$ integer and $n-p$ continuous optimization variables. Both $f(\cdot)$ and $g(\cdot)$ are scalar functions.
 
-Despite the old age, chance-constrained models are, still hard to be solved. An issue is the general non-convexity of the probabilistic constraints. Even if the original deterministic constraints\footnote{$g_k(\mathbf{x},\boldsymbol{\xi})$ where $\boldsymbol{\xi}$ is not random.} were convex the respective chance-constraints may be non-convex. In general they are usually untractable (see \textcite{Nemirovski}) because even if they are convex the quantiles of the random variables are difficult or impossible to compute. Examples of approximations of chance-constraints are the linearization method called sample average approximation \parencite{Ahmed2008} and the case when the random variables follow a known multivariate distribution with known mean and variance. For the first case, a big-M approach is needed to deal with the indicator function bringing numerical instability in the optimization. The second approach instead imposes strong distributional assumptions (see \textcite{Kataria} for a list of distributional assumptions) and, since they are based on the Chebishev inequality they require a modest number of elements in the summations to achieve the convergence, they need also a solver which can deal with second-order conic constraints, the most difficult type of convex functions to be optimized. All the mentioned formulations increase exponentially the number of optimization variables, thus they are not suitable for large-scaled models.
+The optimization domain is $D=\text{dom}(f) \cap \bigcap_{j=1}^J \text{dom}(g_j)$ and the set \\ $\mathbf{X}=\left\{\mathbf{x} : \mathbf{x} \in D, g_j(\mathbf{x}) \leq 0 \ \forall j \right\}$ is called \emph{feasible set}, i.e. a solution $\mathbf{x}$ is feasible if it is in the optimization domain and it satisfies the constraints. Starting from \eqref{eq:optModel2}, a chance-constraints reformulation will add the following set of constraints:
+\begin{equation}\label{eq:CCcon}
+\mathbb{P}\left[g_k(\mathbf{x},\boldsymbol{\xi})\leq 0\right] \geq 1-\alpha \quad k=1,\ldots,K,
+\end{equation}
+
+\noindent where $\boldsymbol{\xi}$ is a vector of random variables. This formulation seeks a decision vector $\mathbf{x}$  that minimizes the function $f(\mathbf{x})$ while satisfying the chance constraints $g_k(\mathbf{x},\boldsymbol{\xi})\leq 0$ with probability at least $1-\alpha$. Such constraints imply having a function to compute (or better approximate) the probability and a solver which can deal with that function. Whenever a MAXIMIN principle is applied, they can be seen as \emph{percentile optimization} problems \parencite{krokhmal2002portfolio} because the probability in \eqref{eq:CCcon} is replaced by the $\alpha$-th percentile of the distribution function of $g_k(\mathbf{x},\boldsymbol{\xi})$ and these percentiles must be maximized.
+
+Despite the old age, chance-constrained models are still hard to be solved. An issue is the general non-convexity of the probabilistic constraints. Even if the original deterministic constraints\footnote{$g_k(\mathbf{x},\boldsymbol{\xi})$ where $\boldsymbol{\xi}$ is not random.} were convex, the respective chance-constraints may be non-convex. In general they are usually untractable \parencite[see][]{Nemirovski} because even if they are convex the quantiles of the random variables are difficult or impossible to compute. Examples of approximations of chance-constraints are the linearization method called sample average approximation \parencite{Ahmed2008} and the case when the random variables follow a known multivariate distribution with known mean and variance. For the first case, a big-M approach is needed to deal with the indicator function bringing numerical instability in the optimization. The second approach instead imposes strong distributional assumptions \parencite[see][]{Kataria} for a list of distributional assumptions) and, since they are based on the Chebishev inequality they require a modest number of elements in the summations to achieve the convergence, they need also a solver which can deal with second-order conic constraints, the most difficult type of convex functions to be optimized. All the mentioned formulations increase exponentially the number of optimization variables, thus they are not suitable for large-scaled models.
 
 Other approaches rely on discretization of the random variable and hence the model is optimized in all possible scenarios (i.e. realizations of the random variables) thus they do not fit to problems with a large number of random variables because all the patterns must be considered \parencite{margellos2014road,wang2011chance,tarim2006}. In finance, such models are called VaR (value at risk) and they are usually characterized by non-concavity and hence computational intractability except in certain cases where returns are known to have an elliptical distribution, see for example \textcite{vehvi2003} or \textcite{mcneil2005}. 
 
-Another question is the domain of optimization. Usually, stochastic optimization models are addressed in the case of continuous optimization variables while mixed-integer problems are still neglected because of their greater complexity. Given a lack in optimization techniques which can handle such problems, we first use a Monte-Carlo approach to approximate the quantiles in a percentile optimization perspective and, in Section \ref{sec:heur}, we propose an heuristic to solve the chance-constrained test assembly model defined previously. In the last Section a simulation study is conducted to show the practical and computational advantage of our approach in the test assembly research field.
+Another question is the domain of optimization. Usually, stochastic optimization models are addressed in the case of continuous optimization variables while mixed-integer problems are still neglected because of their greater complexity. Given a lack in optimization techniques which can handle such problems, we first use a Monte-Carlo approach to approximate the quantiles in a percentile optimization perspective and, in Section \ref{sec:heur}, we propose an heuristic to solve the chance-constrained test assembly model defined previously. In the last section a simulation study is conducted to show the practical and computational advantage of our approach in the test assembly research field.
 
 \section{Chance-constrained test assembly model}\label{sec:CCATA}
 
-In the context of test assembly the optimization models used for selecting the items does not consider the inaccuracy of the estimates of item parameters \parencite{VDL2005}. However, estimates are never exact. Thus, ignoring the potential imprecision can lead to wrong conclusions and misinterpretations of the results such as overestimation of the information function and hence of the accuracy of the test in ability estimation. Some attempts to include uncertainty in the test assembly models have been done by \textcite{veldkamp2013application} and \textcite{veldkamp2013uncertainties} who developed and applied the robust model introduced in \textcite{bertsimas2003robust}. The mentioned automated test assembly model considers the standard error of the estimates and a protection level $\Gamma$ that indicates how many items in the model are assumed to be changed in order to affect the solution. It treats the uncertainty in a deterministic way and, given $\Gamma$, it adjust the solution adopting the most conservative approach, because standard errors are the maximum expression of uncertainty of the estimates.
+In the context of test assembly the optimization models used for selecting the items do not consider the inaccuracy of the estimates of item parameters \parencite{VDL2005}. However, estimates are never exact. Thus, ignoring the potential imprecision can lead to wrong conclusions and misinterpretations of the results such as overestimation of the information function and hence of the accuracy of the test in ability estimation. Some attempts to include uncertainty in the test assembly models have been done by \textcite{veldkamp2013application} and \textcite{veldkamp2013uncertainties} who developed and applied the robust model introduced in \textcite{bertsimas2003robust}. The mentioned ATA model considers the standard error of the estimates and a protection level $\Gamma$ that indicates how many items in the model are assumed to be changed in order to affect the solution. It treats the uncertainty in a deterministic way and, given $\Gamma$, it adjust the solution adopting the most conservative approach, because standard errors are the maximum expression of uncertainty of the estimates.
 
 In contrast, if we consider the MAXIMIN model \eqref{eq:maximinmodel} its chance-constrained equivalent would replace the constraints \eqref{eq:MMAXIMIN2} involved in the maximization of the TIF by 
-
 \begin{equation}\label{eq:CCATA}
 \mathbb{P}\left[\sum_{i=1}^I I_i(\theta_{k_t}) x_{it} \ge y \right] \geq 1-\alpha , \ \forall t,k_t,
 \end{equation}
+\noindent where $t=1,\ldots,T$ are the test to be assembled and $\theta_{k_t}$ are the ability points in which the TIF of the test $t$ must be maximized. We decided to ignore the weights to simplify the notation but the extension to the weighted case is straightforward. We will call the model \eqref{eq:CCATA} \emph{chance-constrained MAXIMIN}, or CCMAXIMIN. The key element of this model is, again, the information function which is assumed to be random. This assumption arises, as already explained, by the necessity of taking into account the uncertainty of the item parameter estimates, of which the IIF is a statistic (see Equation \eqref{eq:infofun2pl} for an example).
 
-where $t=1,\ldots,T$ are the test to be assembled and $\theta_{k_t}$ are the ability points in which the TIF of the test $t$ must be maximized. We decided to ignore the weights to simplify the notation but the extension to the weighted case is straightforward. We will call the model \eqref{eq:CCATA} \emph{chance-constrained MAXIMIN}, or CCMAXIMIN. The key element of this model is, again, the information function which is assumed to be random. This assumption arises, as already explained, by the necessity of taking into account the uncertainty of the item parameter estimates, of which the item information function is a statistic (see \eqref{eq:infofun2pl} for an example).
-
-The CCMAXIMIN model allows to maximize the expected precision of the assembled tests in estimating the latent trait of the test-takers at pre-determined ability points with a high  confidence level if the $\alpha$ is chosen to be next to zero. In terms of probability we can say that the constraints in \eqref{eq:MMAXIMIN2} must be fulfilled with a probability at least $1-\alpha$. Adjusting the confidence level it is possible to relax or tighten the fulfilment of the chance-constraints setting a specific conservative attitude, i.e. a small $\alpha$ means an high level of conservatism, on the contrary a big $\alpha$ means an almost relaxation of the constraints. This is the novelty of the CCMAXIMIN model with respect to the robust model proposed in \textcite{veldkamp2013application,veldkamp2013uncertainties} which, instead, perform a worst-case optimization. 
+The CCMAXIMIN model allows to maximize the expected precision of the assembled tests in estimating the latent trait of the test-takers at pre-determined ability points with a high  confidence level if the $\alpha$ is chosen to be next to zero. In terms of probability we can say that the constraints in \eqref{eq:MMAXIMIN2} must be fulfilled with a probability at least $1-\alpha$. Adjusting the confidence level it is possible to relax or tighten the fulfilment of the chance-constraints setting a specific conservative attitude, i.e. a small $\alpha$ means an high level of conservatism, on the contrary a large $\alpha$ means an almost relaxation of the constraints. This is the novelty of the CCMAXIMIN model with respect to the robust model proposed in \textcite{veldkamp2013application,veldkamp2013uncertainties} which, instead, perform a worst-case optimization. 
 
 Once the chance-constraints have been defined, a way to evaluate the probability in \eqref{eq:CCATA} must be found in order to quantify the feasibility of a solution. To solve this problem, some methods rely on assumptions on the probability distribution of $\boldsymbol{\xi}$, such as the multivariate normal \parencite{kim1990deterministic}. Others try to approximate the probability using samples of the random variable obtained by a Monte Carlo simulation \parencite{Ahmed2008} which is a specific case of a scenario generation where all the scenarios have the same probability of occurrence. 
 We decided to use the Monte Carlo method because of its flexibility and adaptability to our problem. 
@@ -85,22 +63,22 @@ In particular, our random variable is the TIF of a test form, that  is a statist
 \subsection{Empirical measure of the TIF}\label{sec:edfTIF}
 
 Conventionally, the estimates of IRT item parameters are considered as known values in test assembly models \parencite{VDL2005}. Test assembly models ignore the uncertainty related to the calibrated items and thus they often yield an overstated measurement accuracy of the assembled tests in terms of their TIFs.
-A standard approach to extract the uncertainty related to the estimates of the item parameters would be first, sampling a high number of plausible values of the item parameters $\boldsymbol{\xi}_i$ in the confidence intervals built using the standard errors of the estimates and, secondly, computing the related IIFs at target $\theta$ points. This may be an optimal starting point to assemble robust tests, \parencite[see]{veldkamp2013uncertainties, veldkamp2013application} but it has its own downsides because a uniform interval of plausible values is assumed. Another attempt to account for the influence of sampling error in the Bayesian framework has been made by \textcite{Yang2012} who proposed a multiple-imputation approach with the aim to better measure the latent variable of a respondent. 
+A standard approach to extract the uncertainty related to the estimates of the item parameters would be first, sampling a high number of plausible values of the item parameters $\boldsymbol{\xi}_i$ in the confidence intervals built using the standard errors of the estimates and, secondly, computing the related IIFs at target $\theta$ points. This may be an optimal starting point to assemble robust tests, \parencite[see][]{veldkamp2013uncertainties, veldkamp2013application} but it has its own downsides because a uniform interval of plausible values is assumed. Another attempt to account for the influence of sampling error in the Bayesian framework has been made by \textcite{Yang2012} who proposed a multiple-imputation approach with the aim to better measure the latent variable of a respondent. 
 
-In \textcite{matteucci2012prior} it has been shown that the behavior of the estimates of item parameters usually follows joint densities not equal to the product of their marginals, suggesting the presence of an underlying dependence structure. This observation motivated the search for a new technique to recreate the distribution function of the IIFs and hence iof the TIF. Our solution is based on bootstrapping the calibration process (see \textcite{efron1993} for a gentle introduction to the bootstrap), in particular, the observed vectors of responses (one vector for each test-taker) are resampled with replacement $R$ times and the item parameters are re-estimated for each sample. In this way, it is possible to preserve the natural relationship between the items and, given the ability targets, it is possible to compute their IIFs. After that, given a set of items, we can build a test form and compute its TIF for each of the $R$ replications. The resulting sample constitutes the \emph{empirical distribution function} of the TIF. 
+In \textcite{matteucci2012prior} it has been shown that the behavior of the estimates of item parameters usually follows joint densities not equal to the product of their marginals, suggesting the presence of an underlying dependence structure. This observation motivated the search for a new technique to recreate the distribution function of the IIFs and hence iof the TIF. Our solution is based on bootstrapping the calibration process \parencite[see][]{efron1993} for a gentle introduction to the bootstrap), in particular, the observed vectors of responses (one vector for each test-taker) are resampled with replacement $R$ times and the item parameters are re-estimated for each sample. In this way, it is possible to preserve the natural relationship between the items and, given the ability targets, it is possible to compute their IIFs. After that, given a set of items, we can build a test form and compute its TIF for each of the $R$ replications. The resulting sample constitutes the \emph{empirical distribution function} of the TIF. 
 
 More formally, let $\boldsymbol{\xi}_1, \ldots, \boldsymbol{\xi}_R$ be an independent identically distributed (iid) sample of $R$ realizations of a $I$-dimensional random vector $\boldsymbol{\xi}$, its respective empirical measure is 
 $$\hat{F}_R : = R^{-1} \sum_{r=1}^R \Delta\boldsymbol{\xi}_r,$$
- where $\Delta\boldsymbol{\xi}_r$ denotes the mass at point $\boldsymbol{\xi}_r$\footnote{$\Delta\boldsymbol{\xi}_r(A)=1$ when $\boldsymbol{\xi}_r\in A$}. Hence $\hat{F}_R$ is a discrete measure assigning probability $1/R$ to each sample. In this way we can approximate the probability in the left-hand side of \eqref{eq:CCcon} by replacing the true cumulative distribution function of $\boldsymbol{\xi}$ by $\hat{F}_R$. 
- Let $\mathbf{1}_{(-\infty, 0]}\{x\} :\mathbb{R} \rightarrow \mathbb{R}$ be the indicator function of $x$ in the interval $(-\infty, 0]$, i.e.,
- 
+\noindent where $\Delta\boldsymbol{\xi}_r$ denotes the mass at point $\boldsymbol{\xi}_r$\footnote{$\Delta\boldsymbol{\xi}_r(A)=1$ when $\boldsymbol{\xi}_r\in A$}. Hence $\hat{F}_R$ is a discrete measure assigning probability $1/R$ to each sample. In this way we can approximate the probability in the left-hand side of \eqref{eq:CCcon} by replacing the true cumulative distribution function of $\boldsymbol{\xi}$ by $\hat{F}_R$. 
 
- 	$$\mathbf{1}_{(-\infty, 0]}\{x\}= 
- 	\begin{cases} 
- 	0, & \mbox{if } x\mbox{ $> 0$} \\
- 	1, & \mbox{if } x\mbox{ $\leq 0$},
- 	\end{cases}
-$$
+Let $\mathbf{1}_{(-\infty, 0]}\{x\} :\mathbb{R} \rightarrow \mathbb{R}$ be the indicator function of $x$ in the interval $(-\infty, 0]$, i.e.,
+\begin{equation}
+\mathbf{1}_{(-\infty, 0]}\{x\}= 
+\begin{cases} 
+0, & \mbox{if } x\mbox{ $> 0$} \\
+1, & \mbox{if } x\mbox{ $\leq 0$}.
+\end{cases}
+\end{equation}
 
 Thus, given a specific chance-constraint $k$, a known set of optimization variables $\mathbf{x}$ and a sample $\boldsymbol{\xi}_1, \ldots, \boldsymbol{\xi}_R$ of our random vector, we can rewrite
 \begin{alignat}{2}
@@ -109,7 +87,7 @@ Thus, given a specific chance-constraint $k$, a known set of optimization variab
 = & \frac{1}{R} \sum_{r=1}^R \mathbf{1}_{(-\infty, 0]}\{ g_k(\mathbf{x},\boldsymbol{\xi}_r) \}.
 \end{alignat}
 
-That is, the chance-constraint is evaluated by the proportion of realizations with $g_k(\mathbf{x},\boldsymbol{\xi}) \leq 0$ in the iid sample.
+That is, the chance-constraint is evaluated by the proportion of realizations with $g_k(\mathbf{x},\boldsymbol{\xi}) \leq 0$ in the sample.
 
 Adopting the same principle to the left-hand side of the chance-constraints in \eqref{eq:CCATA}, the CCMAXIMIN model can be approximated by:
 \begin{alignat}{4}\label{eq:CCMAXIMINapprox}
@@ -119,50 +97,43 @@ Adopting the same principle to the left-hand side of the chance-constraints in \
 & g_j(\mathbf{x}_t) \leq 0 &&\quad & \forall j,t,
 \end{alignat}
 \begin{equation}\nonumber
-\mathbf{x}_t \in \{0,1\}^I, y \in \mathbb{R}^+,
+\mathbf{x}_t \in \{0,1\}^I, y \in \mathbb{R}^+, \quad \forall t,
 \end{equation}
-where $\mathbf{I}_{r}(\theta_{k_t})$ is the vector of the $I$ item information functions at pre-defined $\theta_{k_t}$ points computed from the estimates of the item parameters in the $r$-th bootstrap replication. 
 
-The model \eqref{eq:CCMAXIMINapprox} is clearly non-convex because of the chance-constraints (see, \textcite{rockafellar2000optimization,rockafellar2001uryasev} for the demonstration) and most of the commercial solver doesn't deal with indicator functions, to overcome this issues we solved the previous model by an heuristic described in the next Section.
+\noindent where $\mathbf{I}_{r}(\theta_{k_t})$ is the vector of the $I$ item information functions at pre-defined $\theta_{k_t}$ points computed from the estimates of the item parameters in the $r$-th bootstrap replication. 
 
-To have an idea of the empirical distribution function of the information function of an item with true values of discrimination and easiness parameters, $a=1$ and $b=0$, estimated by bootstrapping the calibration of a 2-parameter logistic model following the algorithm described in \ref{sec:Julia}, the histograms for several values of the latent trait are reported herewith:
+The issues with the model \eqref{eq:CCMAXIMINapprox} are multiple: it is clearly non-convex because of the chance-constraints \parencite[see][for the demonstrations]{rockafellar2000optimization,rockafellar2001uryasev} and the indicator function is not well handled by commercial solvers.
+To overcome these problems we solve the previous model by an heuristic described in the next Section.
 
-%\includegraphics[keyvals]{imagefile} 3x3 theta= [-2.0,-1.5,-1.0,-0.5, 0.0, 0.5, 1.0, 1.5, 2.0]
- 
+\subsection{Solving the CCMAXIMIN model}\label{sec:heur}
+Since the model \eqref{eq:CCMAXIMINapprox} is not practically solvable by commercial solvers we devoloped a heuristic based on the \emph{simulated annealing} approach. It is a flexible and simple numerical procedure that can be used to find an optimal solution for a model of arbitrary complexity which seeks the minimal of a function, $f(\mathbf{x})$, called \emph{loss}. The loss function serves as a distilled form of the greater problem and it depends on the values of some fixed coefficients and optimization variables $\mathbf{x}$, a vector $d$-dimensional. Changing the value of the objective variables, the returned loss function will increase, decrease or remain constant telling if the variation is useful or not to reach a minimum (global). Once the loss function is determined and evaluable for each value of the optimization variables, the simulated annealing algorithm can be applied leading to the best configuration of $\mathbf{x}$ which minimizes the loss. In practice, an inital value of $\mathbf{x}$, namely $\mathbf{x}_0$, is chosen and a forward pass to evaluate $f(\mathbf{x}_0)$ is performed. At each successive step, $s>0$, the current $\mathbf{x}_s$ is a perturbation of $\mathbf{x}_{s-1}$ in the sense that one of more elements are changed in order to explore another neighbourhood of the solution space.
 
-
-\color{black}
-\subsection{Solving the CCMAXIMIN model}
-
-Since the model \eqref{eq:CCMAXIMINapprox} is not practically solvable by commercial solvers, we devoloped a heuristic based on the \emph{simulated annealing} approach.
-It is a flexible and simple numerical procedure that can be used to find an optimal solution for a model of arbitrary complexity which seeks the minimal of a function, $f(\mathbf{x})$, called \emph{loss}. The loss function serves as a distilled form of the greater problem and it depends on the values of some fixed coefficients and optimization variables $\mathbf{x}$, a vector $d$ dimensional. Changing the value of the objective variables the returned loss function will increase, decrease or remain constant telling if the variation is useful or not to reach a minimum (preferrably global). Once the loss function is determined and it is evaluable for each value of the optimization variables the simulated annealing algorithm can be applied leading to the best configuration of $\mathbf{x}$ which minimizes the loss. In practice, an inital value of $\mathbf{x}$, namely $\mathbf{x}_0$, is chosen and a forward pass to evaluate $f(\mathbf{x}_0)$ is performed. At each successive step, $s>0$, the current $\mathbf{x}_s$ is a perturbation of $\mathbf{x}_{s-1}$ in the sense that one of more elements are changed in order to explore another neighbourhood of the solution space.
-
-The movement from a neighbourhood to another will be called \emph{journey} and how it is performed depends on the problem under inspection and on how far we want to travel from the last accepted solution, called incumbent. If the loss for the perturbed $\mathbf{x}_s$ is more or equally optimal than the previous, then $\mathbf{x}_s$ is accepted as a basis for the next iterations. However, if the solution is less optimal (e.g. the loss increase), the choice of whether discard or keep it depends on the value of a sample of a random variable. The random variable is built considering the amount of variation of the loss function induced by the journey and the state of the cooling schedule defined by the temperature $T(s)$ deterministically determined. Here the Metropolis Hastings algorithm appears and plays an important role in defining the convergence properties of the heuristic. The details are provided in the next paragraph.
+The movement from a neighbourhood to another will be called \emph{journey} and how it is performed depends on the problem under inspection and on how far we want to travel from the last accepted solution, called \emph{incumbent}. If the loss for the perturbed $\mathbf{x}_s$ is more or equally optimal than the previous, then $\mathbf{x}_s$ is accepted as a basis for the next iterations. However, if the solution is less optimal (e.g. the loss increase), the choice of whether discard or keep it depends on the value of a sample of a random variable. The random variable is built considering the amount of variation of the loss function induced by the journey and the state of the cooling schedule defined by the temperature $T(s)$ deterministically determined. Here, the Metropolis Hastings algorithm appears and plays an important role in defining the convergence properties of the heuristic. The details are provided in the next paragraph.
 
 \subsubsection{Simulated Annealing}
 
-The principle of cooling schedule comes from the language used to describe mechanical processes of metal annealing, which involves heating a metallic object to a very high temperature and gradually cooling it. By letting the metal cool down, the particles (the optimization variables) arrange themselves into the lowest possible energy state (evaluated loss function). The atoms are allowed to move to further areas of the space (neighbourhoods) at hot temperatures than at low temperatures, this avoid to be stuck in local minima in the first phases of the annealing. After the minimum temperature has been reached a reannealing can be performed to explore other areas of the space. This allows to have an arbitrary number of non-unique solutions to compare and select. The system temperature, $T(s)$, is a non-increasing function with respect to the iteration count. It has been proved that, if an infinite number of iterations is made, the algorithm will reach the global minimum \parencite{belisle1992}. Since the infinite assumption cannot be fulfilled in practice, a reasonable number of iterations is chosen, usually depending on the maximum allowed computational time.
+The principle of cooling schedule comes from the language used to describe mechanical processes of metal annealing, which involves heating a metallic object to a very high temperature and gradually cooling it. By letting the metal cool down, the particles (the optimization variables) arrange themselves into the lowest possible energy state (evaluated loss function). The atoms are allowed to move to further areas of the space (neighbourhoods) at hot temperatures than at low temperatures, this avoid to be stuck in local minima in the first phases of the annealing. After the minimum temperature has been reached a reannealing can be performed to explore other areas of the space. This allows to have an arbitrary number of non-unique solutions to compare and select. The system temperature, $T(s)$, is a non-increasing function with respect to the iteration count. It has been proved that, if an infinite number of iterations is made, the algorithm will reach the global minimum \parencite{belisle1992}. Since the infinite assumption cannot be fulfilled in practice, a reasonable number of iterations is chosen, usually depending on the maximum allowed elapsed time.
 
 The random variable which rules the acceptance/rejection step comes from the normalized Boltzmann factor
-
 \begin{equation}
-\mathbb{P}\left[E\right]=\frac{1}{z(T)}e^{\frac{-E}{kT}}
+\mathbb{P}\left[E\right]=\frac{1}{z(T)}e^{\frac{-E}{kT}},
 \end{equation} 
-
-which determines the probability of observing a particular energy $E$ given a termperature $T$, a normalizing factor $z(T)$ and a Boltzmann constant $k$. In practice, if at the iteration $s$ we observe $f(\mathbf{x}_s)$ and this is higher than $f(\mathbf{x}_{s-1})$ the probability of keeping $\mathbf{x}_s$ is equal to the probability of the variation, $\Delta f_s$, in the loss function:
+\noindent which determines the probability of observing a particular energy $E$ given a termperature $T$, a normalizing factor $z(T)$ and a Boltzmann constant $k$. In practice, if at the iteration $s$ we observe $f(\mathbf{x}_s)$ and this is higher than $f(\mathbf{x}_{s-1})$ the probability of keeping $\mathbf{x}_s$ is equal to the probability of the variation, $\Delta f_s$, in the loss function:
+\vspace{10px}
 \begin{equation}\label{eq:boltz}
 \mathbb{P}\left[\Delta f_s\right]=\frac{e^{\frac{-f(\mathbf{x}_s)}{kT(s)}}}{e^{\frac{-f(\mathbf{x}_{s-1})}{kT(s)}}}= e^{\frac{-\Delta f(\mathbf{x}_s)}{kT(s)}}.
 \end{equation}
-If the variation in energy is large the probability that the parameters will be kept is low, while for a small variation they might be accepted. In this way, the algorithm allows to escape from local minima, increasing the chance that the global minimum will be found. The actual choice is made by comparing the value given in \eqref{eq:boltz} to a random variate from the uniform distribution. If the random value is smaller, the parameters are kept. As time goes on and the system temperature drops, however, the probability of keeping the state approaches zero, even for small changes in energy.
 
-\subsubsection{Heuristic}\label{sec:heur}
+If the variation in energy is large the probability that the parameters will be kept is low, while, for a small variation they might be accepted. In this way, the algorithm allows to escape from local minima, increasing the chance that the global minimum will be found. The actual choice is made by comparing the value given in \eqref{eq:boltz} to a random variate from the uniform distribution. If the random value is smaller, the parameters are kept. As time goes on and the system temperature drops, however, the probability of keeping the state approaches zero, even for small changes in energy.
 
-Adopting the simulated annealing algorithm it is possible to solve all the test assembly models which take the form \eqref{eq:LRsingClassTest}. The heuristic we developed is inspired by the work of \textcite{Stocking1993} because the constraints in the optimization model are treated as part of the loss function using the hinge function and more in general, through the Lagrange relaxation, two main concepts introduced in \ref{sec:lagrange}. 
-The algorithm is based on the separation of the problem, in particular we differentiate the $T$ vectors $\mathbf{x}_1, \ldots, \mathbf{x}_T$ of $I$ binary variables, each vector $\mathbf{x}_t$ corresponds to a test assembly sub-problem for the test form $t$. Also the $T$ matrices and vectors involved in the linear constraints and in the objective function are kept separated. Along the iterations each of the test is evaluated separatedly in terms of optimality and feasibility. This separation allows to speed up the algorithm since all the algebraic operations are made on smaller objects. The only constraints which are not separable are the overlap \ref{sec:test-overlap} and the item use \ref{sec:item-use} which are evaluated on the full-length vector of optimization variables.
+\subsubsection{Heuristic}
+
+Adopting the simulated annealing algorithm it is possible to solve all the test assembly models which take the form \eqref{eq:LRsingClassTest}. The heuristic we developed is inspired by the work of \textcite{Stocking1993} because the constraints in the optimization model are treated as part of the loss function using the hinge function and more in general, through the Lagrange relaxation, two main concepts introduced in Section \ref{sec:lagrange}. 
+The algorithm is based on the separation of the problem, in particular we differentiate the $T$ vectors $\mathbf{x}_1, \ldots, \mathbf{x}_T$ of $I$ binary variables, each vector $\mathbf{x}_t$ corresponds to a test assembly sub-problem for the test form $t$. Also the $T$ matrices and vectors involved in the linear constraints and in the objective function are kept separated. Along the iterations each of the test is evaluated separatedly in terms of optimality and feasibility. This separation allows to speed up the algorithm since all the algebraic operations are made on smaller objects. The only constraints which are not separable are the overlap (Section \ref{sec:test-overlap}) and the item use (Section \ref{sec:item-use}) which are evaluated on the full-length vector of optimization variables.
 
 The simulated annealing has the disadvantage that is hardly able to find the feasible space of a problem, this is why we decided to start our heuristic by a \emph{fill up} sequential phase in which the worst performing test, both in terms of optimality and feasibility\footnote{In practice we allow the user to decide if the fill up phase must be done by considering only the feasibility of the problem or adding the optimality evaluation.}, is "filled up" with the best item available in the item pool. After the item has been assigned, the process is repeated until all the tests have reached their maximum length, i.e. they are all "filled-up".
 
-Once the first step is performed, luckily we have at least a feasible solution to process with the simulated annealing principle. In details, the first $W$ worst tests $\mathbf{x}_1,\ldots,\mathbf{x}_W$ are taken and a fixed number of items $V$, already taken in these tests, is sampled, namely $\mathbf{x}_{1,1},\ldots,\mathbf{x}_{1,V}, \ldots, \mathbf{x}_{W,1}, \ldots, \mathbf{x}_{W,V} $. These sampled items are first, removed and secondly, switched with all the other available items in the pool. The test resulting from the removal and the switch is accepted with a chance equal to \eqref{eq:boltz}. After the sampling phase, the performance of the tests is again evaluated and if the termination criteria have not been met, tests and items are sampled again. When a certain convergence in the objective is attained we say that a neighbourhood of the space has been explored. The user can decide how far he/she wants to go from the most recent solution and hence how many neighbourhoods he/she wants to explore. If the \emph{journey} is not completed, the last solution is substantially perturbed and the heuristic performs again the \emph{fill up} and sampling steps. 
+Once the first step is performed, luckily we have at least a feasible solution to process with the simulated annealing principle. In detail, the first $W$ worst tests $\mathbf{x}_1,\ldots,\mathbf{x}_W$ are taken and a fixed number of items $V$, already taken in these tests, is sampled, namely $\mathbf{x}_{1,1},\ldots,\mathbf{x}_{1,V}, \ldots, \mathbf{x}_{W,1}, \ldots, \mathbf{x}_{W,V} $. These sampled items are firstly, removed and secondly, switched with all the other available items in the pool. The test resulting from the removal and the switch is accepted with a chance equal to \eqref{eq:boltz}. After the sampling phase, the performance of the tests is again evaluated and if the termination criteria have not been met, tests and items are sampled again. When a certain convergence in the objective is attained we say that a neighbourhood of the space has been explored. The user can decide how far he/she wants to go from the most recent solution and hence how many neighbourhoods he/she wants to explore. If the \emph{journey} is not completed, the last solution is substantially perturbed and the heuristic performs again the \emph{fill up} and sampling steps. 
 
 The result of the heuristic is a set of solution of length $H$ which is the number of neighbourhoods explored. It is also possible to decide how many of these areas must be evaluated just in terms of feasibility, $H_f$, and how many in terms of optimality, $H_o$, i.e. $H=H_f+H_o$. In this way the test assembler has a wider choice of optimally assembled tests in terms of other features not considered in the assembly model, such as content validity.
 
@@ -171,7 +142,7 @@ The hyperparameters (i.e. parameters chosen by the user) in the algorithms are s
 	\item \textbf{Lagrange relaxation:} 
 	\begin{itemize}
 		\item $\beta \in  [0,1]$, as in \eqref{eq:LRsingClassTest}, it serves as a balancing between optimality and feasibility. A $\beta$ approaching one puts more emphasis on the optimality of the solution. Viceversa an almost zero $\beta$ takes into account only the feasibility of the solution.
-		\end{itemize}
+	\end{itemize}
 	\item \textbf{simulated annealing:}\begin{itemize}
 		\item $F_f$: number of feasible \emph{fill-up} phases;
 		\item $t_0$: starting temperature;
@@ -182,53 +153,68 @@ The hyperparameters (i.e. parameters chosen by the user) in the algorithms are s
 	\item \textbf{termination criteria:} \begin{itemize}
 		\item $H_f$: number of feasible neighbourhoods;
 		\item $H_o$: number of optimal neighbourhoods;
-	 	\item \texttt{rel\_tol}: relative tolerance of the optimziation function for determing the convergence of the algorithm;
-	\item \texttt{max\_time}: maximum elapsed CPU time, the algorithm stops if, at convergence, the actual elapsed CPU time is higher than \texttt{max\_time};
+		\item \texttt{max\_eval}: maximum number of objective function evaluations;
+		\item \texttt{max\_time}: maximum elapsed CPU time, the algorithm stops if, at convergence, the actual elapsed CPU time is higher than \texttt{max\_time};
 	\end{itemize}
 \end{itemize}
-
 Most of the hyperparameters, apart from $\beta$ and $t_0$, are positively correlated with the chance to find the global optimum, but obviously they are negatively correlated with the elapsed time. Consequently, more we increase  $F_f$, $W$, $V$, $H_f$ and $H_o$ more it is likely to find the global optimal tests at the cost of a large computional time.
 
-\section{Simulation study}
+\section{Simulation study}\label{sec:ccsim}
 
-The performance and benefits of the chance-constrained test assembly model \eqref{eq:CCMAXIMINapprox} are investigated through a simulation by implementing our heuristic \ref{sec:heur} in \texttt{Julia} to optimize it. This setting allow us to evaluate the effects of using probabilistic methods in the field of ATA models in terms of conservatism of the test solution. In particular this achievement is assessed by comparing the quantile of TIFs obtained by our model and the classical one solved by \texttt{CPLEX}. On the other hand, in order to show the computational and pratical power of our solver, also the classical linear ATA MAXIMIN model \eqref{eq:MAXIMIN} is solved through our heuristic and the overall estimated TIFs of the assembled tests are compared with \texttt{CPLEX} solutions.
+The performance and benefits of the chance-constrained test assembly model \eqref{eq:CCMAXIMINapprox} are investigated through a simulation by implementing our heuristic (Section \ref{sec:heur}) in \texttt{Julia} to optimize it. This setting allow us to evaluate the effects of using probabilistic methods in the field of ATA models in terms of conservatism of the test solution. In particular this achievement is assessed by comparing the quantile of TIFs obtained by our model and the classical one solved by \texttt{CPLEX}. On the other hand, in order to show the computational and pratical power of our solver, also the classical linear ATA MAXIMIN model \eqref{eq:MAXIMIN} is solved through our heuristic and the overall estimated TIFs of the assembled tests are compared with \texttt{CPLEX} solutions.
 
 The data needed for assembling the chance-constrained tests consists of the sample of the IIFs computed at the predetermined ability points, $\theta_{k_t}$, of each item in the pool, namely the $\mathbf{I}_r(\theta_{k_t})$, for $r=1\ldots,R$. These quantities are obtained by bootstrapping the calibration process, the procedure is described in Section \ref{sec:juliaBS}. In particular the parametric approach is arbitrairly used in this simulation. As a golden rule, the sample which better represents the distribution function of the random variables in the test assembly model should be used. For the classical model a calibrated item pool is needed. A 2-parameter logistic IRT model is assumed and for the other settings the \emph{standard setup} described in Section \ref{sec:sim_catbs} has been chosen.
- 
- \subsubsection{Tests specifications}
- 
- After the calibration, the models \eqref{eq:MAXIMIN} and \eqref{eq:CCMAXIMINapprox} are solved using our heuristic under different specifications, such as the number of test forms and the confidence level, $\alpha$. The assembly is performed in a parallel framework, i.e. all the tests must meet the same constraints. Two fictiuos categorical variables, \emph{content\_A} and \emph{content\_B}, with three possible values each, are simulated to constrain the test to have a certain content validity. The complete set of specifications are summarized in the following table:
- \renewcommand{\arraystretch}{1.3}
- 
- \begin{table}[htbp]\label{tab:specATA}
- 	\centering
-\caption{Test specifications}
 
- 	\begin{tabular}{ l  c }
-\toprule
- 		Number of tests & \{10, 20, 25\} \\
- 		Test length   & \{38, 40\} \\
-	 	content\_A   & [6, 10], [9, 12], [18, 25]\footnotemark  \\
- 		content\_B  & [9, 12], [15, 19], [9, 12] \\
- 		Maximum overlap between tests  & 11 \\
- 		$\alpha$ & \{0.05, 0.01\}\\
-\bottomrule
- 	\end{tabular}
- \end{table}
+\subsubsection{Optimization features}\label{sec:setopt}
+The results are splitted in the nex two sections. The first findings to be investigated are those obtained by solving the classical MAXIMIN ATA model \eqref{eq:MAXIMIN} in two different versions: the strict model and the model relaxed by Lagrange multipliers. These definitions have been introduced in Chapter \ref{ch:ATA}, Section \ref{sec:lagrange}. In summary, the former doesn't allow the constraints to remain unfulfilled, on the opposite, the latter model tries to met all the constraints by reducing their deviations from the predetermined lower and/or upper bounds. In particular, a $\beta=0.1$ is used as a balancer between optimality and feasibility. To evaluate the amount of infeasibility of the relaxed version of the ATA model we report the sum of all the deviations of the unmet constraints between round parenthesis. A value approaching zero is desirable. For this class of models the comparison between our solver and \texttt{CPLEX} is made on the minumum observed TIF at $\theta=0$ among all the assembled tests, i.e. $\min_t\left[TIF_t(0)\right]$, since its is exactly the value assumed by the objective function. Given that the MAXIMIN model is a maximization model this value must be as high as possible. The aim of this section is to show the practical benefits that our solver can bring also in the classical test assembly framework.
+
+Secondly, in the last section, the CC MAXIMIN model \eqref{eq:CCMAXIMINapprox} is solved by our heuristic and the best value of its objective function among all the explored neighbourhoods is reported together with the amount of infeasibility since, again, the model is defined as a relaxed ATA model. In order to show that our heuristic effectively reaches a near optimal solution in an uncertain environment we compare the minimum, among all the $T$ tests, of the empirical $\alpha$-quantile of the TIF computed at $\theta=0$, i.e.  $\min_t\left[Q(TIF_t(0),\alpha)\right]$. Considering that \texttt{CPLEX} is not able to solve the CCMAXIMIN model, the quantiles shown in the \texttt{CPLEX} columns are those coming from the optimal tests obtained by solving the classical MAXIMIN ATA model.
+
+The just mentioned models are solved under different specifications, such as the number of test forms and the confidence level $\alpha$. The assembly is performed in a parallel framework, i.e. all the tests must meet the same constraints. Two fictiuos categorical variables, \emph{content\_A} and \emph{content\_B}, with three possible values each, are simulated to constrain the tests to have a certain content validity. The complete set of specifications is summarized in the following table:
+
+\begin{table}[htbp]\label{tab:specATA}
+	\centering
+	\caption{Test specifications}
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabular}{ l  c }
+		\toprule
+		Number of tests & \{10, 20, 25\} \\
+		Test length   & [38, 40] \\
+		content\_A   & [6, 10], [9, 12], [18, 25]\footnotemark  \\
+		content\_B  & [9, 12], [15, 19], [9, 12] \\
+		Maximum overlap between tests  & 11 \\
+		$\alpha$ & \{0.05, 0.01\}\footnote{only for CCMAXIMIN ATA model}\\
+		\bottomrule
+	\end{tabular}
+\end{table}
 \footnotetext{This specification requires that each test must have from 6 to 10 items having the first value of the variable content\_A, from 9 to 12 items having the second value etc...}
+Different combinations of these specifications create four cases to be investigated for the classical MAXIMIN ATA model and eight cases for the CCMAXIMIN ATA model.
 
-Different combinations of these specifications create 12 cases to be investigated. 
-\subsection{Results}
-\subsubsection{Classic MAXIMIN parallel test assembly model}
+The hyperparameters and \hypertarget{tc}{termination criteria} chosen for the simulated annealing algorithm are the following:
+\begin{itemize}
+	\item $F_f$= 1;
+	\item $t_0$= 0.00001;
+	\item \texttt{geom\_temp}= 0.1;
+	\item $W$= 1;
+	\item $V$= 1;
+	\item $H_f$= 0;
+	\item $H_o$= Inf;
+	\item \texttt{max\_eval}= Inf;
+	\item \texttt{max\_time}= 1000 seconds.
+\end{itemize}
+Basically, the imposed termination criterion is limited to the amount of time needed for solving the model. This criterion is also valid for the \texttt{CPLEX} solver.
 
-\begin{table}[h]
+\subsubsection{Solutions of classical MAXIMIN parallel test assembly model} \label{sec:mmsol}
+
+The classical MAXIMIN ATA model \eqref{eq:MAXIMIN} has been solved both in the strict and in the relaxed version. For the latter our heuristic has been tested against \texttt{CPLEX} imposing a time limit of 1000 seconds. The cases under inspection are ranked from top to bottom in an increasing order of complexity. The optimal values of the objective function of the aforesaid ATA model coming from the solvers are reported in the following table where the best results are formatted in bold:
+\begin{table}[H]
 	\centering
 	\caption{ $\min_t\left[TIF_t(0)\right]$(infeasibility)}
 	\begin{tabular}{l cc c cc}
 		\toprule
-		\multicolumn{3}{c}{model} & MAXIMIN strict & \multicolumn{2}{c}{MAXIMIN LR} \\		
+		\multicolumn{3}{c}{model} & strict MAXIMIN & \multicolumn{2}{c}{relaxed MAXIMIN} \\		
 		\midrule
-		case & T & Item use max &CPLEX & CPLEX & ATAheur  \\
+		case & T & Item use max &CPLEX & CPLEX & our solver  \\
 		\hline
 		1 & 10 & 4& 14.863 & 14.992(0.0045) & \textbf{15.350}(0) \\
 		2& 10 & 2& \textbf{11.318} & 11.317 (0) & 11.255(0) \\
@@ -236,342 +222,156 @@ Different combinations of these specifications create 12 cases to be investigate
 		4&25 & 4&  No sol. & 6.883(131.27) & \textbf{9.309}(1e-4)\\
 		\bottomrule
 	\end{tabular}
-\vspace{10pt}
 \end{table}
-\subsubsection{CCMAXIMIN parallel test assembly model}
-\begin{table}[h]
+Apart from the case 2, our heuristic outperfomed the other solver. A remarkable case is the forth, where a large-scale ATA model, highly constrained, couldn't be solved by 	\texttt{CPLEX}. In particular, no solution has been found for the strict model and an unacceptably infeasible set of test forms for the relaxed model has been returned. Instead, our solver could find always near feasible solutions even in the most difficult tasks (case 4) and returned the most optimal solutions in three out of four cases (cases 1, 3 and 4).
+Summarizing, the results showed that our solver always provides an arbitrarily acceptable solution for the classical MAXIMIN ATA model with respect to the imposed constraints. 
+For this reason we believe that, in professional contexts, our solver could be a very useful tool since it is highly reliable against different tests specifications.
+
+\subsubsection{Solutions of CCMAXIMIN parallel test assembly model} \label{sec:ccmmsol}
+
+The test forms built using the chance-constrained test assembly model \eqref{eq:CCATA}, defined in this dissertation should have the maximum possible empirical $\alpha$-quantile of their TIFs. The optimality in this sense will ensure that the assembled tests are conservative in terms of accuracy of ability estimation (indeed, the TIF) taking into account the uncertainty of the estimates of the item parameters. In the following tables, the quantiles obtained by optimizing the chance-constrained model by means of our solver, are printed. 
+
+\begin{table}[H]
 	\caption{ $\min_t\left[Q(TIF_t(0),0.05)\right]$(infeasibility)} 
 	\begin{tabular}{l ccc c c}
 		\toprule
-		\multicolumn{3}{c}{model} & MAXIMIN strict & MAXIMIN LR & MAXIMIN CC\\
+		\multicolumn{3}{c}{model} & strict MAXIMIN & relaxed MAXIMIN & CCMAXIMIN \\
 		\midrule
-		case & T & Item use max &CPLEX & CPLEX & ATAheur  \\
+		case & T & Item use max &CPLEX & CPLEX & our solverr  \\
 		\hline
-		5& 10 & 4&  14.370 & 14.553(0.0045) & \textbf{14.862}(0)  \\
-		6 &10 & 2&  10.837 & 10.808(0) & \textbf{11.034}(0) \\
-		7& 20 & 4&  10.652 & 10.685(0) & \textbf{10.970}(0) \\
-		8& 25 & 4&  No sol. & 6.639(131.27) &  \textbf{9.394}(1e-3) \\
+		1& 10 & 4&  14.370 & 14.553(0.0045) & \textbf{14.862}(0)  \\
+		2 &10 & 2&  10.837 & 10.808(0) & \textbf{11.034}(0) \\
+		3& 20 & 4&  10.652 & 10.685(0) & \textbf{10.970}(0) \\
+		4& 25 & 4&  No sol. & 6.639(131.27) &  \textbf{9.394}(1e-3) \\
 		\bottomrule
 	\end{tabular}
-\vspace{10pt}
+	\vspace{10pt}
 	\caption{ $\min_t\left[Q(TIF_t(0),0.01)\right]$(infeasibility)} 
 	\begin{tabular}{l cc c c c}
 		\toprule
-		\multicolumn{3}{c}{model} & MAXIMIN strict & MAXIMIN LR & MAXIMIN CC\\
+		\multicolumn{3}{c}{model} & strict MAXIMIN & relaxed MAXIMIN & CCMAXIMIN \\
 		\midrule
-		case & T & Item use max &CPLEX & CPLEX & ATAheur  \\
+		case & T & Item use max &CPLEX & CPLEX & our solver  \\
 		\hline
-		9& 10 & 4& 13.892  & 14.004(0.0045) & \textbf{14.703}(0)  \\
-		10 &10 & 2& 10.567 & 10.402(0)  & \textbf{10.688}(0) \\
-		11& 20 & 4& 10.288  & 10.336(0) & \textbf{10.664}(0) \\
-		12& 25 & 4&  No sol. & 6.332(131.27) & \textbf{8.715}(0) \\
+		5& 10 & 4& 13.892  & 14.004(0.0045) & \textbf{14.703}(0)  \\
+		6 &10 & 2& 10.567 & 10.402(0)  & \textbf{10.688}(0) \\
+		7& 20 & 4& 10.288  & 10.336(0) & \textbf{10.664}(0) \\
+		8& 25 & 4&  No sol. & 6.332(131.27) & \textbf{8.715}(0) \\
 		\bottomrule
 	\end{tabular}
 \end{table}
-%
-%\section{The Chance constrained model}
-%\label{sec:CCTA} % For referencing the chapter elsewhere, use \ref{Chapter1} 
-%Intro...
-%Chance constrained test assembly (CCTA)
-%%----------------------------------------------------------------------------------------
-%%\subsubsection{One sided chance constraints}
-%A chance constrained formulation would replace \eqref{eq:LP} with a problem of the following kind:
-%\begin{subequations} 
-%	\begin{equation*}
-%	\text{optimize } \mathbf{c}^T \mathbf{x}
-%	\end{equation*}
-%	subject to 
-%	\begin{equation*}\label{eq:CCcon}
-%	\quad \mathbb{P} \left[ \ \mathbf{\omega}^{T}\mathbf{x} \leq ub \ \right] \geq 1-\alpha \quad{\text{(one sided linear CC)}}
-%	\end{equation*}
-%\end{subequations} 
-%where $\omega$ is a vector of random variables.
-%The direct computation approach is the (historically) first one used to solve chance constrained problems, since it was proposed by Charnes et al., who introduced this approach in \cite{charnes1958cost}. Even today it finds widespread application, due to its ease of use and low demand on computational power compared to other stochastic programming formulations.\\
-%\subsubsection{Two-sided chance constraints}
-%Sometimes it's useful to force the probability of an event to be in a certain closed interval, in this case we can put an additional constraint in the model \eqref{eq:CCCcon} like the following
-%\begin{equation}\label{eq:CCcon1s2}
-%\quad \mathbb{P}\left[\mathbf{\omega}^{T}\mathbf{x} \geq lb\right]\geq 1-\beta 
-%\end{equation}
-%and if $lb < ub$ we can reformulate the new restricted model  \eqref{eq:CCcon}+\eqref{eq:CCcon1s2} by combining the two directions of the inequality in one single constraint of the form
-%\begin{equation}\label{eq:CCcon2s}
-%\quad \mathbb{P}\left[ lb \leq \mathbf{\omega}^{T}\mathbf{x} \leq ub\right]\geq 1-\alpha^* \quad{\text{(two-sided linear CC)}}
-%\end{equation}
-%where we put $\alpha^*=\alpha+\beta$ for convenience. \\
-%
-%\subsection{Assumption of Normality}\label{sec:assumption-of-normality}
-% The major disadvantage of the chance constrained approach is that such constraints remain computationally intractable because is NP-hard to test if the constraint is satisfied. However for constraint of the form of \eqref{eq:CCcon} (and for other two more complicated cases we explain later) if $\omega$ has an elliptical log-concave distribution \cite{14 in lubin 2016}, of which the (multivariate) Gaussian distributed is an example, they become computationally tractable since they are converted in second-order cone constraints.
-% \par Thereupon we assume the uncertain variables $\xi$ underlie a multivariate normal distribution with expectation vector $\mathbf{\mu}$ and covariance matrix ${\mathbf{\Sigma}}$. The cdf of an univariate standard Gaussian random variable is denoted by $\Phi(\cdot)$, whereas the pdf is denoted by $\phi(\cdot)$.
-% \par Let $\mathbf{L}\mathbf{L}^{T}=\mathbf{\Sigma}$ be the Cholesky decomposition of $\mathbf{\Sigma}$. Under the previous assumption the chance constraint \eqref{eq:CCcon} is equivalent to 
-% \begin{equation}\label{eq:CCeq}
-% \left| \left| L^T\mathbf{x}  \right| \right| {}_2 \leq \frac{ub-\mathbf{\mu}^{T} \mathbf{x}}{\Phi^{-1}(1-\alpha)}
-% \end{equation}
-% which is a convex second order conic constraint. \\
-% This constraint can be additionally simplified if the random variables are independent that is $\mathbf{\Sigma}$ is diagonal (i.e. $\mathbf{\Sigma}=\text{diag}(\sigma^2_{11},\ldots,\sigma^2_{II})$). In this case it becomes
-% \begin{equation}\label{eq:CCeq}
-% \left| \left| \mathbf{\Sigma}^{1/2} \mathbf{x} \right| \right| {}_2 \leq \frac{ub-\mathbf{\mu}^{T} \mathbf{x}}{\Phi^{-1}(1-\alpha)}
-% \end{equation}
-% where $\left| \left|\mathbf{\Sigma}^{1/2} \mathbf{x} \right| \right| {}_2$ is nothing else than $\sqrt{\sum_{i=1}^I{(\sigma_{ii}x_{i})^2}}$. \\
-% The last equivalences can be proved in the following way. \\
-% Recall that $\mathbf{\omega}^{T}\mathbf{x}$ is normally distributed with mean $\mathbf{\mu}^{T}\mathbf{x}$ and variance $\mathbf{x}^{T}\mathbf{\Sigma} \mathbf{x}$. Then
-% \begin{equation}
-% \begin{split}
-% \mathbb{P}\left[\mathbf{\omega}^{T}\mathbf{x} \leq ub \right] &=\mathbb{P}\left[\mathbf{\omega}^{T}\mathbf{x} - \mathbf{\mu}^{T}\mathbf{x} \leq ub - \mathbf{\mu}^{T}\mathbf{x}\right] \\
-% &= \mathbb{P}\left[ \frac{\mathbf{\omega}^{T}\mathbf{x} - \mathbf{\mu}^{T}\mathbf{x}}{\sqrt{\mathbf{x}^{T}\mathbf{\Sigma} \mathbf{x}}} \leq \frac{ub  - \mathbf{\mu}^{T}\mathbf{x}}{\sqrt{\mathbf{x}^{T}\mathbf{\Sigma} \mathbf{x}}} \right] \\
-% &= \Phi\left( \frac{ub  - \mathbf{\mu}^{T}\mathbf{x}}{\sqrt{\mathbf{x}^{T}\mathbf{\Sigma} \mathbf{x}}} \right) 
-%\end{split}
-% \end{equation}
-% where $\Phi$ is the standard normal cumulative distribution function
-% Therefore the chance constraint is satisfied if and only if
-%  \begin{equation}
-% \Phi\left(\frac{ub  - \mathbf{\mu}^{T}\mathbf{x}}{\sqrt{\mathbf{x}^{T}\mathbf{\Sigma} \mathbf{x}}} \right) \geq 1- \alpha
-%\end{equation}
-%or, since $\phi^{-1}$ is monotonically increasing,
-% \begin{equation}
-%\frac{ub  - \mathbf{\mu}^{T}\mathbf{x}}{\sqrt{\mathbf{x}^{T}\mathbf{\Sigma} \mathbf{x}}} \geq \Phi^{-1}\left(1- \alpha\right) 
-%\end{equation}
-% 
-%% \begin{equation}
-%% \mathbf{\mu}^{T}\mathbf{x}+\Phi^{-1}\left(1- \alpha\right) \sqrt{\mathbf{x}^{T}\mathbf{\Sigma} %\mathbf{x}} \geq ub
-%% \end{equation}
-%that is equivalent to \eqref{eq:CCeq}.\\
-%Therefore we can express \eqref{eq:CCeq} by the following mix of additional variable $v$ and constraints:
-%\begin{subequations}
-%	\begin{align}
-% \begin{split}
-%v \geq \left| \left| \mathbf{L}^T\mathbf{x}  \right| \right| {}_2
-%\end{split}\\
-% \begin{split}
-%ub-\mathbf{\mu}^{T} \mathbf{x} \geq \Phi^{-1}(1-\alpha)v
-%\end{split}
-%\end{align}
-%\label{eq:CCeq2}
-%\end{subequations}
-%Or in case of independence between the items
-%\begin{subequations}
-%	\begin{align}
-%	\begin{split}
-%	v \geq \left| \left| \mathbf{\Sigma}^{1/2}\mathbf{x}  \right| \right| {}_2
-%	\end{split}\\
-%	\begin{split}
-%	ub-\mathbf{\mu}^{T} \mathbf{x} \geq \Phi^{-1}(1-\alpha)v
-%	\end{split}
-%	\end{align}
-%	\label{eq:CCeq2}
-%\end{subequations}
-%% $−g(u)T\mathbf{\mu}\sqrt{}g(u)T{\mathbf{\Sigma}} g(u)\ge\Phi^{-1}( \alpha)$. Additionally,$\partial\partial uiPr{g(u,\xi)≤0}=\Phi(−g(u)T\mathbf{\mu} \sqrt{}g(u)T{\mathbf{\Sigma}} g(u))(\mathbf{\mu} Tg(u))g(u)T{\mathbf{\Sigma}} \partial \partial uig(u)−(\mathbf{\mu} T \partial \partial uig(u))g(u)T{\mathbf{\Sigma}} g(u)(g(u)T{\mathbf{\Sigma}} g(u))$ 32.Proof:For this proof we employ that for a multivariate Gaussian distributed uncertain variable $\xi$ it holds that $g(u)T\xi$ is also Gaussian distributed with expectation$g(u)T\mathbf{\mu}$ and variance $g(u)T{\mathbf{\Sigma}} g(u)$. A short calculation reveals $Pr{g(u,\xi)≤0}=Pr{g(u,\xi)−g(u)T\mathbf{\mu}\sqrt{}g(u)T{\mathbf{\Sigma}} g(u)≤−g(u)T\mathbf{\mu}\sqrt{}g(u)T{\mathbf{\Sigma}} g(u)}$(4.1.1) $= \Phi(−g(u)T\mathbf{\mu}\sqrt{}g(u)T{\mathbf{\Sigma}} g(u))$,(4.1.2)i.e.,$Pr{g(u,\xi)≤0} \ge \alpha$ is equivalent to $\Phi(−g(u)T\mathbf{\mu}\sqrt{}g(u)T{\mathbf{\Sigma}} g(u))\ge \alpha$. Furthermore, the function $\Phi :R→R$is bijective and, therefore, $\Phi^{-1}(·)$ exists and the last statement is equivalent to $−g(u)T\mathbf{\mu}\sqrt{}g(u)T{\mathbf{\Sigma}} g(u)\ge\Phi^{-1}( \alpha)$, which completes the first part of the proof. For the second part,calculating the derivative of (4.1.2) immediately yields the desired result.
-%%
-%% On the other hand for the two-sided chance constrained model in \cite{Lubin et al. two.sided linear con...} the authors derived a second order conic outer approximation of the constraints showing also that the set $(ub,lb,\mathbf{x})$ of solutions is convex (Lemma 4). \\
-%% Below we report the Lemma 16 using our notation.
-%% Let $\omega \sim N(\mathbf{\mu}, \mathbf{\Sigma})$ be a jointly distributed Gaussian random vector with mean $\mathbf{\mu}$ and positive definite covariance matrix $\mathbf{\Sigma}$ and $0 < \alpha^* \leq 0.5$. Let $\mathbf{L}\mathbf{L}^T=\mathbf{\Sigma}$ be the Cholesky decomposition of $\mathbf{\Sigma}$. the following extended formulation, with the additional variable $y$,
-%% 
-%% \begin{subequations}
-%% 	\begin{align}
-%% 	\begin{split}
-%% 	v \geq \left| \left| \mathbf{L}^T\mathbf{x}  \right| \right| {}_2
-%% 	\end{split}\\
-%% 	\begin{split}
-%% 	ub-\mathbf{\mu}^{T} \mathbf{x} \geq \Phi^{-1}(1-\alpha^*)v
-%% 	\end{split}\\
-%% 	\begin{split}
-%% 	lb-\mathbf{\mu}^{T} \mathbf{x} \leq \Phi^{-1}(\alpha^*)v
-%% 	\end{split}\\
-%% 	\begin{split}
-%% 	lb-ub \leq 2 \Phi^{-1}(\alpha^*/2)v
-%% 	\end{split}
-%% 	\end{align}
-%% 	\label{eq:CCeq2s}
-%% \end{subequations}
-%%   that is a second order conic approximation of the constraint \eqref{eq:CCcon2s} and in fact guarantees 
-%%   \begin{equation}
-%%   \quad \mathbb{P}\left[lb \leq \mathbf{\omega}^{T}\mathbf{x} \leq ub\right]\geq 1-1.25\alpha^* 
-%%   \end{equation}
-%%   So by choosing a new proper arbitrary small $\alpha^*$ is it possible to solve the two-sided version of the chance constraints by using their second order conic representation.
-%% 
-%%%\section{Distributionally robust chance constraints}
-%%%In the previous problems \eqref{eq:CCcon} and \eqref{eq:CCcon2s} we assume that the vector $\omega$ is jointly normally distributed with known mean vector $\mathbf{\mu}$ and covariance matrix $\mathbf{\Sigma}$, i.e. $\omega \sim N(\mathbf{\mu}, \mathbf{\Sigma})$.
-%%%This distribution is obviously an approximation since the parameters of the distribution are usually estimated by data, often we can say that with a certain confidence the vector $(\mathbf{\mu},\mathbf{\Sigma})$ fall in some uncertainty set $U$, in particular we allow $U$ to be partitioned in the product of $U_{\mathbf{\mu}}$ and $U_{\mathbf{\Sigma}}$, i.e. $U=U_{\mathbf{\mu}} \times U_{\mathbf{\Sigma}}$.
-%%%This means that $(\mathbf{\mu},\mathbf{\Sigma}) \in U$ iff $\mathbf{\mu} \in U_{\mathbf{\mu}}$ and $\mathbf{\Sigma} \in U_{\mathbf{\Sigma}}$.\\
-%%%\par Under these assumptions
-%%% \begin{subequations} 
-%%%	\begin{equation*}
-%%%	\text{optimize } c^Tx 
-%%%	\end{equation*}
-%%%	subject to 
-%%%	\begin{equation}\label{eq:CCcon}
-%%%	\quad \mathbb{P}(c \leq \mathbf{\omega}^{T}x \leq b)\geq 1-\alpha \quad{\text{(two-sided linear CC)}}
-%%%	\end{equation}
-%%%	
-%%%\end{subequations}
-%\section{Chance constrained test assembly models}
-%In the Chapter **here** we saw that the information function is a measure of the precision of ability estimates which is sensitive to changes in calibrated item parameters and pretest structure such as the number of observed scores.\\
-%Most of the test assembly models have optimization functions based on the values of the IIFs computed in the estimated item parameters considering them as given this can produce several issues such as infeasibility in the MINIMAX model, e.g. the TIFs of the outcoming tests cannot be constrained in the desired interval around the targets, or more generally we rely on biased estimates of the item parameters  
-%
-%\subsection{2-sided CCTA MINIMAX for parallel tests}
-%The vector $1-\alpha$ contains a prescribed set of constants that are probability measures of the extent to which constraint violations are admitted i.e. the set of constraints may be violated, but at most $\alpha$ proportion of the times.
-%Here $A$, $b$, $c$ are not necessarily constant but have, in general, some or all of their elements as random variables. This work will consider only the case in which some elements of $A$ can be random.
-%In particular we will consider \\
-%$i=1,\ldots,I$ (items) \\
-%$t=1,\ldots,T$ (tests) \\
-%$k \in V$ (theta points, same for all $t$) \\
-%$x_{it}$ binary decision variables \\
-%$\eta_{ki}\equiv I_i(\theta_k)$ random variables representing the item information function for item $i$ at $\theta_k$ obtained by bootstrapping the calibration process **see section...**.  \\
-%$\{ \eta_{k1}, \ldots,\eta_{kI} \} \sim N_I(\mathbf{\mu}_k,\mathbf{\Sigma}_k)$ (i.e. we assume that the $\left( \eta_{ki} \right) $ are jointly distributed like a Gaussian random vector with mean $\mathbf{\mu}_k$ and covariance matrix $\mathbf{\Sigma}_k$).\\
-%$T_{kt} $ objective values for the test information functions, computed via an unconstrained test assembly \\
-%$0 \leq \alpha \leq 0.5, \varepsilon \geq 0$ 
-%\begin{subequations}
-%	\begin{alignat}{2}
-%	\mbox{minimize } \ \ & y && \nonumber\\
-%\text{s.t.} \ \ & \mathbb{P} \left[ \  T_{kt} - w_t y \leq \mathbf{\eta}_{k} \mathbf{x}_{t}  \leq T_{kt} + w_t y \ \right ] \geq 1- \alpha
-%&& \ \  \forall t,k \in V  \label{eq:CC1}
-%%\begin{split}\label{eq:CC2}
-%%{} & \mathbb{P} \left[ \ \mathbf{\eta}_{k} \mathbf{x}_{t}  \geq T_{kt} - w_t y \ \right] %\geq 1- \alpha \quad \forall t,k \in V
-%%\end{split}
-%%\begin{equation}\label{eq:CC1}
-%%\mathbb{P} \left[ \ \sum_{i=1}^I \left( \eta^*_{ki} \ x_{it} \right) \leq T_{kt} + w_t y \ \right ] \geq 1- \alpha
-%%\quad \forall t,k \in V_t \end{equation}
-%%\begin{equation}\label{eq:CC2}
-%%\mathbb{P} \left[ \ \sum_{i=1}^I \left( \eta^*_{ki} \ x_{it} \right) \geq T_{kt} - w_t y \ \right] \geq 1- \alpha \quad \forall t,k \in V_t
-%%\end{equation}
-%\end{alignat}
-%\end{subequations}
-%%\subsubsection{Normality assumption}
-%%If $n^{\min}_t$ is sufficiently large for all $t$ and if we can assume the normal distribution for all the $\eta_{ki}$ then the previous model is equivalent to:\\
-%%Following the equivalence principle \eqref{eq:CCeq2} the above model will be converted as follows:
-%%\begin{subequations}
-%%	\begin{alignat}{2}
-%%	\text{min} \ \ & y && \nonumber  \\
-%%	\text{s.t.} \ \ & v \geq \left| \left|{\mathbf{L}_k}^T\mathbf{x}_{t}\right|\right|{}_2 && \ \ \forall t,k \in V \\
-%%	%2-sided version
-%%	& T_{kt} + w_t y  - \mathbf{\mu}_k \mathbf{x}_t \geq  \Phi^{-1}(1-\alpha^*)v && \ \ \forall t,k \in V \\
-%%	& T_{kt} - w_t y - \mathbf{\mu}_k \mathbf{x}_t \leq  \Phi^{-1}(\alpha^*)v && \ \ \forall t,k \in V \\
-%%	& w_ty  \leq  \Phi^{-1}(\alpha^*/2)v && \ \ \forall t,k \in V 
-%%	%v \geq \left| \left| {\mathbf{L}_k}^T \mathbf{x}_{t}\right| \right| {}_2 
-%%	%T_{kt} + y -\mathbf{\mu}_k \mathbf{x}_{t} \geq \Phi^{-1}(1-\alpha)v
-%%	%T_{kt} - y  -\mathbf{\mu}_k \mathbf{x}_{t} \leq \Phi^{-1}(\alpha)v
-%%	%\begin{equation}
-%%	%T_{kt} + y -\sum_{i=1}^I{\mu_{ki} x_{it}} \geq \Phi^{-1}(1-\alpha)v
-%%	%\end{equation}
-%%	%\begin{equation}
-%%	%T_{kt} - y  -\sum_{i=1}^I{\mu_{ki} x_{it}} \leq \Phi^{-1}(\alpha)v
-%%	%\end{equation}
-%%	\end{alignat}
-%%	\label{eq:CCeqTIF}
-%%\end{subequations}
-%%where ${\mathbf{L}_k}^T$ is the matrix that comes from the Choleski decomposition of $\mathbf{\Sigma}_k$ and $\mathbf{x}_{t}=\{x_{1t},\ldots,x_{It}\}$. \\
-%%In Julia
-%%\lstinputlisting{Julia/CC1CC2.jl}
-%%\subsection{2-sided CCTA MAXIMIN for parallel tests}
-%%\vspace{1pt}
-%%\textbf{CCMAX:}
-%%\begin{subequations}
-%%	\begin{alignat}{2}
-%%	\mbox{max} \ \ & y \nonumber\\
-%%	\text{s.t.} \ \ & \mathbb{P} \left[ \ y -\varepsilon  \leq \mathbf{\eta}_{k} \mathbf{x}_{t}  \leq  y +\varepsilon \ \right ] \geq 1- \alpha && \ \ \forall t,k \in V 
-%%	%\begin{split}\label{eq:CC2}
-%%	%{} & \mathbb{P} \left[ \ \mathbf{\eta}_{k} \mathbf{x}_{t}  \geq y -\varepsilon\ %\right] \geq 1- \alpha \quad \forall t,k \in V
-%%	%\end{split}
-%%	%\begin{equation}\label{eq:CC1}
-%%	%\mathbb{P} \left[ \ \sum_{i=1}^I \left( \eta^*_{ki} \ x_{it} \right) \leq T_{kt} + w_t y \ \right ] \geq 1- \alpha
-%%	%\quad \forall t,k \in V_t \end{equation}
-%%	%\begin{equation}\label{eq:CC2}
-%%	%\mathbb{P} \left[ \ \sum_{i=1}^I \left( \eta^*_{ki} \ x_{it} \right) \geq T_{kt} - w_t y \ \right] \geq 1- \alpha \quad \forall t,k \in V_t
-%%	%\end{equation}
-%%	\end{alignat}
-%%\end{subequations}
-%%\subsubsection{Normality assumption}
-%%If $n^{\min}_t$ is sufficiently large for all $t$ and if we can assume the normal distribution for all the $\eta_{ki}$ then the previous model is equivalent to:\\
-%%\vspace{1pt}
-%%
-%%\textbf{CCMAXGauss:}
-%%\begin{subequations}
-%%	\begin{alignat}{2}
-%%	\text{max} \ \ & y && \nonumber  \\
-%%	\text{s.t.} \ \ & v \geq \left| \left|{\mathbf{L}_k}^T\mathbf{x}_{t}\right|\right|{}_2 && \ \ \forall t,k \in V \\
-%%	%2-sided version
-%%	& y+ \varepsilon - \mathbf{\mu}_k \mathbf{x}_t \geq  \Phi^{-1}(1-\alpha^*)v && \ \ \forall t,k \in V \\
-%%	& y- \varepsilon - \mathbf{\mu}_k \mathbf{x}_t \leq  \Phi^{-1}(\alpha^*)v && \ \ \forall t,k \in V \\
-%%	& \varepsilon  \leq  \Phi^{-1}(\alpha^*/2)v && \ \ \forall t,k \in V
-%%	%1-sided version:
-%%	%\begin{split}
-%%	%{}&\mathbf{\mu}_k \mathbf{x}_t \leq y + \varepsilon - \Phi^{-1}(1-\alpha)v \quad %\forall t,k \in V
-%%	%\end{split}\\
-%%	%\begin{split}
-%%	%{}&\mathbf{\mu}_k \mathbf{x}_t \geq y - \varepsilon - \Phi^{-1}(\alpha)v \quad \forall %t,k \in V
-%%	%\end{split}
-%%	%	\begin{equation}
-%%	%	\sum_{i=1}^I{\mu^{(k)}_i x_{it}} \leq y + \varepsilon - \Phi^{-1}(1-\alpha)y \quad \forall t,k
-%%	%	\end{equation}
-%%	%	\begin{equation}
-%%	%	\sum_{i=1}^I{\mu^{(k)}_i x_{it}} \geq y - \varepsilon - \Phi^{-1}(\alpha)y \quad \forall t,k
-%%	%	\end{equation}
-%%	\end{alignat}
-%%	\label{eq:CCeqTIF}
-%%\end{subequations}
-%%where ${\mathbf{L}_k}^T$ is the matrix that comes from the Choleski decomposition of $\mathbf{\Sigma}_k$, $\varepsilon$ can be chosen to ensure that the TIFs of outcoming tests are inside a certain interval around the maximum possible and $\alpha^*$ is equal to $\alpha/1.25$. Usually the $\theta_k$s in which the IIFs are computed and hence also their moments $\mathbf{\mu}_k$ and $\mathbf{\Sigma}_k$ are taken as the points in the ability continuum in which we want the TIFs are maximized, such as the mean of $\theta$ in the population.
-%%\subsection{1-sided CCTA for parallel tests}
-%%\par A more transparent approach, easy to communicate to the stake holders is to consider a model with the following structure:\\
-%%\textbf{CCMAX-1S:}
-%%\begin{subequations}
-%%	\begin{alignat}{2}
-%%	\mbox{max} \ \ & y && \nonumber\\
-%%	 & \mathbb{P} \left[ \ \mathbf{\eta}_{k} \mathbf{x}_{t}  \geq y  \ \right] \geq 1- \alpha && \ \ \forall t,k \in V 
-%%	\end{alignat}
-%%	\label{CCMAX1S}
-%%\end{subequations}
-%%The latter can be interpreted as "Assemble $T$ tests that have a TIF higher than $y$ with a probability of $(1-\alpha)$", i.e. with a probability close to 1. This ensure an high robustness of the results.
-%%
-%%
-%%\section{Non-normality}
-%%\subsection{Sample average approximation}\label{sec:sample-average-approximation}
-%%When we cannot assume the normality distribution of the $\eta$s, such as in the case of 2PL and 3PL IRT models, one strainghtforward approach is the so called sample average approximation method (SAA).
-%%**here** THEORY OF SAA
-%%**here** INDICATOR FUNCTIONS FOR ALL THE CASES
-%%\subsection{Heuristics at branch and cut}
-%%If the normality assumption is again violated and the basic model \eqref{Mmod} for test assembly has already a large number of constraints we cannot use neither the method at section \ref{sec:assumption-of-normality} nor the SAA \ref{sec:sample-average-approximation} since it will increase the size of the model according to the number of replications in the bootstrap (i.e. the accuracy of the estimates).\\ 
-%%That's why another method to solve the model \eqref{CCMAX1S} has been developed, it is based on the branch and cut algorithm (details follow) and the possibility to communicate with the solver at each node of the tree imposing new constraints, called \emph{lazy constraints} that reduce the feasible space in case any solution at the node violates some condition. \\
-%%In particular the lazy constraints we added discard all the tests, tecnically patterns of items, which don't have an $\alpha$-quantile of their TIFs above the last highest value found in the previous nodes of the tree. The $\alpha$-quantile is computed using the empirical distribution function of the IIFs obtained by the bootstrap mentioned in \ref{sec:Julia}.
-%%**here** branch and cut, callbacks and lazy constraint\\
-%%
-%%The function of random variable must be linear since we need to input a constraint in the main model to control for the parallelism of tests as showed above:
-%%\textbf{CCATA Main model}:
-%%\begin{subequations}
-%%	\begin{alignat}{2}
-%%	\mbox{max} \ \ & y+e && \nonumber\\
-%%	&  \mathbf{\eta}_{k} \mathbf{x}_{t}  \geq y + e  && \ \ \forall t \in V \\
-%%	& e \leq \varepsilon && 
-%%	\end{alignat}
-%%	\label{CCMAX1S}
-%%\end{subequations}
-%%
-%%\textbf{CCATA BranchAndCut pseudoalgorithm}:
-%%
-%%	\begin{algorithm}
-%%		\caption{Heuristics for CCTA}
-%%		\label{HeurCCA}
-%%		\begin{algorithmic}[1]
-%%			\State Initialize best values: $e^*\leq \varepsilon$, $y^*=0,x^*=\{0\}_{I\times T}$ 
-%%			\While{MIPGAP not reached, step $s$}
-%%			%\For{$t=1,\ldots,T$}
-%%			\State $\alpha\text{Qles}^s=\{\{\eta^r x^s_t\}_{\lfloor R\alpha \rfloor}\}_t\approx \{F_t^{-1}(\alpha)^s\}_t=\{Q_t(\alpha)^s\}_t \quad t=1,\ldots,T$
-%%			\State yhere the $R$ sets $\{\eta^r x^s_t\}$ are sorted in an increasing yay.
-%%			\State $y^s=min\{\alpha\text{Qles}^s\}$
-%%			\If{$y^s>y^*$}
-%%			\For{$v=1,\ldots,T$}
-%%			\State @lc $x_v^T(2x_t^{s-1}-1)\leq \mathbf{1}^T x_t^{s-1} -1$
-%%			\State yhere $t:\alpha\text{Qles}^{s-1}_t<y^s$
-%%			\State $y^*=y^s$,  $x^*=x^s$, $e^*=e^s$,    $\alpha\text{Qles}^*=\alpha\text{Qles}^s$
-%%			\EndFor
-%%			\Else{ $y^s\leq y^*$ }
-%%			\For{$v=1,\ldots,T$}
-%%			\State @lc $x_v^T(2x_t^s-1)\leq \mathbf{1}^T  x_t^s -1$
-%%			\State yhere $t:\alpha\text{Qles}^{s}_t<y^*$
-%			\EndFor
-%			\EndIf
-%			\State @lc $y \geq (y^s+e^s)-y^*$
-%			\State @lc $e \leq (y^s+e^s)-e^*$
-%			\EndWhile
-%		\end{algorithmic}
-%	\end{algorithm}
 
+As can be noticed, the results are always in favour of our approach, since, in the eight studied cases, the last column presents the highest minimum quantile of the TIF among all the assembled tests. Moreover, the constraints are always profitably fulfilled proving again that the solver can likely find the feasible space of the problem. Thus, we can say that our solver is able to find the optimal solution not only for the classical MAXIMIN ATA model but also with respect to its chance-constrained formulation. Furthermore, it is not sensible to alterations of the tests specifications and it is consistent with the definition of the empirical quantiles since it never produces a set of tests with a minimum 0.01-quantile higher than the minimum 0.05-quantile.
 
+\section{Application on real data}
 
+The data used in this application derive from the 2018/2019 Italian standardized assessment program managed by INVALSI. In particular, the dichotomous responses come from a single test of 39 items and they are given by 24781 students of the fifth grade (last year of the primary school). The subject under analysis is mathematics. Unfortunately, the length of the pool is not sufficient to perform a test assembly with a reasonable amount of optimization variables, this is why we decided to replicate the items 8 times in order to have a pool of $39*8=312$ items.
+This procedure is not replicable in a real test assembly instance and, of course, it makes this application resemble a simulation but, unlike the simulation study showed in the Section \ref{sec:ccsim}, we believe that it represents better the reality. Furthermore, we would like to point out that finding this type of data is extremely difficult since they are subject to a strict privacy regulation and, usually, in order to avoid spreading information about the items, the institutes don't publish the responses until the items are not used anymore in future testing sessions. 
+
+\subsection{Data structure and calibration}
+
+The item pool contains 39 items divided in 4 domains: numbers (numeri) 10 items, space and figures (spazi e figure) 11 items, data and forecasting (dati e previsioni) 11 items and fuctions and relationships (funzioni e relazioni) 7 items. 
+The items are grouped in 3 friend sets: D3, D8 and D12. The sample of respondents has length 24781, thus, we stored the responses in a 0-1 matrix $39 \times 24781$ with a balanced design, so there are no missings in the data. The IRT model chosen for the calibration is the unidimensional 2PL model. The estimation is carried on by applying the algorithm described in this chapter. The process took about 40 seconds to reach the convergence. After the calibration, we performed a non-parametric bootstrap  with 500 replications on the item parameter estimates and we computed the IIF at $\theta=0$ for all the items in the pool. Since the number of respondents is large, the range of variation of the sampling distribution of each item parameter and subsequently of the IIF is small. 
+
+The following table shows the resulting calibrated item pool together with the standard errors (SE) of item parameters obtained by the Fisher information approach explained in \textcite{seIRT} and their sampling standard deviations (SD) obtained by the non-parametric bootstrap.
+
+\begin{table}[H]
+	\small
+	\def\arraystretch{0.8}
+	\caption{Calibrated item pool}
+	\centering
+	\begin{tabular}{l r >{\em}c >{\em}c r >{\em}c >{\em}c cc}
+		\toprule
+		id & $\hat{b}$ & SE & SD & $\hat{a}$ & SE & SD & DOMAIN & UNIT \\
+		\midrule
+		1&1.556 & {0.007} & 0.023 & 1.161 & 0.013 & 0.024 & 1 & \\ 
+		2&0.030 & {0.008}& {0.017} & 1.244 & {0.012}& {0.022} & 3 & \\
+		3&1.760 & 0.007 & 0.023 & 1.072 & 0.014 & 0.023 & 2 & D3 \\
+		4&0.555 & 0.007 & 0.016 & 0.806 & 0.013 & 0.017 & 2 & D3\\
+		5&-0.474 & 0.009 & 0.016 & 1.066 & 0.012 & 0.020 & 4 & \\
+		6&0.536 & 0.008 & 0.017 & 1.192 & 0.012 & 0.021 & 1 & \\
+		7&0.587 & 0.007 & 0.016 & 0.960 & 0.012 & 0.019 & 2 & \\
+		8&0.188 & 0.008 & 0.013 & 0.581 & 0.013 & 0.016 & 4 & \\
+		9&1.845 & 0.007 & 0.024 & 1.366 & 0.013 & 0.026 & 3 & D8\\
+		10&0.532 & 0.008 & 0.017 & 1.233 & 0.012 & 0.021 & 3 & D8\\
+		11&-0.595 & 0.009 & 0.018 & 1.313 & 0.012 & 0.022 & 3 & D8\\
+		12&2.077 & 0.007 & 0.027 & 1.613 & 0.013 & 0.029 & 1 & \\
+		13&0.074 & 0.008 & 0.015 & 1.031 & 0.012 & 0.020 & 2 & \\
+		14&-1.033 & 0.010 & 0.020 & 1.501 & 0.012 & 0.026 & 4 & \\
+		15&1.418 & 0.007 & 0.021 & 1.183 & 0.013 & 0.025 & 3 & D12\\
+		16&0.614 & 0.007 & 0.018 & 1.294 & 0.012 & 0.024 & 3 & D12\\
+		17&2.776 & 0.006 & 0.035 & 1.284 & 0.016 & 0.035 & 3 & D12\\
+		18&-0.284 & 0.009 & 0.013 & 0.583 & 0.013 & 0.016 & 4 & \\
+		19&-0.766 & 0.010 & 0.017 & 1.178 & 0.012 & 0.022 & 2 & \\
+		20&1.234 & 0.007 & 0.022 & 1.605 & 0.012 & 0.027 & 1 & \\
+		21&-0.250 & 0.009 & 0.018 & 1.536 & 0.011 & 0.024 & 2 & \\
+		22&0.553 & 0.008 & 0.018 & 1.556 & 0.012 & 0.027 & 1 & \\
+		23&1.709 & 0.007 & 0.023 & 1.239 & 0.014 & 0.027 & 3 & \\
+		24&0.547 & 0.008 & 0.017 & 1.133 & 0.012 & 0.022 & 1 & \\
+		25&-0.361 & 0.009 & 0.016 & 0.930 & 0.012 & 0.019 & 4 & \\
+		26&0.178 & 0.008 & 0.016 & 0.963 & 0.012 & 0.018 & 2 & \\
+		27&0.341 & 0.008 & 0.016 & 1.062 & 0.012 & 0.021 & 4 & \\
+		28&0.740 & 0.007 & 0.020 & 1.570 & 0.012 & 0.028 & 3 & \\
+		29&-0.050 & 0.008 & 0.015 & 0.750 & 0.013 & 0.017 & 1 & \\
+		30&0.082 & 0.008 & 0.015 & 0.936 & 0.012 & 0.018 & 1 & \\
+		31&0.873 & 0.007 & 0.018 & 1.092 & 0.013 & 0.022 & 2 & \\
+		32&-0.115 & 0.008 & 0.014 & 0.642 & 0.013 & 0.016 & 4 & \\
+		33&0.101 & 0.008 & 0.016 & 1.100 & 0.012 & 0.021 & 3 & \\
+		34&0.188 & 0.008 & 0.015 & 1.048 & 0.012 & 0.019 & 2 & \\
+		35&0.505 & 0.007 & 0.013 & 0.488 & 0.013 & 0.014 & 2 & \\
+		36&-0.384 & 0.009 & 0.018 & 1.483 & 0.012 & 0.025 & 1 & \\
+		37&-1.032 & 0.011 & 0.016 & 0.756 & 0.014 & 0.019 & 3 & \\
+		38&1.427 & 0.007 & 0.018 & 0.994 & 0.013 & 0.021 & 1 & \\
+		39&1.299 & 0.007 & 0.017 & 0.753 & 0.014 & 0.018 & 2 & \\		
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+To reach a reasonable amount of items we replicate 8 times the 500 samples of the IIFs and the calibrated item pool. The final pool had 320 items and the final IIF matrix had $320 \times 500 $ samples. Subsequently, we solved the CC MAXIMIN ATA model by using our approach and imposing the specifications summarized in the next section.
+
+\subsection{Test assembly}
+
+A set of $T=20$ tests with length from $n^{\min}_t=40$ to $n^{\max}_t=45$ items is assembled. The already mentioned friend sets are included in the assembly as constraints and we imposed the tests to have at least $7$ items and maximum $12$ items of each of the first three domains (numbers, space and figures and data and forecasting). We did not constrain the last domain because it is redundant. Each item can be used maximim in 10 test forms.
+The overlap between test forms must be less or equal to $11$ items and, for the chance-constrained model \eqref{eq:CCMAXIMINapprox} we chose $\alpha=0.05$.
+After we included all the specifications in the model, we run the optimization algorithm which implements our heuristic. We selected the same termination criteria as in the simulation study (Section \ref{sec:setopt}). 
+
+Before the time limit had been reached, the algorithm explored 4 neighbourhoods: the first one had not an optimal value of the objective function, on the other hand, the second and the fourth had an objective value (-14.498 and -14.58 respectively) very close to the third neighbourhood which retained the best solution (-14.746). The assembled tests fulfil almost all the constraints as it can be seen from Table \ref{tab:tast} in the Appendix A. The only constraints not completely met are those regarding the length of the tests. In particular, for tests 1, 10 and 16 the model selected 46 items, that is one more than allowed. This issue is a drawback of using the units. Friend sets contribute massively to the TIF but at the same time they increase the size of the test, by decreasing the \texttt{OptFeas} parameter we could try to strengthen the length constraints but, since all the other results were really good, we preferred to keep this solution. Another option could be taking the design obtained in the second neighbourhood which fulfil all the constraints related to the test size and had a high minimum TIF among the tests.
+
+The maximized $\alpha$-quantiles together with the TIFs computed on the estimates obtained in the full sample are reported in the next table. For a graphic representation of the sampling distributions of the TIFs please refer to the Figures \ref{fig:taTIF} and \ref{fig:taTIFICF}.
+
+\begin{table}[H] 
+	\label{tab:at_TIF}
+	\centering
+	\def\arraystretch{0.8}
+	\caption{Test information function}
+	\begin{tabular}{lcc}
+		\toprule
+		test ($t$) & $Q(TIF_t(0),0.05)$ & $TIF_t(0)$ \\
+		\midrule
+		1&16.409& 16.703\\
+		2&16.534& 16.863\\
+		3&16.449& 16.773\\
+		4&16.414& 16.734\\
+		5&16.409& 16.730\\
+		6&16.462& 16.775\\
+		7&16.397& 16.707\\
+		8&16.404& 16.704\\
+		9&16.447& 16.730\\
+		10&16.405& 16.723\\
+		11&16.400& 16.682\\
+		12&16.442& 16.739\\
+		13&16.401& 16.711\\
+		14&16.526& 16.836\\
+		15&16.425& 16.730\\
+		16&16.388& 16.690\\
+		17&16.440& 16.742\\
+		18&16.385& 16.677\\
+		19&16.481& 16.791\\
+		20&16.466& 16.762\\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+The resulting TIFs and quantiles do not considerably differ among the test forms, this is a signal that the model reached an optimal solution very proximal to the global one.
+Analyzing the sampling distribution of the TIFs of the assembled test illustrated in Figures \ref{fig:taTIF} and \ref{fig:taTIF2}, we can notice that the TIF computed on the full sample is always higher than the $0.05$-quantile.
+Thus, for example, we could say that there is a low possibility that test 1 produce estimates of the ability of an examinees with a true $\theta=0$ with a standard error of measurement greater than $\sqrt(1/16.409)=0.247$.
