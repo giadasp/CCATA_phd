@@ -1,6 +1,6 @@
 % Appendix Template
 
-\chapter{Tables And Figures} % Main appendix title
+\chapter{Tables And Figures}\label{sec:TablesAndFigures} % Main appendix title
 
 \label{ch:TablesAndFigures} % Change X to a consecutive letter; for referencing this appendix elsewhere, use \ref{AppendixX}
 \begin{sidewaystable}
@@ -88,7 +88,7 @@
 		36 & 1.211 & 0.14 & 0.14 & 0.141 & -0.004 & -0.008 & -0.013 & -0.031 & 0.102 & 0.102 & 0.102 & 0.017 & 0.015 & 0.017 \\
 		37 & 1.748 & 0.197 & 0.197 & .302 & -0.065 & -0.069 & -0.078 & -0.419 & 0.118 & 0.118 & 0.118 & 0.004 & -0.0 & 0.003 
 	\end{tabular}
-	
+
 \end{sidewaystable}
 \begin{sidewaystable}
 	%\frac{p(X_k|\boldsymbol{u}_n,\boldsymbol{\tau},\hat{\boldsymbol{\xi}}^{(s)})W[k]}{\sum_{j=1}^K{p(X_j|\boldsymbol{u}_n,\boldsymbol{\tau},\hat{\boldsymbol{\xi}}^{(s)})W[j]}}
@@ -369,6 +369,35 @@
 		250 & 0.791 & 0.113 & 0.112 & 0.112 & 0.031 & 0.027 & 0.026 & 0.585 & 0.095 & 0.094 & 0.095 & 0.013 & 0.013 & 0.013 \\
 	\end{tabular}
 \end{sidewaystable}
+\subsection{Case 1a}
+\begin{figure}[ht]
+	\centering \begin{tabular}[b]{c c c}
+		\includegraphics[width=.3\textwidth]{Figures/1a/RMSE_b.pdf} & \includegraphics[width=.3\textwidth]{Figures/1a/RMSE_a.pdf} & \includegraphics[width=.3\textwidth]{Figures/1a/RMSE_t.pdf}
+	\end{tabular}
+	\caption{Case 1a - Boxplots of RMSEs.}
+	\label{fig:bpRMSE1a}
+\end{figure}
+\begin{figure}[ht]
+	\centering \begin{tabular}[b]{c c c}
+		\includegraphics[width=.3\textwidth]{Figures/1a/BIAS_b.pdf} & \includegraphics[width=.3\textwidth]{Figures/1a/BIAS_a.pdf} & \includegraphics[width=.3\textwidth]{Figures/1a/BIAS_t.pdf}
+	\end{tabular}
+	\caption{Case 1a - Boxplots of BIASs.}
+	\label{fig:bpBIAS1a}
+\end{figure}
+\begin{figure}[ht]
+	\centering
+	%\textbf{RMSEs of estimates with respect to the true values of item parameters and ability }\par\medskip
+	\includegraphics[width=\textwidth]{Figures/1a/RMSEscatter.pdf}
+	\caption{Case 1b - Scatter plots of RMSEs.}
+	\label{fig:spRMSE1a}
+\end{figure}
+\begin{figure}[ht]
+	\centering
+	%\textbf{BIASs of estimates with respect to the true values of item parameters and ability}\par\medskip
+	\includegraphics[width=\textwidth]{Figures/1a/BIASscatter.pdf}
+	\caption{Case 1a - Scatter plots of BIASs }
+	\label{fig:spBIAS1a}
+\end{figure}
 \subsection{Case 1b}
 \begin{figure}[ht]
 			\centering \begin{tabular}[b]{c c c}

@@ -279,7 +279,7 @@ The subset of tests in the feasible set that optimizes the objective function is
 
 Modelling a test assembly problem does not imply only defining objectives and constraints, but we also need the so-called \emph{decision variables} which represent the possible combination of items that compose the test form in a mathematical formulation.
 If we need to assemble a single test from a pool of $I$ items, we can choose as decision variables $I$ binary variables in the form:
-\begin{equation*}\label{eq:Mmod:Mol}
+\begin{equation*}
 x_{i}=
 \begin{cases}
 1 & \mbox{if item }i \mbox{ is in the test},\\
@@ -492,7 +492,7 @@ In particular, controlling for test overlap means adding quadratic constraints o
 \end{subequations}
 
 Those types of constraints must be linearized in order to use the standard LP solvers, so they must be replaced by the following variables
-\begin{equation*}\label{eq:Mmod:Mol}
+\begin{equation*}
 z_{itt'}=
 \begin{cases}
 1 & \mbox{if item }i \mbox{ is both in test }t \mbox{ and test } t' \mbox{ (i.e. }x_{it}=x_{it'}=1 \mbox{)} \\
@@ -503,7 +503,7 @@ z_{itt'}=
 This modification increases the size of the model of $I*{{T}\choose{2}}$ binary variables.
 Together with the new variables, the constraints must be replaced by
 \begin{subequations}[resume]
-	\begin{equation}    \label{eq:Mmod:MOL}
+	\begin{equation}
 	o^{\min}_{tt'} \le \sum_{i=1}^I{z_{itt'}} \le o^{\max}_{tt'}, \ \forall t \neq t', \quad \mbox{(fixed overlap LINEAR)}
 	\end{equation}
 	Integrality constraints:
@@ -628,7 +628,7 @@ Suppose we have two set of indices $m_u \in M_u$ and $m_l \in M_l$ for upper and
 	\begin{equation*}
 	z_m \in \mathbb{R}^+, \ \forall m \quad \mbox{(violations)}
 	\end{equation*}
-	\label{eq:Smod}
+
 \end{subequations}
 
 Notice that any of the linear constraints showed in the previous subsections can be represented as a generic constraint either of the form \eqref{eq:LRgenConupper} or \eqref{eq:LRgenConlower}.
