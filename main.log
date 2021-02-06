@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.3.3)  5 FEB 2021 17:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.3.3)  6 FEB 2021 01:52
 entering extended mode
 **./main.tex
 (main.tex
@@ -1449,22 +1449,16 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'english'.
- (main.aux (Chapters/Introduction2.aux) (Chapters/TestTheoriesAndATA.aux
+ (main.aux (Chapters/Introduction2.aux) (Chapters/TestTheoriesAndATA.aux)
+(Chapters/Julia.aux) (Chapters/CCTestAssembly.aux) (Chapters/Conclusions.aux)
+(Appendices/TablesAndFigures.aux
 
-LaTeX Warning: Label `eq:Mmod:Mol' multiply defined.
-
-
-LaTeX Warning: Label `eq:Smod' multiply defined.
-
-) (Chapters/Julia.aux) (Chapters/CCTestAssembly.aux
-
-LaTeX Warning: Label `key' multiply defined.
+LaTeX Warning: Label `fig:spRMSE1a' multiply defined.
 
 
-LaTeX Warning: Label `sec:heur' multiply defined.
+LaTeX Warning: Label `fig:spBIAS1a' multiply defined.
 
-) (Chapters/Conclusions.aux) (Appendices/AppendixA.aux)
-(Appendices/TablesAndFigures.aux))
+))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 199.
@@ -1487,8 +1481,7 @@ LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 199.
 LaTeX Font Info:    ... okay on input line 199.
 LaTeX Font Info:    Trying to load font information for T1+lmr on input line 19
 9.
-
-("C:\Users\giada\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\t1lmr.fd"
+ ("C:\Users\giada\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\t1lmr.fd"
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 ("C:\Users\giada\AppData\Local\Programs\MiKTeX 2.9\tex/latex/translator\transla
@@ -1589,15 +1582,7 @@ Package biblatex Info: Automatic encoding selection.
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
- (main.bbl
-
-Package biblatex Warning: The following entry could not be found
-(biblatex)                in the database:
-(biblatex)                efron1993introduction
-(biblatex)                Please verify the spelling and rerun
-(biblatex)                LaTeX afterwards.
-
-)
+ (main.bbl)
 Package biblatex Info: Reference section=0 on input line 199.
 Package biblatex Info: Reference segment=0 on input line 199.
 \AtBeginShipoutBox=\box101
@@ -1692,6 +1677,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 236--241
 --------------------
  Abstract
 --------------------
+
+LaTeX Warning: Citation 'Charnes1959' on page 3 undefined on input line 300.
+
+
+LaTeX Warning: Citation 'goffe1996simann' on page 3 undefined on input line 300
+.
+
 1: section
 [3
 
@@ -1727,21 +1719,49 @@ Underfull \hbox (badness 10000) in paragraph at lines 236--241
 
 (Chapters/Introduction2.tex
 Chapter 1.
+
+LaTeX Warning: Citation 'AERA2014' on page 1 undefined on input line 17.
+
+
+LaTeX Warning: Citation 'VanDerLinden2005' on page 1 undefined on input line 21
+.
+
 1: section
 [1
 
 
 ]
+
+LaTeX Warning: Citation 'charnes1958cost' on page 2 undefined on input line 26.
+
+
+
+LaTeX Warning: Citation 'VanDerLinden2005' on page 2 undefined on input line 27
+.
+
+
+LaTeX Warning: Citation 'efron1993' on page 2 undefined on input line 28.
+
+
+LaTeX Warning: Citation 'shao2012' on page 2 undefined on input line 28.
+
+
+LaTeX Warning: Citation 'goffe1996simann' on page 2 undefined on input line 29.
+
+
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10> on input line 37.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <7> on input line 37.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 37.
- [2]
+[2]
+
+LaTeX Warning: Citation 'bezanson2017julia' on page 3 undefined on input line 3
+9.
+
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 4
 0.
-
 ("C:\Users\giada\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\t1lmtt.fd"
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -1752,8 +1772,7 @@ sp /
  []
 
 
-LaTeX Warning: Reference `sec:TablesAndFigures' on page 3 undefined on input li
-ne 56.
+LaTeX Warning: Citation 'woods2007' on page 3 undefined on input line 49.
 
 [3] [4] (main.toc)
 \tf@toc=\write9
@@ -1777,19 +1796,76 @@ Overfull \hbox (14.8252pt too wide) in paragraph at lines 1--1
 |[]\T1/lmr/bx/n/24.88 Test the-o-ries and au-to-mated test
  []
 
+
+LaTeX Warning: Citation 'verschoor2007genetic' on page 7 undefined on input lin
+e 8.
+
+
+LaTeX Warning: Citation 'downing2006twelve' on page 7 undefined on input line 1
+2.
+
 1: section
-[7] [8] [9] [10]
+[7]
+
+LaTeX Warning: Citation 'fisher1981lagrangian' on page 8 undefined on input lin
+e 25.
+
+
+LaTeX Warning: Citation 'downing2006twelve' on page 8 undefined on input line 3
+0.
+
+
+LaTeX Warning: Citation 'lord1952theory' on page 8 undefined on input line 30.
+
+
+LaTeX Warning: Citation 'Hamb85' on page 8 undefined on input line 30.
+
+
+LaTeX Warning: Citation 'Hamb91' on page 8 undefined on input line 30.
+
+
+LaTeX Warning: Citation 'lord1968statistical' on page 8 undefined on input line
+ 31.
+
+
+LaTeX Warning: Citation 'novick1966axioms' on page 8 undefined on input line 37
+.
+
+
+LaTeX Warning: Citation 'lord1968statistical' on page 8 undefined on input line
+ 37.
+
+[8]
+
+LaTeX Warning: Citation 'cronbach1951coefficient' on page 9 undefined on input 
+line 47.
+
+[9]
+
+LaTeX Warning: Citation 'lord1968statistical' on page 10 undefined on input lin
+e 65.
+
+
+LaTeX Warning: Citation 'Hamb91' on page 10 undefined on input line 65.
+
+
+Overfull \hbox (10.95169pt too wide) in paragraph at lines 65--72
+\T1/lmr/m/n/12 An ex-haus-tive in-tro-duc-tion about IRT mod-els can be found i
+n [];
+ []
+
+[10]
 Package epstopdf Info: Source file: <Figures/icc.eps>
-(epstopdf)                    date: 2019-11-08 02:10:24
+(epstopdf)                    date: 2019-10-16 04:01:48
 (epstopdf)                    size: 9264 bytes
 (epstopdf)             Output file: <Figures/icc-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-02-05 16:48:42
-(epstopdf)                    size: 10002 bytes
+(epstopdf)                    date: 2019-10-16 04:01:48
+(epstopdf)                    size: 9747 bytes
 (epstopdf)             Command: <epstopdf --outfile=Figures/icc-eps-converted-t
 o.pdf Figures/icc.eps>
 (epstopdf)             \includegraphics on input line 91.
 Package epstopdf Info: Output file is already uptodate.
-<Figures/icc-eps-converted-to.pdf, id=472, 501.875pt x 500.87125pt>
+<Figures/icc-eps-converted-to.pdf, id=444, 501.875pt x 500.87125pt>
 File: Figures/icc-eps-converted-to.pdf Graphic file (type pdf)
 <use Figures/icc-eps-converted-to.pdf>
 Package pdftex.def Info: Figures/icc-eps-converted-to.pdf  used on input line 9
@@ -1797,16 +1873,16 @@ Package pdftex.def Info: Figures/icc-eps-converted-to.pdf  used on input line 9
 (pdftex.def)             Requested size: 250.93687pt x 250.435pt.
  [11 <./Figures/icc-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <Figures/iif.eps>
-(epstopdf)                    date: 2019-11-08 02:10:24
+(epstopdf)                    date: 2019-10-16 04:01:48
 (epstopdf)                    size: 9592 bytes
 (epstopdf)             Output file: <Figures/iif-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-11-08 02:10:24
-(epstopdf)                    size: 5602 bytes
+(epstopdf)                    date: 2019-10-16 04:01:48
+(epstopdf)                    size: 9853 bytes
 (epstopdf)             Command: <epstopdf --outfile=Figures/iif-eps-converted-t
 o.pdf Figures/iif.eps>
 (epstopdf)             \includegraphics on input line 122.
 Package epstopdf Info: Output file is already uptodate.
-<Figures/iif-eps-converted-to.pdf, id=487, 501.875pt x 500.87125pt>
+<Figures/iif-eps-converted-to.pdf, id=459, 501.875pt x 500.87125pt>
 File: Figures/iif-eps-converted-to.pdf Graphic file (type pdf)
 <use Figures/iif-eps-converted-to.pdf>
 Package pdftex.def Info: Figures/iif-eps-converted-to.pdf  used on input line 1
@@ -1814,36 +1890,78 @@ Package pdftex.def Info: Figures/iif-eps-converted-to.pdf  used on input line 1
 (pdftex.def)             Requested size: 250.93687pt x 250.435pt.
  [12 <./Figures/iif-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <Figures/tif.eps>
-(epstopdf)                    date: 2019-11-08 02:10:24
+(epstopdf)                    date: 2019-10-16 04:01:50
 (epstopdf)                    size: 5158 bytes
 (epstopdf)             Output file: <Figures/tif-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-11-08 02:10:24
-(epstopdf)                    size: 3881 bytes
+(epstopdf)                    date: 2019-10-16 04:01:50
+(epstopdf)                    size: 7915 bytes
 (epstopdf)             Command: <epstopdf --outfile=Figures/tif-eps-converted-t
 o.pdf Figures/tif.eps>
 (epstopdf)             \includegraphics on input line 134.
 Package epstopdf Info: Output file is already uptodate.
-<Figures/tif-eps-converted-to.pdf, id=501, 501.875pt x 500.87125pt>
+<Figures/tif-eps-converted-to.pdf, id=477, 501.875pt x 500.87125pt>
 File: Figures/tif-eps-converted-to.pdf Graphic file (type pdf)
 <use Figures/tif-eps-converted-to.pdf>
 Package pdftex.def Info: Figures/tif-eps-converted-to.pdf  used on input line 1
 34.
 (pdftex.def)             Requested size: 250.93687pt x 250.435pt.
- [13 <./Figures/tif-eps-converted-to.pdf>] [14] [15]
-[16] [17] [18] [19] [20]
+
+
+LaTeX Warning: Citation 'birnbaum1958' on page 13 undefined on input line 139.
+
+[13 <./Figures/tif-eps-converted-to.pdf>]
+
+LaTeX Warning: Citation 'desimone2015item' on page 14 undefined on input line 1
+53.
+
+[14] [15] [16]
+
+LaTeX Warning: Citation 'VDL2005' on page 17 undefined on input line 233.
+
+[17]
+
+LaTeX Warning: Citation 'VDL2005' on page 18 undefined on input line 252.
+
+[18] [19] [20]
+
+LaTeX Warning: Citation 'VDL2005' on page 21 undefined on input line 345.
+
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 3
 48.
-
 ("C:\Users\giada\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\ts1lmr.fd"
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-[21] [22] [23] [24] [25] [26]
+[21]
+
+LaTeX Warning: Citation 'VDL2005' on page 22 undefined on input line 356.
+
+[22] [23]
+
+LaTeX Warning: Citation 'same77' on page 24 undefined on input line 410.
+
+
+LaTeX Warning: Citation 'Lord80' on page 24 undefined on input line 410.
+
+[24] [25]
+
+LaTeX Warning: Citation 'VDL2005' on page 26 undefined on input line 466.
+
+[26]
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on input line 503.
 
-[27] [28] [29] [30]) [31]
+[27]
+
+LaTeX Warning: Citation 'VDL2005' on page 28 undefined on input line 567.
+
+[28]
+
+LaTeX Warning: Citation 'fisher1981lagrangian' on page 29 undefined on input li
+ne 570.
+
+[29] [30]) [31]
 \openout2 = `Chapters/Julia.aux'.
 
  (Chapters/Julia.tex [32
@@ -1852,150 +1970,245 @@ Package amsmath Warning: Foreign command \atopwithdelims;
 
 ]
 Chapter 3.
+
+LaTeX Warning: Citation 'fox2006fixed' on page 33 undefined on input line 4.
+
+
+LaTeX Warning: Citation 'von2010stochastic' on page 33 undefined on input line 
+4.
+
+
+LaTeX Warning: Citation 'BockMislevy1982' on page 33 undefined on input line 6.
+
+
+
+LaTeX Warning: Citation 'lord1968statistical' on page 33 undefined on input lin
+e 6.
+
+
+LaTeX Warning: Citation 'drasgow1989evaluation' on page 33 undefined on input l
+ine 6.
+
+
+LaTeX Warning: Citation 'fox2003stochastic' on page 33 undefined on input line 
+6.
+
+
+LaTeX Warning: Citation 'matteucci2012prior' on page 33 undefined on input line
+ 6.
+
 1: section
 [33]
 
-LaTeX Warning: Reference `sec:sem_calbs' on page 34 undefined on input line 14.
+LaTeX Warning: Citation 'andersen1977sufficient' on page 34 undefined on input 
+line 8.
 
+
+LaTeX Warning: Citation 'neyman1948consistent' on page 34 undefined on input li
+ne 8.
+
+
+LaTeX Warning: Citation 'patz1999applications' on page 34 undefined on input li
+ne 8.
+
+
+LaTeX Warning: Citation 'birkhoff1960smooth' on page 34 undefined on input line
+ 10.
+
+
+LaTeX Warning: Citation 'bock1981marginal' on page 34 undefined on input line 1
+7.
 
 [34] [35] [36]
-Overfull \hbox (1.59134pt too wide) in paragraph at lines 60--61
+Overfull \hbox (1.59134pt too wide) in paragraph at lines 58--59
 []\T1/lmr/m/n/12 To sim-plify the no-ta-tion we will write $\OT1/lmr/m/it/12 L[
 ]\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 X[]; []\OT1/lmr/m/n/12 )$ \T1/lmr/m/n/12 in 
 place of $[] []$
  []
 
-[37] [38]
+
+LaTeX Warning: Citation 'mislevy1984estimating' on page 37 undefined on input l
+ine 77.
+
+[37]
+
+LaTeX Warning: Citation 'woods2007' on page 38 undefined on input line 97.
+
+
+LaTeX Warning: Citation 'de1978practical' on page 38 undefined on input line 99
+.
+
+
+LaTeX Warning: Citation 'meijering2002chronology' on page 38 undefined on input
+ line 99.
+
+
+Overfull \hbox (21.26448pt too wide) in paragraph at lines 99--101
+\T1/lmr/m/n/12 add ap-plied to cal-i-bra-tion prob-lems by us-ing the \T1/lmtt/
+m/n/12 Julia \T1/lmr/m/n/12 pack-age \T1/lmtt/m/n/12 Interpolations.jl[][][][][
+]\T1/lmr/m/n/12 .
+ []
+
+[38]
+
+LaTeX Warning: Citation 'BockMislevy1982' on page 39 undefined on input line 10
+7.
+
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 127.
- [39] [40]
+put line 125.
+
+LaTeX Warning: Citation 'tsutakawa1990effect' on page 39 undefined on input lin
+e 146.
+
+
+LaTeX Warning: Citation 'veldkamp2013application' on page 39 undefined on input
+ line 146.
+
+[39]
+
+LaTeX Warning: Citation 'efron1993' on page 40 undefined on input line 148.
+
+
+LaTeX Warning: Citation 'bock1981marginal' on page 40 undefined on input line 1
+51.
+
+[40]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[41] [42] [43] [44] [45]
-Overfull \hbox (3.82727pt too wide) in paragraph at lines 281--282
+
+LaTeX Warning: Citation 'R' on page 41 undefined on input line 189.
+
+
+LaTeX Warning: Citation 'JSSv048i06' on page 41 undefined on input line 189.
+
+
+LaTeX Warning: Citation 'JSSv017i05' on page 41 undefined on input line 190.
+
+
+LaTeX Warning: Citation 'JSSv076i01' on page 41 undefined on input line 190.
+
+[41]
+
+LaTeX Warning: Citation 'woods2007' on page 42 undefined on input line 194.
+
+[42]
+
+LaTeX Warning: Citation 'glas2005modeling' on page 43 undefined on input line 2
+15.
+
+
+LaTeX Warning: Citation 'glas2005testing' on page 43 undefined on input line 21
+5.
+
+
+LaTeX Warning: Citation 'ban2002data' on page 43 undefined on input line 215.
+
+[43] [44] [45]
+Overfull \hbox (3.82727pt too wide) in paragraph at lines 279--280
 \T1/lmr/m/n/12 de-fault set-tings (\T1/lmr/m/it/12 mirt\T1/lmr/m/n/12 ) and \T1
 /lmtt/m/n/12 mirt \T1/lmr/m/n/12 with the Woods' em-pir-i-cal his-togram (\T1/l
 mr/m/it/12 mirtEHW\T1/lmr/m/n/12 ). 
  []
 
-
-LaTeX Warning: Reference `fig:bpRMSE1a' on page 46 undefined on input line 283.
-
-
 [46]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 296.
+(Font)              <10.95> on input line 294.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Figures/1/RMSEscatter.pdf, id=882, 630.40315pt x 652.69046pt>
+<Figures/1/RMSEscatter.pdf, id=796, 630.40315pt x 652.69046pt>
 File: Figures/1/RMSEscatter.pdf Graphic file (type pdf)
 <use Figures/1/RMSEscatter.pdf>
-Package pdftex.def Info: Figures/1/RMSEscatter.pdf  used on input line 340.
+Package pdftex.def Info: Figures/1/RMSEscatter.pdf  used on input line 338.
 (pdftex.def)             Requested size: 412.56499pt x 427.16182pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Figures/1/BIASscatter.pdf, id=883, 643.47298pt x 652.69046pt>
+<Figures/1/BIASscatter.pdf, id=797, 643.47298pt x 652.69046pt>
 File: Figures/1/BIASscatter.pdf Graphic file (type pdf)
 <use Figures/1/BIASscatter.pdf>
-Package pdftex.def Info: Figures/1/BIASscatter.pdf  used on input line 347.
+Package pdftex.def Info: Figures/1/BIASscatter.pdf  used on input line 345.
 (pdftex.def)             Requested size: 412.56499pt x 418.4674pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Figures/1a/RMSE_b.pdf, id=884, 196.80325pt x 412.32845pt>
+<Figures/1a/RMSE_b.pdf, id=798, 196.80325pt x 412.32845pt>
 File: Figures/1a/RMSE_b.pdf Graphic file (type pdf)
 <use Figures/1a/RMSE_b.pdf>
-Package pdftex.def Info: Figures/1a/RMSE_b.pdf  used on input line 354.
+Package pdftex.def Info: Figures/1a/RMSE_b.pdf  used on input line 352.
 (pdftex.def)             Requested size: 123.77348pt x 271.0177pt.
-<Figures/1a/RMSE_a.pdf, id=885, 196.80325pt x 409.44067pt>
+<Figures/1a/RMSE_a.pdf, id=799, 196.80325pt x 409.44067pt>
 File: Figures/1a/RMSE_a.pdf Graphic file (type pdf)
 <use Figures/1a/RMSE_a.pdf>
-Package pdftex.def Info: Figures/1a/RMSE_a.pdf  used on input line 354.
+Package pdftex.def Info: Figures/1a/RMSE_a.pdf  used on input line 352.
 (pdftex.def)             Requested size: 123.77348pt x 271.01262pt.
-<Figures/1a/RMSE_t.pdf, id=886, 191.80359pt x 412.32947pt>
+<Figures/1a/RMSE_t.pdf, id=800, 191.80359pt x 412.32947pt>
 File: Figures/1a/RMSE_t.pdf Graphic file (type pdf)
 <use Figures/1a/RMSE_t.pdf>
-Package pdftex.def Info: Figures/1a/RMSE_t.pdf  used on input line 354.
+Package pdftex.def Info: Figures/1a/RMSE_t.pdf  used on input line 352.
 (pdftex.def)             Requested size: 123.77235pt x 271.01837pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Figures/1a/BIAS_b2.pdf, id=887, 209.581pt x 412.3385pt>
+<Figures/1a/BIAS_b2.pdf, id=801, 209.581pt x 412.3385pt>
 File: Figures/1a/BIAS_b2.pdf Graphic file (type pdf)
 <use Figures/1a/BIAS_b2.pdf>
-Package pdftex.def Info: Figures/1a/BIAS_b2.pdf  used on input line 360.
+Package pdftex.def Info: Figures/1a/BIAS_b2.pdf  used on input line 358.
 (pdftex.def)             Requested size: 123.77003pt x 271.0243pt.
-<Figures/1a/BIAS_a.pdf, id=888, 209.581pt x 409.45372pt>
+<Figures/1a/BIAS_a.pdf, id=802, 209.581pt x 409.45372pt>
 File: Figures/1a/BIAS_a.pdf Graphic file (type pdf)
 <use Figures/1a/BIAS_a.pdf>
-Package pdftex.def Info: Figures/1a/BIAS_a.pdf  used on input line 360.
+Package pdftex.def Info: Figures/1a/BIAS_a.pdf  used on input line 358.
 (pdftex.def)             Requested size: 123.77003pt x 271.02126pt.
-<Figures/1a/BIAS_t.pdf, id=889, 199.58064pt x 412.32646pt>
+<Figures/1a/BIAS_t.pdf, id=803, 199.58064pt x 412.32646pt>
 File: Figures/1a/BIAS_t.pdf Graphic file (type pdf)
 <use Figures/1a/BIAS_t.pdf>
-Package pdftex.def Info: Figures/1a/BIAS_t.pdf  used on input line 360.
+Package pdftex.def Info: Figures/1a/BIAS_t.pdf  used on input line 358.
 (pdftex.def)             Requested size: 123.76917pt x 271.0164pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Figures/1a/W.pdf, id=890, 415.30257pt x 266.87904pt>
+<Figures/1a/W.pdf, id=804, 415.29353pt x 269.6755pt>
 File: Figures/1a/W.pdf Graphic file (type pdf)
 <use Figures/1a/W.pdf>
-Package pdftex.def Info: Figures/1a/W.pdf  used on input line 369.
-(pdftex.def)             Requested size: 206.28249pt x 132.55957pt.
-<Figures/1b/W.pdf, id=891, 420.768pt x 274.86188pt>
+Package pdftex.def Info: Figures/1a/W.pdf  used on input line 367.
+(pdftex.def)             Requested size: 206.28249pt x 133.9527pt.
+<Figures/1b/W.pdf, id=805, 415.29353pt x 269.66946pt>
 File: Figures/1b/W.pdf Graphic file (type pdf)
 <use Figures/1b/W.pdf>
-Package pdftex.def Info: Figures/1b/W.pdf  used on input line 369.
-(pdftex.def)             Requested size: 206.28249pt x 134.7506pt.
-
-LaTeX Warning: File `Figures/1c/W.pdf' not found on input line 369.
-
-
-! Package pdftex.def Error: File `Figures/1c/W.pdf' not found: using draft sett
-ing.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.369 ...cs[width=.50\textwidth]{Figures/1c/W.pdf}
-                                                   &		\includegraphics[width...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-<Figures/2a/W.pdf, id=892, 415.30257pt x 266.87102pt>
+Package pdftex.def Info: Figures/1b/W.pdf  used on input line 367.
+(pdftex.def)             Requested size: 206.28249pt x 133.9497pt.
+<Figures/1c/W.pdf, id=806, 415.29353pt x 269.66246pt>
+File: Figures/1c/W.pdf Graphic file (type pdf)
+<use Figures/1c/W.pdf>
+Package pdftex.def Info: Figures/1c/W.pdf  used on input line 367.
+(pdftex.def)             Requested size: 206.28249pt x 133.94623pt.
+<Figures/2a/W.pdf, id=807, 415.29353pt x 269.66647pt>
 File: Figures/2a/W.pdf Graphic file (type pdf)
 <use Figures/2a/W.pdf>
-Package pdftex.def Info: Figures/2a/W.pdf  used on input line 369.
-(pdftex.def)             Requested size: 206.28249pt x 132.5556pt.
-<Figures/2b/W.pdf, id=893, 415.30257pt x 266.87102pt>
+Package pdftex.def Info: Figures/2a/W.pdf  used on input line 367.
+(pdftex.def)             Requested size: 206.28249pt x 133.94821pt.
+<Figures/2b/W.pdf, id=808, 415.29353pt x 269.66748pt>
 File: Figures/2b/W.pdf Graphic file (type pdf)
 <use Figures/2b/W.pdf>
-Package pdftex.def Info: Figures/2b/W.pdf  used on input line 370.
-(pdftex.def)             Requested size: 206.28249pt x 132.5556pt.
-<Figures/3/W.pdf, id=894, 415.30257pt x 266.87807pt>
+Package pdftex.def Info: Figures/2b/W.pdf  used on input line 368.
+(pdftex.def)             Requested size: 206.28249pt x 133.94872pt.
+<Figures/3/W.pdf, id=809, 415.29353pt x 269.67348pt>
 File: Figures/3/W.pdf Graphic file (type pdf)
 <use Figures/3/W.pdf>
-Package pdftex.def Info: Figures/3/W.pdf  used on input line 371.
-(pdftex.def)             Requested size: 206.28249pt x 132.55908pt.
-<Figures/4/W.pdf, id=895, 415.30257pt x 266.86903pt>
+Package pdftex.def Info: Figures/3/W.pdf  used on input line 369.
+(pdftex.def)             Requested size: 206.28249pt x 133.95169pt.
+<Figures/4/W.pdf, id=810, 415.29353pt x 269.66545pt>
 File: Figures/4/W.pdf Graphic file (type pdf)
 <use Figures/4/W.pdf>
-Package pdftex.def Info: Figures/4/W.pdf  used on input line 372.
-(pdftex.def)             Requested size: 206.28249pt x 132.55461pt.
+Package pdftex.def Info: Figures/4/W.pdf  used on input line 370.
+(pdftex.def)             Requested size: 206.28249pt x 133.94771pt.
 
-Overfull \hbox (24.00002pt too wide) in paragraph at lines 368--375
+Overfull \hbox (24.00002pt too wide) in paragraph at lines 366--373
  [][] 
  []
-
-
-LaTeX Warning: Float too large for page by 33.73097pt on input line 378.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -2003,39 +2216,194 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [47] [48]) [49] [50 <./Figures/1/RMSEscatter.pdf>] [51 <./Figures/1/BIASscatter
 .pdf>] [52 <./Figures/1a/RMSE_b.pdf> <./Figures/1a/RMSE_a.pdf> <./Figures/1a/RM
 SE_t.pdf> <./Figures/1a/BIAS_b2.pdf> <./Figures/1a/BIAS_a.pdf> <./Figures/1a/BI
-AS_t.pdf>] [53 <./Figures/1a/W.pdf> <./Figures/1b/W.pdf> <./Figures/2a/W.pdf> <
-./Figures/2b/W.pdf> <./Figures/3/W.pdf> <./Figures/4/W.pdf>]
+AS_t.pdf>] [53 <./Figures/1a/W.pdf> <./Figures/1b/W.pdf> <./Figures/1c/W.pdf> <
+./Figures/2a/W.pdf> <./Figures/2b/W.pdf> <./Figures/3/W.pdf> <./Figures/4/W.pdf
+>]
 \openout2 = `Chapters/CCTestAssembly.aux'.
 
-
-(Chapters/CCTestAssembly.tex [54
+ (Chapters/CCTestAssembly.tex [54
 
 
 
 ]
 Chapter 4.
 
-Overfull \hbox (0.62494pt too wide) in paragraph at lines 3--3
+Overfull \hbox (0.62494pt too wide) in paragraph at lines 1--1
 |[]\T1/lmr/bx/n/24.88 Chance-constrained test as-sem-
  []
 
+
+LaTeX Warning: Citation 'charnes1963deterministic' on page 55 undefined on inpu
+t line 15.
+
+
+LaTeX Warning: Citation 'krokhmal2002portfolio' on page 55 undefined on input l
+ine 15.
+
 1: section
 [55]
-Underfull \hbox (badness 5147) in paragraph at lines 13--13
-[][][][][]$\T1/lmtt/m/n/10 http : \github . com \ giadasp \ CCATA$[][]\T1/lmr/m
-/n/10 , avail-able in pri-vate ver-sion, ask to [][]$\T1/lmtt/m/n/10 giada .
+
+LaTeX Warning: Citation 'goffe1996simann' on page 56 undefined on input line 21
+.
+
+
+LaTeX Warning: Citation 'rockafellar2000optimization' on page 56 undefined on i
+nput line 34.
+
+
+LaTeX Warning: Citation 'rockafellar2001uryasev' on page 56 undefined on input 
+line 34.
+
+
+LaTeX Warning: Citation 'chen1973quadratic' on page 56 undefined on input line 
+34.
+
+
+LaTeX Warning: Citation 'freund1956introduction' on page 56 undefined on input 
+line 34.
+
+
+LaTeX Warning: Citation 'scott1972practical' on page 56 undefined on input line
+ 34.
+
+
+LaTeX Warning: Citation 'Charnes1959' on page 56 undefined on input line 34.
+
+
+Overfull \hbox (27.90996pt too wide) in paragraph at lines 34--35
+\T1/lmr/m/n/12 are ran-dom vari-ables (see []; []),
  []
 
-[56] [57] [58] [59] [60] [61] [62] [63] [64] [65] [66] [67] [68]
-Overfull \hbox (2.89421pt too wide) in paragraph at lines 221--234
+
+Overfull \hbox (85.41907pt too wide) in paragraph at lines 34--35
+\T1/lmr/m/n/12 fol-lowed the ex-pected mean-variance ap-proach ([]; [];
+ []
+
+[56]
+
+LaTeX Warning: Citation 'krokhmal2002portfolio' on page 57 undefined on input l
+ine 54.
+
+[57]
+
+LaTeX Warning: Citation 'Nemirovski' on page 58 undefined on input line 56.
+
+
+LaTeX Warning: Citation 'Ahmed2008' on page 58 undefined on input line 56.
+
+
+LaTeX Warning: Citation 'Kataria' on page 58 undefined on input line 56.
+
+
+LaTeX Warning: Citation 'margellos2014road' on page 58 undefined on input line 
+58.
+
+
+LaTeX Warning: Citation 'wang2011chance' on page 58 undefined on input line 58.
+
+
+
+LaTeX Warning: Citation 'tarim2006' on page 58 undefined on input line 58.
+
+
+LaTeX Warning: Citation 'vehvi2003' on page 58 undefined on input line 58.
+
+
+LaTeX Warning: Citation 'mcneil2005' on page 58 undefined on input line 58.
+
+[58]
+
+LaTeX Warning: Citation 'VDL2005' on page 59 undefined on input line 64.
+
+
+LaTeX Warning: Citation 'veldkamp2013application' on page 59 undefined on input
+ line 64.
+
+
+LaTeX Warning: Citation 'veldkamp2013uncertainties' on page 59 undefined on inp
+ut line 64.
+
+
+LaTeX Warning: Citation 'bertsimas2003robust' on page 59 undefined on input lin
+e 64.
+
+[59]
+
+LaTeX Warning: Citation 'veldkamp2013application' on page 60 undefined on input
+ line 74.
+
+
+LaTeX Warning: Citation 'veldkamp2013uncertainties' on page 60 undefined on inp
+ut line 74.
+
+
+LaTeX Warning: Citation 'kim1990deterministic' on page 60 undefined on input li
+ne 76.
+
+
+LaTeX Warning: Citation 'Ahmed2008' on page 60 undefined on input line 76.
+
+
+LaTeX Warning: Citation 'veldkamp2013application' on page 60 undefined on input
+ line 79.
+
+
+LaTeX Warning: Citation 'efron1993' on page 60 undefined on input line 79.
+
+[60]
+
+LaTeX Warning: Citation 'VDL2005' on page 61 undefined on input line 83.
+
+
+LaTeX Warning: Citation 'veldkamp2013uncertainties' on page 61 undefined on inp
+ut line 84.
+
+
+LaTeX Warning: Citation 'veldkamp2013application' on page 61 undefined on input
+ line 84.
+
+
+LaTeX Warning: Citation 'Yang2012' on page 61 undefined on input line 84.
+
+
+LaTeX Warning: Citation 'matteucci2012prior' on page 61 undefined on input line
+ 86.
+
+
+LaTeX Warning: Citation 'efron1993' on page 61 undefined on input line 86.
+
+[61] [62]
+
+LaTeX Warning: Citation 'rockafellar2000optimization' on page 63 undefined on i
+nput line 122.
+
+
+LaTeX Warning: Citation 'rockafellar2001uryasev' on page 63 undefined on input 
+line 122.
+
+[63]
+
+LaTeX Warning: Citation 'belisle1992' on page 64 undefined on input line 140.
+
+[64]
+
+LaTeX Warning: Citation 'Stocking1993' on page 65 undefined on input line 156.
+
+[65] [66] [67]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (2.89421pt too wide) in paragraph at lines 240--253
 [][]
  []
 
 
-Overfull \hbox (2.89421pt too wide) in paragraph at lines 235--247
+Overfull \hbox (2.89421pt too wide) in paragraph at lines 254--266
 [][] 
  []
 
+[68]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -2049,18 +2417,12 @@ Overfull \hbox (16.16354pt too wide) in paragraph at lines 1--1
 |[]\T1/lmr/bx/n/24.88 Conclusions and fur-ther re-search| 
  []
 
-
-LaTeX Warning: Reference `ch:Julia' on page 71 undefined on input line 5.
-
 1: section
 [71
 
 
 
 ]) [72]
-\openout2 = `Appendices/AppendixA.aux'.
-
- (Appendices/AppendixA.tex)
 \openout2 = `Appendices/TablesAndFigures.aux'.
 
  (Appendices/TablesAndFigures.tex
@@ -2070,260 +2432,295 @@ Overfull \hbox (76.37985pt too wide) in paragraph at lines 8--18
  [][] 
  []
 
-<Figures/itemsxtests.png, id=1289, 965.85844pt x 3465.57234pt>
+<Figures/itemsxtests.png, id=1170, 965.85844pt x 3465.57234pt>
 File: Figures/itemsxtests.png Graphic file (type png)
 <use Figures/itemsxtests.png>
 Package pdftex.def Info: Figures/itemsxtests.png  used on input line 24.
 (pdftex.def)             Requested size: 142.26378pt x 510.45361pt.
-<Figures/testsxexaminees.png, id=1291, 1796.96344pt x 967.74046pt>
+<Figures/testsxexaminees.png, id=1172, 1796.96344pt x 967.74046pt>
 File: Figures/testsxexaminees.png Graphic file (type png)
 <use Figures/testsxexaminees.png>
 Package pdftex.def Info: Figures/testsxexaminees.png  used on input line 30.
 (pdftex.def)             Requested size: 284.52756pt x 153.21732pt.
-<Figures/itemsxexaminees.png, id=1292, 1796.96344pt x 3465.57234pt>
+<Figures/itemsxexaminees.png, id=1173, 1796.96344pt x 3465.57234pt>
 File: Figures/itemsxexaminees.png Graphic file (type png)
 <use Figures/itemsxexaminees.png>
 Package pdftex.def Info: Figures/itemsxexaminees.png  used on input line 36.
 (pdftex.def)             Requested size: 284.52756pt x 548.68608pt.
-<Figures/1b/RMSE_b.pdf, id=1293, 196.80325pt x 412.32744pt>
+File: Figures/1a/RMSE_b.pdf Graphic file (type pdf)
+<use Figures/1a/RMSE_b.pdf>
+Package pdftex.def Info: Figures/1a/RMSE_b.pdf  used on input line 375.
+(pdftex.def)             Requested size: 123.77075pt x 259.3216pt.
+File: Figures/1a/RMSE_a.pdf Graphic file (type pdf)
+<use Figures/1a/RMSE_a.pdf>
+Package pdftex.def Info: Figures/1a/RMSE_a.pdf  used on input line 375.
+(pdftex.def)             Requested size: 123.77075pt x 257.5054pt.
+File: Figures/1a/RMSE_t.pdf Graphic file (type pdf)
+<use Figures/1a/RMSE_t.pdf>
+Package pdftex.def Info: Figures/1a/RMSE_t.pdf  used on input line 375.
+(pdftex.def)             Requested size: 123.77075pt x 266.07944pt.
+<Figures/1a/BIAS_b.pdf, id=1174, 204.58131pt x 412.32845pt>
+File: Figures/1a/BIAS_b.pdf Graphic file (type pdf)
+<use Figures/1a/BIAS_b.pdf>
+Package pdftex.def Info: Figures/1a/BIAS_b.pdf  used on input line 382.
+(pdftex.def)             Requested size: 123.77075pt x 249.45633pt.
+File: Figures/1a/BIAS_a.pdf Graphic file (type pdf)
+<use Figures/1a/BIAS_a.pdf>
+Package pdftex.def Info: Figures/1a/BIAS_a.pdf  used on input line 382.
+(pdftex.def)             Requested size: 123.77075pt x 241.80676pt.
+File: Figures/1a/BIAS_t.pdf Graphic file (type pdf)
+<use Figures/1a/BIAS_t.pdf>
+Package pdftex.def Info: Figures/1a/BIAS_t.pdf  used on input line 382.
+(pdftex.def)             Requested size: 123.77075pt x 255.70268pt.
+<Figures/1a/RMSEscatter.pdf, id=1175, 630.42024pt x 655.64044pt>
+File: Figures/1a/RMSEscatter.pdf Graphic file (type pdf)
+<use Figures/1a/RMSEscatter.pdf>
+Package pdftex.def Info: Figures/1a/RMSEscatter.pdf  used on input line 390.
+(pdftex.def)             Requested size: 412.56499pt x 429.07248pt.
+<Figures/1a/BIASscatter.pdf, id=1176, 638.19833pt x 655.63646pt>
+File: Figures/1a/BIASscatter.pdf Graphic file (type pdf)
+<use Figures/1a/BIASscatter.pdf>
+Package pdftex.def Info: Figures/1a/BIASscatter.pdf  used on input line 397.
+(pdftex.def)             Requested size: 412.56499pt x 423.83768pt.
+<Figures/1b/RMSE_b.pdf, id=1177, 196.80325pt x 412.32845pt>
 File: Figures/1b/RMSE_b.pdf Graphic file (type pdf)
 <use Figures/1b/RMSE_b.pdf>
-Package pdftex.def Info: Figures/1b/RMSE_b.pdf  used on input line 375.
-(pdftex.def)             Requested size: 123.77075pt x 259.32094pt.
-<Figures/1b/RMSE_a.pdf, id=1294, 191.80359pt x 409.44067pt>
+Package pdftex.def Info: Figures/1b/RMSE_b.pdf  used on input line 404.
+(pdftex.def)             Requested size: 123.77075pt x 259.3216pt.
+<Figures/1b/RMSE_a.pdf, id=1178, 191.80359pt x 409.44267pt>
 File: Figures/1b/RMSE_a.pdf Graphic file (type pdf)
 <use Figures/1b/RMSE_a.pdf>
-Package pdftex.def Info: Figures/1b/RMSE_a.pdf  used on input line 375.
-(pdftex.def)             Requested size: 123.77075pt x 264.21527pt.
-<Figures/1b/RMSE_t.pdf, id=1295, 191.80359pt x 413.6504pt>
+Package pdftex.def Info: Figures/1b/RMSE_a.pdf  used on input line 404.
+(pdftex.def)             Requested size: 123.77075pt x 264.21657pt.
+<Figures/1b/RMSE_t.pdf, id=1179, 191.80359pt x 414.88301pt>
 File: Figures/1b/RMSE_t.pdf Graphic file (type pdf)
 <use Figures/1b/RMSE_t.pdf>
-Package pdftex.def Info: Figures/1b/RMSE_t.pdf  used on input line 375.
-(pdftex.def)             Requested size: 123.77075pt x 266.93185pt.
-<Figures/1b/BIAS_b.pdf, id=1296, 199.58064pt x 412.32245pt>
+Package pdftex.def Info: Figures/1b/RMSE_t.pdf  used on input line 404.
+(pdftex.def)             Requested size: 123.77075pt x 267.72726pt.
+<Figures/1b/BIAS_b.pdf, id=1180, 199.58064pt x 412.33145pt>
 File: Figures/1b/BIAS_b.pdf Graphic file (type pdf)
 <use Figures/1b/BIAS_b.pdf>
-Package pdftex.def Info: Figures/1b/BIAS_b.pdf  used on input line 382.
-(pdftex.def)             Requested size: 123.77075pt x 255.7002pt.
-<Figures/1b/BIAS_a.pdf, id=1297, 199.58064pt x 414.0258pt>
+Package pdftex.def Info: Figures/1b/BIAS_b.pdf  used on input line 411.
+(pdftex.def)             Requested size: 123.77075pt x 255.70576pt.
+<Figures/1b/BIAS_a.pdf, id=1181, 191.80359pt x 409.44368pt>
 File: Figures/1b/BIAS_a.pdf Graphic file (type pdf)
 <use Figures/1b/BIAS_a.pdf>
-Package pdftex.def Info: Figures/1b/BIAS_a.pdf  used on input line 382.
-(pdftex.def)             Requested size: 123.77075pt x 256.75652pt.
-<Figures/1b/BIAS_t.pdf, id=1298, 204.58131pt x 412.3385pt>
+Package pdftex.def Info: Figures/1b/BIAS_a.pdf  used on input line 411.
+(pdftex.def)             Requested size: 123.77075pt x 264.21722pt.
+<Figures/1b/BIAS_t.pdf, id=1182, 204.58131pt x 412.33246pt>
 File: Figures/1b/BIAS_t.pdf Graphic file (type pdf)
 <use Figures/1b/BIAS_t.pdf>
-Package pdftex.def Info: Figures/1b/BIAS_t.pdf  used on input line 382.
-(pdftex.def)             Requested size: 123.77075pt x 249.46242pt.
-<Figures/1b/RMSEscatter.pdf, id=1299, 625.42662pt x 652.68942pt>
+Package pdftex.def Info: Figures/1b/BIAS_t.pdf  used on input line 411.
+(pdftex.def)             Requested size: 123.77075pt x 249.45876pt.
+<Figures/1b/RMSEscatter.pdf, id=1183, 625.41853pt x 652.69046pt>
 File: Figures/1b/RMSEscatter.pdf Graphic file (type pdf)
 <use Figures/1b/RMSEscatter.pdf>
-Package pdftex.def Info: Figures/1b/RMSEscatter.pdf  used on input line 390.
-(pdftex.def)             Requested size: 412.56499pt x 430.55725pt.
-<Figures/1b/BIASscatter.pdf, id=1300, 633.19759pt x 652.69247pt>
+Package pdftex.def Info: Figures/1b/RMSEscatter.pdf  used on input line 419.
+(pdftex.def)             Requested size: 412.56499pt x 430.55792pt.
+<Figures/1b/BIASscatter.pdf, id=1184, 633.20868pt x 652.69247pt>
 File: Figures/1b/BIASscatter.pdf Graphic file (type pdf)
 <use Figures/1b/BIASscatter.pdf>
-Package pdftex.def Info: Figures/1b/BIASscatter.pdf  used on input line 397.
+Package pdftex.def Info: Figures/1b/BIASscatter.pdf  used on input line 426.
 (pdftex.def)             Requested size: 412.56499pt x 425.27089pt.
-<Figures/1c/RMSE_b.pdf, id=1301, 196.80325pt x 412.32947pt>
+<Figures/1c/RMSE_b.pdf, id=1185, 196.80325pt x 412.33047pt>
 File: Figures/1c/RMSE_b.pdf Graphic file (type pdf)
 <use Figures/1c/RMSE_b.pdf>
-Package pdftex.def Info: Figures/1c/RMSE_b.pdf  used on input line 405.
-(pdftex.def)             Requested size: 123.77075pt x 259.32224pt.
-<Figures/1c/RMSE_a.pdf, id=1302, 201.80293pt x 409.44067pt>
+Package pdftex.def Info: Figures/1c/RMSE_b.pdf  used on input line 434.
+(pdftex.def)             Requested size: 123.77075pt x 259.32286pt.
+<Figures/1c/RMSE_a.pdf, id=1186, 201.80293pt x 409.44067pt>
 File: Figures/1c/RMSE_a.pdf Graphic file (type pdf)
 <use Figures/1c/RMSE_a.pdf>
-Package pdftex.def Info: Figures/1c/RMSE_a.pdf  used on input line 405.
+Package pdftex.def Info: Figures/1c/RMSE_a.pdf  used on input line 434.
 (pdftex.def)             Requested size: 123.77075pt x 251.12665pt.
-<Figures/1c/RMSE_t.pdf, id=1303, 191.80359pt x 412.32744pt>
+<Figures/1c/RMSE_t.pdf, id=1187, 196.80325pt x 412.32845pt>
 File: Figures/1c/RMSE_t.pdf Graphic file (type pdf)
 <use Figures/1c/RMSE_t.pdf>
-Package pdftex.def Info: Figures/1c/RMSE_t.pdf  used on input line 405.
-(pdftex.def)             Requested size: 123.77075pt x 266.07813pt.
-<Figures/1c/BIAS_b.pdf, id=1304, 204.58131pt x 412.32443pt>
+Package pdftex.def Info: Figures/1c/RMSE_t.pdf  used on input line 434.
+(pdftex.def)             Requested size: 123.77075pt x 259.3216pt.
+<Figures/1c/BIAS_b.pdf, id=1188, 204.58131pt x 412.32744pt>
 File: Figures/1c/BIAS_b.pdf Graphic file (type pdf)
 <use Figures/1c/BIAS_b.pdf>
-Package pdftex.def Info: Figures/1c/BIAS_b.pdf  used on input line 414.
-(pdftex.def)             Requested size: 123.77075pt x 249.4539pt.
-<Figures/1c/BIAS_a.pdf, id=1305, 209.581pt x 409.43362pt>
+Package pdftex.def Info: Figures/1c/BIAS_b.pdf  used on input line 443.
+(pdftex.def)             Requested size: 123.77075pt x 249.45572pt.
+<Figures/1c/BIAS_a.pdf, id=1189, 209.581pt x 409.44267pt>
 File: Figures/1c/BIAS_a.pdf Graphic file (type pdf)
 <use Figures/1c/BIAS_a.pdf>
-Package pdftex.def Info: Figures/1c/BIAS_a.pdf  used on input line 414.
-(pdftex.def)             Requested size: 123.77075pt x 241.79489pt.
-<Figures/1c/BIAS_t.pdf, id=1306, 204.58131pt x 412.32845pt>
+Package pdftex.def Info: Figures/1c/BIAS_a.pdf  used on input line 443.
+(pdftex.def)             Requested size: 123.77075pt x 241.80023pt.
+<Figures/1c/BIAS_t.pdf, id=1190, 199.58064pt x 412.33047pt>
 File: Figures/1c/BIAS_t.pdf Graphic file (type pdf)
 <use Figures/1c/BIAS_t.pdf>
-Package pdftex.def Info: Figures/1c/BIAS_t.pdf  used on input line 414.
-(pdftex.def)             Requested size: 123.77075pt x 249.45633pt.
-<Figures/1c/RMSEscatter.pdf, id=1307, 630.42325pt x 655.63947pt>
+Package pdftex.def Info: Figures/1c/BIAS_t.pdf  used on input line 443.
+(pdftex.def)             Requested size: 123.77075pt x 255.70517pt.
+<Figures/1c/RMSEscatter.pdf, id=1191, 637.82388pt x 652.69046pt>
 File: Figures/1c/RMSEscatter.pdf Graphic file (type pdf)
 <use Figures/1c/RMSEscatter.pdf>
-Package pdftex.def Info: Figures/1c/RMSEscatter.pdf  used on input line 422.
-(pdftex.def)             Requested size: 412.56499pt x 429.07184pt.
-<Figures/1c/BIASscatter.pdf, id=1308, 643.20703pt x 655.64651pt>
+Package pdftex.def Info: Figures/1c/RMSEscatter.pdf  used on input line 451.
+(pdftex.def)             Requested size: 412.56499pt x 422.1822pt.
+<Figures/1c/BIASscatter.pdf, id=1192, 645.65717pt x 652.69946pt>
 File: Figures/1c/BIASscatter.pdf Graphic file (type pdf)
 <use Figures/1c/BIASscatter.pdf>
-Package pdftex.def Info: Figures/1c/BIASscatter.pdf  used on input line 429.
-(pdftex.def)             Requested size: 412.56499pt x 420.55275pt.
-<Figures/2a/RMSE_b.pdf, id=1309, 196.80325pt x 412.32845pt>
+Package pdftex.def Info: Figures/1c/BIASscatter.pdf  used on input line 458.
+(pdftex.def)             Requested size: 412.56499pt x 417.07887pt.
+<Figures/2a/RMSE_b.pdf, id=1193, 196.80325pt x 412.32845pt>
 File: Figures/2a/RMSE_b.pdf Graphic file (type pdf)
 <use Figures/2a/RMSE_b.pdf>
-Package pdftex.def Info: Figures/2a/RMSE_b.pdf  used on input line 437.
+Package pdftex.def Info: Figures/2a/RMSE_b.pdf  used on input line 466.
 (pdftex.def)             Requested size: 123.77075pt x 259.3216pt.
-<Figures/2a/RMSE_a.pdf, id=1310, 191.80359pt x 409.43764pt>
+<Figures/2a/RMSE_a.pdf, id=1194, 191.80359pt x 409.43764pt>
 File: Figures/2a/RMSE_a.pdf Graphic file (type pdf)
 <use Figures/2a/RMSE_a.pdf>
-Package pdftex.def Info: Figures/2a/RMSE_a.pdf  used on input line 437.
+Package pdftex.def Info: Figures/2a/RMSE_a.pdf  used on input line 466.
 (pdftex.def)             Requested size: 123.77075pt x 264.21332pt.
-<Figures/2a/RMSE_t.pdf, id=1311, 184.02551pt x 412.33047pt>
+<Figures/2a/RMSE_t.pdf, id=1195, 184.02551pt x 412.33047pt>
 File: Figures/2a/RMSE_t.pdf Graphic file (type pdf)
 <use Figures/2a/RMSE_t.pdf>
-Package pdftex.def Info: Figures/2a/RMSE_t.pdf  used on input line 437.
+Package pdftex.def Info: Figures/2a/RMSE_t.pdf  used on input line 466.
 (pdftex.def)             Requested size: 123.77075pt x 277.32327pt.
-<Figures/2a/BIAS_b.pdf, id=1312, 204.58131pt x 412.32845pt>
+<Figures/2a/BIAS_b.pdf, id=1196, 204.58131pt x 412.32845pt>
 File: Figures/2a/BIAS_b.pdf Graphic file (type pdf)
 <use Figures/2a/BIAS_b.pdf>
-Package pdftex.def Info: Figures/2a/BIAS_b.pdf  used on input line 445.
+Package pdftex.def Info: Figures/2a/BIAS_b.pdf  used on input line 474.
 (pdftex.def)             Requested size: 123.77075pt x 249.45633pt.
-<Figures/2a/BIAS_a.pdf, id=1313, 199.58064pt x 409.44267pt>
+<Figures/2a/BIAS_a.pdf, id=1197, 199.58064pt x 409.44267pt>
 File: Figures/2a/BIAS_a.pdf Graphic file (type pdf)
 <use Figures/2a/BIAS_a.pdf>
-Package pdftex.def Info: Figures/2a/BIAS_a.pdf  used on input line 445.
+Package pdftex.def Info: Figures/2a/BIAS_a.pdf  used on input line 474.
 (pdftex.def)             Requested size: 123.77075pt x 253.9143pt.
-<Figures/2a/BIAS_t.pdf, id=1314, 191.80359pt x 412.33246pt>
+<Figures/2a/BIAS_t.pdf, id=1198, 191.80359pt x 412.33246pt>
 File: Figures/2a/BIAS_t.pdf Graphic file (type pdf)
 <use Figures/2a/BIAS_t.pdf>
-Package pdftex.def Info: Figures/2a/BIAS_t.pdf  used on input line 445.
+Package pdftex.def Info: Figures/2a/BIAS_t.pdf  used on input line 474.
 (pdftex.def)             Requested size: 123.77075pt x 266.08136pt.
-<Figures/2a/RMSEscatter.pdf, id=1315, 637.30197pt x 652.69247pt>
+<Figures/2a/RMSEscatter.pdf, id=1199, 637.30197pt x 652.69247pt>
 File: Figures/2a/RMSEscatter.pdf Graphic file (type pdf)
 <use Figures/2a/RMSEscatter.pdf>
-Package pdftex.def Info: Figures/2a/RMSEscatter.pdf  used on input line 453.
+Package pdftex.def Info: Figures/2a/RMSEscatter.pdf  used on input line 482.
 (pdftex.def)             Requested size: 412.56499pt x 422.53209pt.
-<Figures/2a/BIASscatter.pdf, id=1316, 645.08pt x 652.69144pt>
+<Figures/2a/BIASscatter.pdf, id=1200, 645.08pt x 652.69144pt>
 File: Figures/2a/BIASscatter.pdf Graphic file (type pdf)
 <use Figures/2a/BIASscatter.pdf>
-Package pdftex.def Info: Figures/2a/BIASscatter.pdf  used on input line 460.
+Package pdftex.def Info: Figures/2a/BIASscatter.pdf  used on input line 489.
 (pdftex.def)             Requested size: 412.56499pt x 417.44223pt.
-<Figures/2b/RMSE_b.pdf, id=1317, 191.80359pt x 412.33246pt>
+<Figures/2b/RMSE_b.pdf, id=1201, 191.80359pt x 412.33246pt>
 File: Figures/2b/RMSE_b.pdf Graphic file (type pdf)
 <use Figures/2b/RMSE_b.pdf>
-Package pdftex.def Info: Figures/2b/RMSE_b.pdf  used on input line 469.
+Package pdftex.def Info: Figures/2b/RMSE_b.pdf  used on input line 498.
 (pdftex.def)             Requested size: 123.77075pt x 266.08136pt.
-<Figures/2b/RMSE_a.pdf, id=1318, 191.80359pt x 409.44165pt>
+<Figures/2b/RMSE_a.pdf, id=1202, 191.80359pt x 409.44165pt>
 File: Figures/2b/RMSE_a.pdf Graphic file (type pdf)
 <use Figures/2b/RMSE_a.pdf>
-Package pdftex.def Info: Figures/2b/RMSE_a.pdf  used on input line 469.
+Package pdftex.def Info: Figures/2b/RMSE_a.pdf  used on input line 498.
 (pdftex.def)             Requested size: 123.77075pt x 264.21591pt.
-<Figures/2b/RMSE_t.pdf, id=1319, 184.02551pt x 412.33145pt>
+<Figures/2b/RMSE_t.pdf, id=1203, 184.02551pt x 412.33145pt>
 File: Figures/2b/RMSE_t.pdf Graphic file (type pdf)
 <use Figures/2b/RMSE_t.pdf>
-Package pdftex.def Info: Figures/2b/RMSE_t.pdf  used on input line 469.
+Package pdftex.def Info: Figures/2b/RMSE_t.pdf  used on input line 498.
 (pdftex.def)             Requested size: 123.77075pt x 277.32391pt.
-<Figures/2b/BIAS_b.pdf, id=1320, 204.58131pt x 412.33047pt>
+<Figures/2b/BIAS_b.pdf, id=1204, 204.58131pt x 412.33047pt>
 File: Figures/2b/BIAS_b.pdf Graphic file (type pdf)
 <use Figures/2b/BIAS_b.pdf>
-Package pdftex.def Info: Figures/2b/BIAS_b.pdf  used on input line 477.
+Package pdftex.def Info: Figures/2b/BIAS_b.pdf  used on input line 506.
 (pdftex.def)             Requested size: 123.77075pt x 249.45757pt.
-<Figures/2b/BIAS_a.pdf, id=1321, 199.58064pt x 409.43967pt>
+<Figures/2b/BIAS_a.pdf, id=1205, 199.58064pt x 409.43967pt>
 File: Figures/2b/BIAS_a.pdf Graphic file (type pdf)
 <use Figures/2b/BIAS_a.pdf>
-Package pdftex.def Info: Figures/2b/BIAS_a.pdf  used on input line 477.
+Package pdftex.def Info: Figures/2b/BIAS_a.pdf  used on input line 506.
 (pdftex.def)             Requested size: 123.77075pt x 253.91245pt.
-<Figures/2b/BIAS_t.pdf, id=1322, 184.02551pt x 412.33047pt>
+<Figures/2b/BIAS_t.pdf, id=1206, 184.02551pt x 412.33047pt>
 File: Figures/2b/BIAS_t.pdf Graphic file (type pdf)
 <use Figures/2b/BIAS_t.pdf>
-Package pdftex.def Info: Figures/2b/BIAS_t.pdf  used on input line 477.
+Package pdftex.def Info: Figures/2b/BIAS_t.pdf  used on input line 506.
 (pdftex.def)             Requested size: 123.77075pt x 277.32327pt.
-<Figures/2b/RMSEscatter.pdf, id=1323, 625.42258pt x 661.72519pt>
+<Figures/2b/RMSEscatter.pdf, id=1207, 625.42258pt x 661.72519pt>
 File: Figures/2b/RMSEscatter.pdf Graphic file (type pdf)
 <use Figures/2b/RMSEscatter.pdf>
-Package pdftex.def Info: Figures/2b/RMSEscatter.pdf  used on input line 485.
+Package pdftex.def Info: Figures/2b/RMSEscatter.pdf  used on input line 514.
 (pdftex.def)             Requested size: 412.56499pt x 436.51784pt.
-<Figures/2b/BIASscatter.pdf, id=1324, 638.20029pt x 661.72722pt>
+<Figures/2b/BIASscatter.pdf, id=1208, 638.20029pt x 661.72722pt>
 File: Figures/2b/BIASscatter.pdf Graphic file (type pdf)
 <use Figures/2b/BIASscatter.pdf>
-Package pdftex.def Info: Figures/2b/BIASscatter.pdf  used on input line 492.
+Package pdftex.def Info: Figures/2b/BIASscatter.pdf  used on input line 521.
 (pdftex.def)             Requested size: 412.56499pt x 427.77505pt.
-<Figures/3/RMSE_b.pdf, id=1325, 196.80325pt x 412.33047pt>
+<Figures/3/RMSE_b.pdf, id=1209, 196.80325pt x 412.33047pt>
 File: Figures/3/RMSE_b.pdf Graphic file (type pdf)
 <use Figures/3/RMSE_b.pdf>
-Package pdftex.def Info: Figures/3/RMSE_b.pdf  used on input line 501.
+Package pdftex.def Info: Figures/3/RMSE_b.pdf  used on input line 530.
 (pdftex.def)             Requested size: 123.77075pt x 259.32286pt.
-<Figures/3/RMSE_a.pdf, id=1326, 191.80359pt x 409.44165pt>
+<Figures/3/RMSE_a.pdf, id=1210, 191.80359pt x 409.44165pt>
 File: Figures/3/RMSE_a.pdf Graphic file (type pdf)
 <use Figures/3/RMSE_a.pdf>
-Package pdftex.def Info: Figures/3/RMSE_a.pdf  used on input line 501.
+Package pdftex.def Info: Figures/3/RMSE_a.pdf  used on input line 530.
 (pdftex.def)             Requested size: 123.77075pt x 264.21591pt.
-<Figures/3/RMSE_t.pdf, id=1327, 196.80325pt x 412.32947pt>
+<Figures/3/RMSE_t.pdf, id=1211, 196.80325pt x 412.32947pt>
 File: Figures/3/RMSE_t.pdf Graphic file (type pdf)
 <use Figures/3/RMSE_t.pdf>
-Package pdftex.def Info: Figures/3/RMSE_t.pdf  used on input line 501.
+Package pdftex.def Info: Figures/3/RMSE_t.pdf  used on input line 530.
 (pdftex.def)             Requested size: 123.77075pt x 259.32224pt.
-<Figures/3/BIAS_b.pdf, id=1328, 204.58131pt x 412.33246pt>
+<Figures/3/BIAS_b.pdf, id=1212, 204.58131pt x 412.33246pt>
 File: Figures/3/BIAS_b.pdf Graphic file (type pdf)
 <use Figures/3/BIAS_b.pdf>
-Package pdftex.def Info: Figures/3/BIAS_b.pdf  used on input line 510.
+Package pdftex.def Info: Figures/3/BIAS_b.pdf  used on input line 539.
 (pdftex.def)             Requested size: 123.77075pt x 249.45876pt.
-<Figures/3/BIAS_a.pdf, id=1329, 199.58064pt x 409.44067pt>
+<Figures/3/BIAS_a.pdf, id=1213, 199.58064pt x 409.44067pt>
 File: Figures/3/BIAS_a.pdf Graphic file (type pdf)
 <use Figures/3/BIAS_a.pdf>
-Package pdftex.def Info: Figures/3/BIAS_a.pdf  used on input line 510.
+Package pdftex.def Info: Figures/3/BIAS_a.pdf  used on input line 539.
 (pdftex.def)             Requested size: 123.77075pt x 253.91306pt.
-<Figures/3/BIAS_t.pdf, id=1330, 199.58064pt x 415.76028pt>
+<Figures/3/BIAS_t.pdf, id=1214, 199.58064pt x 415.76028pt>
 File: Figures/3/BIAS_t.pdf Graphic file (type pdf)
 <use Figures/3/BIAS_t.pdf>
-Package pdftex.def Info: Figures/3/BIAS_t.pdf  used on input line 510.
+Package pdftex.def Info: Figures/3/BIAS_t.pdf  used on input line 539.
 (pdftex.def)             Requested size: 123.77075pt x 257.83214pt.
-<Figures/3/RMSEscatter.pdf, id=1331, 625.4276pt x 652.68942pt>
+<Figures/3/RMSEscatter.pdf, id=1215, 625.4276pt x 652.68942pt>
 File: Figures/3/RMSEscatter.pdf Graphic file (type pdf)
 <use Figures/3/RMSEscatter.pdf>
-Package pdftex.def Info: Figures/3/RMSEscatter.pdf  used on input line 518.
+Package pdftex.def Info: Figures/3/RMSEscatter.pdf  used on input line 547.
 (pdftex.def)             Requested size: 412.56499pt x 430.55725pt.
-<Figures/3/BIASscatter.pdf, id=1332, 638.20636pt x 652.69046pt>
+<Figures/3/BIASscatter.pdf, id=1216, 638.20636pt x 652.69046pt>
 File: Figures/3/BIASscatter.pdf Graphic file (type pdf)
 <use Figures/3/BIASscatter.pdf>
-Package pdftex.def Info: Figures/3/BIASscatter.pdf  used on input line 525.
+Package pdftex.def Info: Figures/3/BIASscatter.pdf  used on input line 554.
 (pdftex.def)             Requested size: 412.56499pt x 421.93323pt.
-<Figures/4/RMSE_b.pdf, id=1333, 191.80359pt x 412.33246pt>
+<Figures/4/RMSE_b.pdf, id=1217, 191.80359pt x 412.33246pt>
 File: Figures/4/RMSE_b.pdf Graphic file (type pdf)
 <use Figures/4/RMSE_b.pdf>
-Package pdftex.def Info: Figures/4/RMSE_b.pdf  used on input line 533.
+Package pdftex.def Info: Figures/4/RMSE_b.pdf  used on input line 562.
 (pdftex.def)             Requested size: 123.77075pt x 266.08136pt.
-<Figures/4/RMSE_a.pdf, id=1334, 196.80325pt x 409.43764pt>
+<Figures/4/RMSE_a.pdf, id=1218, 196.80325pt x 409.43764pt>
 File: Figures/4/RMSE_a.pdf Graphic file (type pdf)
 <use Figures/4/RMSE_a.pdf>
-Package pdftex.def Info: Figures/4/RMSE_a.pdf  used on input line 533.
+Package pdftex.def Info: Figures/4/RMSE_a.pdf  used on input line 562.
 (pdftex.def)             Requested size: 123.77075pt x 257.5035pt.
-<Figures/4/RMSE_t.pdf, id=1335, 191.80359pt x 412.32646pt>
+<Figures/4/RMSE_t.pdf, id=1219, 191.80359pt x 412.32646pt>
 File: Figures/4/RMSE_t.pdf Graphic file (type pdf)
 <use Figures/4/RMSE_t.pdf>
-Package pdftex.def Info: Figures/4/RMSE_t.pdf  used on input line 533.
+Package pdftex.def Info: Figures/4/RMSE_t.pdf  used on input line 562.
 (pdftex.def)             Requested size: 123.77075pt x 266.0775pt.
-<Figures/4/BIAS_b.pdf, id=1336, 204.58131pt x 412.32744pt>
+<Figures/4/BIAS_b.pdf, id=1220, 204.58131pt x 412.32744pt>
 File: Figures/4/BIAS_b.pdf Graphic file (type pdf)
 <use Figures/4/BIAS_b.pdf>
-Package pdftex.def Info: Figures/4/BIAS_b.pdf  used on input line 542.
+Package pdftex.def Info: Figures/4/BIAS_b.pdf  used on input line 571.
 (pdftex.def)             Requested size: 123.77075pt x 249.45572pt.
-<Figures/4/BIAS_a.pdf, id=1337, 204.58131pt x 409.43866pt>
+<Figures/4/BIAS_a.pdf, id=1221, 204.58131pt x 409.43866pt>
 File: Figures/4/BIAS_a.pdf Graphic file (type pdf)
 <use Figures/4/BIAS_a.pdf>
-Package pdftex.def Info: Figures/4/BIAS_a.pdf  used on input line 542.
+Package pdftex.def Info: Figures/4/BIAS_a.pdf  used on input line 571.
 (pdftex.def)             Requested size: 123.77075pt x 247.70802pt.
-<Figures/4/BIAS_t.pdf, id=1338, 204.58131pt x 412.3154pt>
+<Figures/4/BIAS_t.pdf, id=1222, 204.58131pt x 412.3154pt>
 File: Figures/4/BIAS_t.pdf Graphic file (type pdf)
 <use Figures/4/BIAS_t.pdf>
-Package pdftex.def Info: Figures/4/BIAS_t.pdf  used on input line 542.
+Package pdftex.def Info: Figures/4/BIAS_t.pdf  used on input line 571.
 (pdftex.def)             Requested size: 123.77075pt x 249.44843pt.
-<Figures/4/RMSEscatter.pdf, id=1339, 625.42459pt x 652.68942pt>
+<Figures/4/RMSEscatter.pdf, id=1223, 625.42459pt x 652.68942pt>
 File: Figures/4/RMSEscatter.pdf Graphic file (type pdf)
 <use Figures/4/RMSEscatter.pdf>
-Package pdftex.def Info: Figures/4/RMSEscatter.pdf  used on input line 550.
+Package pdftex.def Info: Figures/4/RMSEscatter.pdf  used on input line 579.
 (pdftex.def)             Requested size: 412.56499pt x 430.55725pt.
-<Figures/4/BIASscatter.pdf, id=1340, 638.19833pt x 652.7005pt>
+<Figures/4/BIASscatter.pdf, id=1224, 638.19833pt x 652.7005pt>
 File: Figures/4/BIASscatter.pdf Graphic file (type pdf)
 <use Figures/4/BIASscatter.pdf>
-Package pdftex.def Info: Figures/4/BIASscatter.pdf  used on input line 557.
+Package pdftex.def Info: Figures/4/BIASscatter.pdf  used on input line 586.
 (pdftex.def)             Requested size: 412.56499pt x 421.93973pt.
 )
 1: section
@@ -2331,66 +2728,39 @@ Package pdftex.def Info: Figures/4/BIASscatter.pdf  used on input line 557.
 
 
 
-
-
 ] [74] [75] [76] [77] [78] [79] [80] [81] [82 <./Figures/itemsxtests.png>]
 [83 <./Figures/testsxexaminees.png>] [84 <./Figures/itemsxexaminees.png>]
-[85 <./Figures/1b/RMSE_b.pdf> <./Figures/1b/RMSE_a.pdf> <./Figures/1b/RMSE_t.pd
-f> <./Figures/1b/BIAS_b.pdf> <./Figures/1b/BIAS_a.pdf> <./Figures/1b/BIAS_t.pdf
->] [86 <./Figures/1b/RMSEscatter.pdf>] [87 <./Figures/1b/BIASscatter.pdf>]
-[88 <./Figures/1c/RMSE_b.pdf> <./Figures/1c/RMSE_a.pdf> <./Figures/1c/RMSE_t.pd
-f> <./Figures/1c/BIAS_b.pdf> <./Figures/1c/BIAS_a.pdf> <./Figures/1c/BIAS_t.pdf
->] [89 <./Figures/1c/RMSEscatter.pdf>] [90 <./Figures/1c/BIASscatter.pdf>]
-[91 <./Figures/2a/RMSE_b.pdf> <./Figures/2a/RMSE_a.pdf> <./Figures/2a/RMSE_t.pd
-f> <./Figures/2a/BIAS_b.pdf> <./Figures/2a/BIAS_a.pdf> <./Figures/2a/BIAS_t.pdf
->] [92 <./Figures/2a/RMSEscatter.pdf>] [93 <./Figures/2a/BIASscatter.pdf>]
-[94 <./Figures/2b/RMSE_b.pdf> <./Figures/2b/RMSE_a.pdf> <./Figures/2b/RMSE_t.pd
-f> <./Figures/2b/BIAS_b.pdf> <./Figures/2b/BIAS_a.pdf> <./Figures/2b/BIAS_t.pdf
->] [95 <./Figures/2b/RMSEscatter.pdf>] [96 <./Figures/2b/BIASscatter.pdf>]
-[97 <./Figures/3/RMSE_b.pdf> <./Figures/3/RMSE_a.pdf> <./Figures/3/RMSE_t.pdf> 
-<./Figures/3/BIAS_b.pdf> <./Figures/3/BIAS_a.pdf> <./Figures/3/BIAS_t.pdf>]
-[98 <./Figures/3/RMSEscatter.pdf>] [99 <./Figures/3/BIASscatter.pdf>] [100 <./F
-igures/4/RMSE_b.pdf> <./Figures/4/RMSE_a.pdf> <./Figures/4/RMSE_t.pdf> <./Figur
-es/4/BIAS_b.pdf> <./Figures/4/BIAS_a.pdf> <./Figures/4/BIAS_t.pdf>] [101 <./Fig
-ures/4/RMSEscatter.pdf>] [102 <./Figures/4/BIASscatter.pdf>]
-Overfull \hbox (15.74542pt too wide) in paragraph at lines 435--435
-[][]\T1/lmr/m/n/12 Ban, Jae-Chun et al. (2002).   Data Sparse-ness and On-Line
- Pretest Item Calibration-
- []
+[85 <./Figures/1a/BIAS_b.pdf>] [86 <./Figures/1a/RMSEscatter.pdf>] [87 <./Figur
+es/1a/BIASscatter.pdf>] [88 <./Figures/1b/RMSE_b.pdf> <./Figures/1b/RMSE_a.pdf>
+ <./Figures/1b/RMSE_t.pdf> <./Figures/1b/BIAS_b.pdf> <./Figures/1b/BIAS_a.pdf> 
+<./Figures/1b/BIAS_t.pdf>] [89 <./Figures/1b/RMSEscatter.pdf>] [90 <./Figures/1
+b/BIASscatter.pdf>] [91 <./Figures/1c/RMSE_b.pdf> <./Figures/1c/RMSE_a.pdf> <./
+Figures/1c/RMSE_t.pdf> <./Figures/1c/BIAS_b.pdf> <./Figures/1c/BIAS_a.pdf> <./F
+igures/1c/BIAS_t.pdf>] [92 <./Figures/1c/RMSEscatter.pdf>] [93 <./Figures/1c/BI
+ASscatter.pdf>] [94 <./Figures/2a/RMSE_b.pdf> <./Figures/2a/RMSE_a.pdf> <./Figu
+res/2a/RMSE_t.pdf> <./Figures/2a/BIAS_b.pdf> <./Figures/2a/BIAS_a.pdf> <./Figur
+es/2a/BIAS_t.pdf>] [95 <./Figures/2a/RMSEscatter.pdf>] [96 <./Figures/2a/BIASsc
+atter.pdf>] [97 <./Figures/2b/RMSE_b.pdf> <./Figures/2b/RMSE_a.pdf> <./Figures/
+2b/RMSE_t.pdf> <./Figures/2b/BIAS_b.pdf> <./Figures/2b/BIAS_a.pdf> <./Figures/2
+b/BIAS_t.pdf>] [98 <./Figures/2b/RMSEscatter.pdf>] [99 <./Figures/2b/BIASscatte
+r.pdf>] [100 <./Figures/3/RMSE_b.pdf> <./Figures/3/RMSE_a.pdf> <./Figures/3/RMS
+E_t.pdf> <./Figures/3/BIAS_b.pdf> <./Figures/3/BIAS_a.pdf> <./Figures/3/BIAS_t.
+pdf>] [101 <./Figures/3/RMSEscatter.pdf>] [102 <./Figures/3/BIASscatter.pdf>]
+[103 <./Figures/4/RMSE_b.pdf> <./Figures/4/RMSE_a.pdf> <./Figures/4/RMSE_t.pdf>
+ <./Figures/4/BIAS_b.pdf> <./Figures/4/BIAS_a.pdf> <./Figures/4/BIAS_t.pdf>]
+[104 <./Figures/4/RMSEscatter.pdf>] [105 <./Figures/4/BIASscatter.pdf>]
 
-1: section
-[103
+LaTeX Warning: Empty bibliography on input line 434.
 
-
-] [104]
-Overfull \hbox (2.69554pt too wide) in paragraph at lines 435--435
-[][]\T1/lmr/m/n/12 Fox, Jean-Paul, Jon-ald Pi-mentel, and Cees Glas (2006).   
-Fixed ef-fects IRT model.
- []
-
-[105]
-Overfull \hbox (3.7359pt too wide) in paragraph at lines 435--435
-[][]\T1/lmr/m/n/12 Matteucci, Mariag-iu-lia, Ste-fa-nia Mignani, and Bernard P.
- Veld-kamp (2012).   Prior
- []
-
-
-Overfull \hbox (9.16948pt too wide) in paragraph at lines 435--435
-\T1/lmr/m/n/12 dis-tri-bu-tions for item pa-ram-e-ters in IRT mod-els. \T1/lmr
-/m/it/12 Com-mu-ni-ca-tions in Statistics-
- []
-
-[106] [107] [108]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 438.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 438.
- (main.aux (Chapters/Introduction2.aux)
-(Chapters/TestTheoriesAndATA.aux) (Chapters/Julia.aux)
-(Chapters/CCTestAssembly.aux) (Chapters/Conclusions.aux)
-(Appendices/AppendixA.aux) (Appendices/TablesAndFigures.aux))
+(main.aux (Chapters/Introduction2.aux) (Chapters/TestTheoriesAndATA.aux)
+(Chapters/Julia.aux) (Chapters/CCTestAssembly.aux) (Chapters/Conclusions.aux)
+(Appendices/TablesAndFigures.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 438.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 438.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: EA38385BD1886F9B4DC35609BD55987A;6585.
+(rerunfilecheck)             Checksum: 26BFEA986EBAF3DB81DCCD093D1D91F5;6683.
 
 
 LaTeX Warning: There were undefined references.
@@ -2399,21 +2769,22 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 
-Package biblatex Warning: Please rerun LaTeX.
-(biblatex)                Page breaks have changed.
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                main
+(biblatex)                and rerun LaTeX afterwards.
 
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 43688 strings out of 481277
- 911030 string characters out of 2906528
- 1763686 words of memory out of 3000000
- 57992 multiletter control sequences out of 15000+200000
- 709770 words of font info for 131 fonts, out of 3000000 for 9000
+ 43266 strings out of 481277
+ 900551 string characters out of 2906528
+ 1760151 words of memory out of 3000000
+ 57656 multiletter control sequences out of 15000+200000
+ 712765 words of font info for 132 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 64i,20n,87p,2071b,3002s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 64i,20n,87p,2071b,2428s stack positions out of 5000i,500n,10000p,200000b,50000s
 pdfTeX warning (dest): name{Hfootnote.125} has been referenced but does not e
 xist, replaced by a fixed one
 
@@ -2463,9 +2834,9 @@ pe1/public/lm/lmsy8.pfb><C:/Users/giada/AppData/Local/Programs/MiKTeX 2.9/fonts
 onts/type1/public/lm/lmtt12.pfb><C:/Users/giada/AppData/Local/Programs/MiKTeX 2
 .9/fonts/type1/public/lm/lmtt8.pfb><C:/Users/giada/AppData/Local/Programs/MiKTe
 X 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (118 pages, 27714597 bytes).
+Output written on main.pdf (115 pages, 31386837 bytes).
 PDF statistics:
- 2232 PDF objects out of 2487 (max. 8388607)
- 414 named destinations out of 1000 (max. 500000)
- 673 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2125 PDF objects out of 2487 (max. 8388607)
+ 348 named destinations out of 1000 (max. 500000)
+ 701 words of extra memory for PDF output out of 10000 (max. 10000000)
 

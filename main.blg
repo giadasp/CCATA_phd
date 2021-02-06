@@ -1,20 +1,11 @@
-[0] Config.pm:304> INFO - This is Biber 2.13
-[0] Config.pm:307> INFO - Logfile is 'main.blg'
-[41] biber-MSWIN64:315> INFO - === 
-[70] Biber.pm:375> INFO - Reading 'main.bcf'
-[216] Biber.pm:905> INFO - Found 68 citekeys in bib section 0
-[238] Biber.pm:4196> INFO - Processing section 0
-[240] Utils.pm:75> INFO - Globbing data source 'example.bib'
-[252] Utils.pm:91> INFO - Globbed data source 'example.bib' to example.bib
-[268] Biber.pm:4373> INFO - Looking for bibtex format file 'example.bib' for section 0
-[281] bibtex.pm:1462> INFO - LaTeX decoding ...
-[418] bibtex.pm:1281> INFO - Found BibTeX data source 'example.bib'
-[864] Utils.pm:300> WARN - month field 'Jan' in entry 'tarim2006' is not an integer - this will probably not sort properly.
-[943] Utils.pm:300> WARN - I didn't find a database entry for 'efron1993introduction' (section 0)
-[1106] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[1108] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[1108] Biber.pm:4024> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
-[1108] Biber.pm:4030> INFO - No sort tailoring available for locale 'en-US'
-[1210] bbl.pm:648> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[1267] bbl.pm:751> INFO - Output to main.bbl
-[1283] Biber.pm:110> INFO - WARNINGS: 2
+This is BibTeX, Version 0.99dThe top-level auxiliary file: main.aux
+A level-1 auxiliary file: Chapters/Introduction2.aux
+A level-1 auxiliary file: Chapters/TestTheoriesAndATA.aux
+A level-1 auxiliary file: Chapters/Julia.aux
+A level-1 auxiliary file: Chapters/CCTestAssembly.aux
+A level-1 auxiliary file: Chapters/Conclusions.aux
+A level-1 auxiliary file: Appendices/TablesAndFigures.aux
+I found no \citation commands---while reading file main.aux
+I found no \bibdata command---while reading file main.aux
+I found no \bibstyle command---while reading file main.aux
+(There were 3 error messages)

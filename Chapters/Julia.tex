@@ -9,7 +9,7 @@ In this work the unidimensional model, dichotoumous response data and MML estima
 
 Moreover, since we chose to work in the \texttt{Julia} environment due to its suitability for numerical and computational tasks, we also developed a calibration algorithm for the case of the unidimensional 2PL already introduced in \ref{ch:ATA}. The cubic-spline interpolation-extrapolation method \parencite{birkhoff1960smooth} is used to recompute the masses of the rescaled observed ability distribution at the predefined theta points. The details of the applied methodology are provided in Section \ref{sec:estimation} together with a software benchmarking which compare the performance of our algorithm to the \texttt{R} \texttt{mirt} package.
 
-Finally, a full reading of this chapter will suggest to both practitioners and scholars a framework for building a pre-test design without knowing the item parameters and for doing a simulation study for testing the performance of an estimation method. The framework is described both in Section \ref{sec:sem_calbs}. All the code is available at \url{https://github.com/giadasp/Calibration}.
+Finally, a full reading of this chapter will suggest to both practitioners and scholars a framework for building a pre-test design without knowing the item parameters and for doing a simulation study for testing the performance of an estimation method. The framework is described in Section \ref{sec:Julia:simSet}. All the code is available at \url{https://github.com/giadasp/Calibration}.
 
 
 \section{MML Estimation}\label{sec:estimation}
@@ -81,7 +81,7 @@ The posterior distribution depends on the item parameters estimated at the prevo
 \end{equation} 
 
 and adding a Lagrange multiplier to constrain the sum of the masses to be equal to $1$. 
-Practically, the optimal weights are analitically computed as the average of the posterior distribution among the $N$ respondents: 
+Practically, the optimal weights are analytically computed as the average of the posterior distribution among the $N$ respondents: 
 
 \begin{equation} \label{eq:updateWk}
 W_k^{(s)}  = 1/N \sum_{n=1}^N{p(X_k|\boldsymbol{u}_n,\boldsymbol{\tau},\hat{\boldsymbol{\xi}}^{(s)})} 
@@ -278,7 +278,7 @@ Each step of the framework for the simulation study for the MML estimation is co
 
 In the next sections, we illustrate the results of the calibration for the six cases under analysis calibrated using the three mentioned softwares \texttt{Julia} \emph{(jl)}, \texttt{mirt} with default settings (\emph{mirt}) and \texttt{mirt} with the Woods' empirical histogram (\emph{mirtEHW}).
 
-First, the estimation accuracy of the algorithms is visually compared by analyzing the boxplotsof the RMSEs and BIASs,, Figures \ref{fig:bpRMSE1a} and, \ref{fig:bpRMSE1b}, for the estimates of item parameters and abilities. In order to understand if the algorithms have a different behaviour at specific intervals of the domains we examinate also the scatter plots of the RMSEs and BIASs with respect to the true values, accordingly in Figures \ref{fig:spRMSE1a} and \ref{fig:spBIAS1a}. For the sake of brevity, in this chapter, only the complete results for the \emph{standard setup}, i.e. case 1a, are presented. On the other hand, the overall precision of each algorithms in all the cases is summarized in Tables \ref{tab:RMSE} and \ref{tab:BIAS}, where the RMSEs and BIASs are averaged across the item pool, for the item parameters, and across test-takers, for the abilities. For the plots of the other cases (from 1b to 4) please refer to Appendix \ref{ch:TablesAndFigures}.
+First, the estimation accuracy of the algorithms is visually compared by analyzing the boxplotsof the RMSEs and BIASs, Figures \ref{fig:bpRMSE1a} and, \ref{fig:bpRMSE1b}, for the estimates of item parameters and abilities. In order to understand if the algorithms have a different behaviour at specific intervals of the domains we examinate also the scatter plots of the RMSEs and BIASs with respect to the true values, accordingly in Figures \ref{fig:spRMSE1a} and \ref{fig:spBIAS1a}. For the sake of brevity, in this chapter, only the complete results for the \emph{standard setup}, i.e. case 1a, are presented. On the other hand, the overall precision of each algorithms in all the cases is summarized in Tables \ref{tab:RMSE} and \ref{tab:BIAS}, where the RMSEs and BIASs are averaged across the item pool, for the item parameters, and across test-takers, for the abilities. For the plots of the other cases (from 1b to 4) please refer to Appendix \ref{ch:TablesAndFigures}.
 Together with the precision of estimates, we intend to evaluate the computational performance of our implementation by comparing the elapsed time and the number of iterations observed for calibrating the items for all the algorithms.
 Secondly, the estimated $\mathbf{\hat{W}}^{(s)}$, where $s=1,\ldots,S$, are plotted against the true $\mathbf{W}$ obtained by drawing 1.000.000 samples from the true distribution and computing the relative frequencies in the $K$ chosen $\mathbf{X}$ points.
 In the last section, some examples of sampling distribution of the item parameters obtained by bootstrapping the calibration is reported. 

@@ -62,9 +62,10 @@
 \contentsline {chapter}{\numberline {A}Tables And Figures}{73}{appendix.184}%
 \contentsline {section}{\numberline {A.1}Items calibration in Julia}{73}{section.189}%
 \contentsline {subsection}{\numberline {A.1.1}Case 1a (Standard setup)}{73}{subsection.190}%
-\contentsline {subsection}{\numberline {A.1.2}Case 1b}{73}{subsection.198}%
-\contentsline {subsection}{\numberline {A.1.3}Case 1c}{73}{subsection.203}%
-\contentsline {subsection}{\numberline {A.1.4}Case 2a}{73}{subsection.208}%
-\contentsline {subsection}{\numberline {A.1.5}Case 2b}{73}{subsection.213}%
-\contentsline {subsection}{\numberline {A.1.6}Case 3}{73}{subsection.218}%
-\contentsline {subsection}{\numberline {A.1.7}Case 4}{73}{subsection.223}%
+\contentsline {subsection}{\numberline {A.1.2}Case 1a}{73}{subsection.198}%
+\contentsline {subsection}{\numberline {A.1.3}Case 1b}{73}{subsection.203}%
+\contentsline {subsection}{\numberline {A.1.4}Case 1c}{73}{subsection.208}%
+\contentsline {subsection}{\numberline {A.1.5}Case 2a}{73}{subsection.213}%
+\contentsline {subsection}{\numberline {A.1.6}Case 2b}{73}{subsection.218}%
+\contentsline {subsection}{\numberline {A.1.7}Case 3}{73}{subsection.223}%
+\contentsline {subsection}{\numberline {A.1.8}Case 4}{73}{subsection.228}%
