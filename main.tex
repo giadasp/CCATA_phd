@@ -26,17 +26,14 @@ headsepline, % Uncomment to get a line under the header
 \setcounter{tocdepth}{2}
 %\pdfvariable inclusioncopyfonts=1
 
-
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
 
 \usepackage[utf8]{inputenc} % Required for inputting international characters
 \usepackage[T1]{fontenc} % Output font encoding for international characters
-%for listings code chunks
-\usepackage{jlcode}
-%\usepackage{amsmath}
 \usepackage{titlesec}
 \titleformat{\chapter}{\normalfont\huge\bfseries}{\thechapter}{20pt}{\huge}
-%I added this to make the titles Ariel, SART this is the source of the code <!-- m --><a class="postlink" href="http://tex.stackexchange.com/questions/96631/how-do-i-set-the-document-body-to-be-times-new-roman-and-section-headings-to-be">http://tex.stackexchange.com/questions/ ... ings-to-be</a><!-- m -->
-
 
 % Set formats for each heading level
 \titleformat*{\section}{\fontsize{16}{18}\bfseries}
@@ -48,8 +45,9 @@ headsepline, % Uncomment to get a line under the header
 %\usepackage{palatino} % Use the Palatino font by default, this is the previous font used for this template 
 \usepackage{lmodern}
 %\usepackage{cleveref}
-\usepackage{subfig} 
+%\usepackage{subfig} 
 \usepackage{csquotes}
+\usepackage{array}
 \usepackage{algorithm,algpseudocode}
 %
 \pdfoptionpdfminorversion=7
@@ -66,24 +64,25 @@ headsepline, % Uncomment to get a line under the header
 
 \usepackage{amssymb}
 \usepackage{enumerate}
-%\usepackage[colorlinks]{hyperref}
+
 \usepackage{etoolbox}
 \usepackage{multirow}
 \usepackage{rotating}
-
-%\usepackage{pgf}
-\usepackage{tikz}
-\usetikzlibrary{calc,fit,matrix,arrows,automata,positioning}
 %til here
 \usepackage{amsfonts}
 \usepackage{amsmath} % Use the Palatino font by default
 \numberwithin{equation}{chapter} %chapter.equation
 
+\usepackage{hyperref} 
+
 
 \usepackage[backend=biber,
 style=authoryear,
 citestyle=authoryear,
-maxcitenames=1
+maxcitenames=1,
+maxnames=50,
+uniquelist=false,
+dashed=false
 ]{biblatex}
 
 \addbibresource{example.bib} % The filename of the bibliography
@@ -101,7 +100,7 @@ maxcitenames=1
 }
 
 \newcommand\x{\times}
-\setlength\parindent{0pt} %no indentazione
+\setlength\parindent{20pt} %no indentazione
 \setlength{\parskip}{0.5em} %spazio verticale tra paragrafi
 %----------------------------------------------------------------------------------------
 %	MATH EQUATIONS
@@ -174,7 +173,7 @@ maxcitenames=1
 %	THESIS INFORMATION
 %----------------------------------------------------------------------------------------
 
-\thesistitle{Dealing with Uncertainty in Test Assembly} % Your thesis title, this is used in the title and abstract, print it elsewhere with \ttitle
+\thesistitle{Dealing with uncertainty\\in test assembly} % Your thesis title, this is used in the title and abstract, print it elsewhere with \ttitle
 \supervisor{Prof. Stefania \textsc{Mignani}\\Prof. Mariagiulia \textsc{Matteucci}} % Your supervisor's name, this is used in the title page, print it elsewhere with \supname
 \examiner{} % Your examiner's name, this is not currently used anywhere in the template, print it elsewhere with \examname
 \degree{DOTTORATO DI RICERCA IN\\SCIENZE STATISTICHE\\ \vspace{10px}  CICLO XXXII} % Your degree name, this is used in the title page and abstract, print it elsewhere with \degreename
@@ -185,254 +184,196 @@ maxcitenames=1
 \keywords{} % Keywords for your thesis, this is not currently used anywhere in the template, print it elsewhere with \keywordnames
 \university{Alma Mater Studiorum}
 % Your university's name and URL, this is used in the title page and abstract, print it elsewhere with \univname
-\department{Università di Bologna} % Your department's name and URL, this is used in the title page and abstract, print it elsewhere with \deptname
+\department{UniversitÃ  di Bologna} % Your department's name and URL, this is used in the title page and abstract, print it elsewhere with \deptname
 %\group{\href{http://researchgroup.university.com}{Research Group Name}} % Your research group's name and URL, this is used in the title page, print it elsewhere with \groupname
 \faculty{\href{http://stat.unibo.it}{Department of Statistics}} % Your faculty's name and URL, this is used in the title page and abstract, print it elsewhere with \facname, not anymore, changed in MasterDoctoralThesis.cls
 
 \AtBeginDocument{
-\hypersetup{pdftitle=\ttitle} % Set the PDF's title to your title
-\hypersetup{pdfauthor=\authorname} % Set the PDF's author to your name
-\hypersetup{pdfkeywords=\keywordnames} % Set the PDF's keywords to your keywords
+	\hypersetup{pdftitle=\ttitle} % Set the PDF's title to your title
+	\hypersetup{pdfauthor=\authorname} % Set the PDF's author to your name
+	\hypersetup{pdfkeywords=\keywordnames} % Set the PDF's keywords to your keywords
 }
 \renewcommand{\abstractname}{Abstract}
 
 \begin{document}
-
-
-\frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
-
-\pagestyle{plain} % Default to the plain heading style until the thesis style is called for the body content
-
-%----------------------------------------------------------------------------------------
-%	TITLE PAGE
-%----------------------------------------------------------------------------------------
-
-\begin{titlepage}
-
-\begin{center}
-	%\vspace*{.06\textheight}
-	{\scshape \large \univname\par}
-	{\scshape \large \deptname\par}\vspace{0.5cm} % University name
-	{\scshape  \degreename\par}\vspace{1cm} % Thesis type
 	
-	{ Settore concorsuale: 13/D1}\\
-		{ Settore Scientifico disciplinare: SECS-S/01}\vspace{1cm}
+	
+	\frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
+	
+	\pagestyle{plain} % Default to the plain heading style until the thesis style is called for the body content
+	
+	%----------------------------------------------------------------------------------------
+	%	TITLE PAGE
+	%----------------------------------------------------------------------------------------
+	
+	\begin{titlepage}
 		
-		\HRule \\[0.4cm] % Horizontal line
-		{\LARGE \bfseries \ttitle\par}\vspace{0.2cm} % Thesis title
-		\HRule \\[1.5cm] % Horizontal line
-		
-
-		\begin{flushleft} 
-					\begin{minipage}[t]{0.5\textwidth}
-			\emph{Author:}\\
-			\authorname % Author name - remove the \href bracket to remove the link
+		\begin{center}
+			%\vspace*{.06\textheight}
+			{\scshape \large \univname\par}
+			{\scshape \large \deptname\par}\vspace{0.5cm} % University name
+			{\scshape  \degreename\par}\vspace{1cm} % Thesis type
+			
+			{ Settore concorsuale: 13/D1}\\
+			{ Settore scientifico disciplinare: SECS-S/01}\vspace{1cm}
+			
+			\HRule \\[0.4cm] % Horizontal line
+			{\LARGE \bfseries \ttitle\par}\vspace{0.2cm} % Thesis title
+			\HRule \\[1.5cm] % Horizontal line
+			
+			
+			\begin{flushleft} 
+				\begin{minipage}[t]{0.5\textwidth}
+					\emph{Presentata da:}\\
+					\authorname \\
+					\vspace{20pt}\\% Author name - remove the \href bracket to remove the link\\
+					\emph{Coordinatore:}\\
+					Prof. Alessandra \textsc{Luati} % Author name -
 				\end{minipage}
-		\end{flushleft}
-\vspace{-52px}
-		\begin{flushright} 
-	\begin{minipage}[t]{0.4\textwidth}
-				
-				\emph{Supervisor}\\
-				Prof. Stefania \textsc{Mignani}\\
-				\\
-				\emph{Co-supervisor:} \\
-				Prof. Mariagiulia \textsc{Matteucci}
-	\end{minipage}\\[3cm]
-				\end{flushright}
-		\vfill
-		%
-		%\large \textit{A thesis submitted in fulfillment of the requirements\\ for the degree of \degreename}\\[0.3cm] % University requirement text
-		%\textit{in the}\\[0.4cm]
-		%\deptname\\[2cm] % Research group name and department name
-		% 
-		\vfill
+			\end{flushleft}
+			\vspace{-132px}
+			\begin{flushright} 
+				\begin{minipage}[t]{0.4\textwidth}
+					\emph{Supervisore:}\\
+					Prof. Stefania \textsc{Mignani}\\
+					% Author name - remove the \href bracket to remove the link
+					\emph{Co-supervisori:} \\
+					Prof. Mariagiulia \textsc{Matteucci}\\
+					Prof. Bernard P. \textsc{Veldkamp}
+				\end{minipage}\\[3cm]
+			\end{flushright}
+			\vfill
+			%
+			%\large \textit{A thesis submitted in fulfillment of the requirements\\ for the degree of \degreename}\\[0.3cm] % University requirement text
+			%\textit{in the}\\[0.4cm]
+			%\deptname\\[2cm] % Research group name and department name
+			% 
+			\vfill
+			
+			{ 15/10/2019}\\[4cm] % Date
+			%\includegraphics{Logo} % University/department logo - uncomment to place it
+			
+			\vfill
+		\end{center}
+	\end{titlepage}
+	
+	%----------------------------------------------------------------------------------------
+	%	DECLARATION PAGE
+	%----------------------------------------------------------------------------------------
+	%
+	%\begin{declaration}
+	%\addchaptertocentry{\authorshipname} % Add the declaration to the table of contents
+	%\noindent I, \authorname, declare that this thesis titled, \enquote{\ttitle} and the work presented in it are my own. I confirm that:
+	%
+	%\begin{itemize} 
+	%\item This work was done wholly or mainly while in candidature for a research degree at this University.
+	%\item Where any part of this thesis has previously been submitted for a degree or any other qualification at this University or any other institution, this has been clearly stated.
+	%\item Where I have consulted the published work of others, this is always clearly attributed.
+	%\item Where I have quoted from the work of others, the source is always given. With the exception of such quotations, this thesis is entirely my own work.
+	%\item I have acknowledged all main sources of help.
+	%\item Where the thesis is based on work done by myself jointly with others, I have made clear exactly what was done by others and what I have contributed myself.\\
+	%\end{itemize}
+	% 
+	%\noindent Signed:\\
+	%\rule[0.5em]{25em}{0.5pt} % This prints a line for the signature
+	% 
+	%\noindent Date:\\
+	%\rule[0.5em]{25em}{0.5pt} % This prints a line to write the date
+	%\end{declaration}
+	%
+	\cleardoublepage
+	
+	%----------------------------------------------------------------------------------------
+	%	QUOTATION PAGE
+	%%----------------------------------------------------------------------------------------
+	%
+	%\vspace*{0.2\textheight}
+	%
+	%\noindent\enquote{\itshape Thanks to my solid academic training, today I can write hundreds of words on virtually any topic without possessing a shred of information, which is how I got a good job in journalism.}\bigbreak
+	%
+	%\hfill Dave Barry
+	
+	%----------------------------------------------------------------------------------------
+	%	ABSTRACT PAGE
+	%----------------------------------------------------------------------------------------
+	
+	\begin{abstract}\addchaptertocentry{Abstract} % Add the abstract to the table of contents
 		
-		{ 30/09/2019}\\[4cm] % Date
-		%\includegraphics{Logo} % University/department logo - uncomment to place it
+		The recent development of computer technologies enabled test institutes to improve their process of item selection for test administration by means of automated test assembly (ATA). A general framework for ATA consists in adopting mixed-integer programming models which are commonly intended to be handled by commercial solvers. Those softwares, notwithstanding their success in handling most of the basic ATA problems, are not always able to find solutions for highly constrained and large-sized instances. Moreover, all parameters are assumed to be fixed and known, an hypothesis that is not true for estimates of item response theory (IRT) parameters which are key elements in test assembly. These restrictions motivated us to find an alternative way to specify and solve ATA models. First, we suggest an application of the chance-constrained (CC) approach \parencite[see][]{Charnes1959} to ATA problems which allows to maximize the $\alpha$-quantile (usually smaller than 0.05) of the sampling distribution function of the test information function (TIF) obtained by bootstrapping the calibration process. Secondly, for solving the ATA models, CC or not, we adapted a stochastic meta-heuristic called simulated annealing (SA) proposed by \textcite{goffe1996simann}. This technique can handle large-scale models and non-linear functions. A Lagrangian relaxation formulation helps to find the most feasible/optimal solution and, thanks to the SA, more than one neighbourhood of the space is explored avoiding to being trapped in a local optimum. Several simulations on ATA problems are performed and the solutions are compared to CPLEX 12.8.0 Optimizer, a benchmark solver in the linear programming field. The algorithms are coded in the open-source framework Julia. A package written in Julia is released for solving the assembly problems described in this dissertation.
+	\end{abstract}
+	
+	%----------------------------------------------------------------------------------------
+	%	ACKNOWLEDGEMENTS
+	%----------------------------------------------------------------------------------------
+	%
+	\begin{acknowledgements}
+		\addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
+		\doublespacing
+		I would like to express my deep gratitude to Professor Stefania Mignani and Professor Mariagiulia Matteucci, my research supervisor and co-supervisor and most of all, mentors, for their patient guidance, enthusiastic encouragement and positive critiques of this research work. The occasion to participate, in the past three years, at the INVALSI meetings for the test assembly of Italian standardized assessment project and at several international conferences of testing commissions has really increased my knowledge about practical issues and opportunities in the field of psychometric research. This would not be possible if they hadn't integrated me in their team.
 		
-		\vfill
-	\end{center}
-\end{titlepage}
-
-%----------------------------------------------------------------------------------------
-%	DECLARATION PAGE
-%----------------------------------------------------------------------------------------
-%
-%\begin{declaration}
-%\addchaptertocentry{\authorshipname} % Add the declaration to the table of contents
-%\noindent I, \authorname, declare that this thesis titled, \enquote{\ttitle} and the work presented in it are my own. I confirm that:
-%
-%\begin{itemize} 
-%\item This work was done wholly or mainly while in candidature for a research degree at this University.
-%\item Where any part of this thesis has previously been submitted for a degree or any other qualification at this University or any other institution, this has been clearly stated.
-%\item Where I have consulted the published work of others, this is always clearly attributed.
-%\item Where I have quoted from the work of others, the source is always given. With the exception of such quotations, this thesis is entirely my own work.
-%\item I have acknowledged all main sources of help.
-%\item Where the thesis is based on work done by myself jointly with others, I have made clear exactly what was done by others and what I have contributed myself.\\
-%\end{itemize}
-% 
-%\noindent Signed:\\
-%\rule[0.5em]{25em}{0.5pt} % This prints a line for the signature
-% 
-%\noindent Date:\\
-%\rule[0.5em]{25em}{0.5pt} % This prints a line to write the date
-%\end{declaration}
-%
-\cleardoublepage
-
-%----------------------------------------------------------------------------------------
-%	QUOTATION PAGE
-%%----------------------------------------------------------------------------------------
-%
-%\vspace*{0.2\textheight}
-%
-%\noindent\enquote{\itshape Thanks to my solid academic training, today I can write hundreds of words on virtually any topic without possessing a shred of information, which is how I got a good job in journalism.}\bigbreak
-%
-%\hfill Dave Barry
-
-%----------------------------------------------------------------------------------------
-%	ABSTRACT PAGE
-%----------------------------------------------------------------------------------------
-
-\begin{abstract}\addchaptertocentry{Preface} % Add the abstract to the table of contents
-
-The recent development of computer technologies enabled test institutes to improve their process of items selection for test administration by means of automated test assembly (ATA). A general framework for ATA consists in adopting mixed-integer programming models which are intended to be solved by common commercial solvers. Those softwares, notwithstanding their success in handling most of the basic ATA problems, are not always able to find solutions for highly constrained and large-sized instances. Moreover, all parameters are assumed to be fixed and known, an hypothesis that is not true for estimates of item response theory (IRT) parameters which are key elements in test assembly. These restrictions motivated us to find an alternative way to specify and solve ATA models. First, we suggest an application of the chance-constrained (CC) approach (see \textcite{Charnes1959}) to ATA problems which allows to maximize the $\alpha$-quantile (usually smaller than 0.05) of the sampling distribution function of the test information function (TIF) obtained by bootstrapping the calibration process. Secondly, for solving the ATA models, CC or not, we adapted a stochastic meta-heuristic called simulated annealing (SA) proposed by \textcite{goffe1996simann}. This technique can handle large-scale models and non-linear functions. A Lagrangian relaxation formulation helps to find the most feasible/optimal solution and, thanks to the SA, more than one neighbourhood of the space is explored avoiding to being trapped in a local optimum. The proposed heuristic can solve a wide class of optimization problems distinguished by having binary optimization variables. Several simulations on ATA problems are performed and the solutions are compared to CPLEX 12.8.0 Optimizer, a benchmark solver in the linear programming field. Every described algorithm is coded in the open-source framework Julia. A package written in Julia is released for solving the assembly problems described in this dissertation.
-\end{abstract}
-
-%----------------------------------------------------------------------------------------
-%	ACKNOWLEDGEMENTS
-%----------------------------------------------------------------------------------------
-%
-%\begin{acknowledgements}
-%\addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
-% AKNOLEDGEMEMNTS AKNOLEDGEMEMNTS AKNOLEDGEMEMNTS
-%\end{acknowledgements}
-
-%----------------------------------------------------------------------------------------
-%	DEDICATION
-%----------------------------------------------------------------------------------------
-%
-%\dedicatory{This dissertation is dedicated to Alex, to my lovely friends and to my parents.} 
-%----------------------------------------------------------------------------------------
-%	LIST OF CONTENTS/FIGURES/TABLES PAGES
-%----------------------------------------------------------------------------------------
-
-\tableofcontents % Prints the main table of contents
-
-\listoffigures % Prints the list of figures
-
-\listoftables % Prints the list of tables
-
-%----------------------------------------------------------------------------------------
-%	ABBREVIATIONS
-%----------------------------------------------------------------------------------------
-
-%\begin{abbreviations}{ll} % Include a list of abbreviations (a table of two columns)
-%\textbf{cdf} & \textbf{c}umulative \textbf{d}istribution \textbf{f}unction\\
-%\textbf{pdf} & \textbf{p}robability \textbf{d}ensity \textbf{f}unction\\
-%\textbf{iid} & \textbf{i}dentically and \textbf{i}ndipendent and \textbf{d}istribution\\
-%\textbf{1PL} & \textbf{1}-\textbf{P}arameter \textbf{L}ogistic\\
-%\textbf{2PL} & \textbf{2}-\textbf{P}arameters \textbf{L}ogistic\\
-%\textbf{3PL} & \textbf{3}-\textbf{P}arameters \textbf{L}ogistic\\
-%\textbf{CTT} & \textbf{C}lassical \textbf{T}est \textbf{T}heory\\
-%\textbf{EAP} & \textbf{E}xpected \textbf{A} \textbf{P}osteriori\\
-%\textbf{IRT} & \textbf{I}tem \textbf{R}esponse \textbf{T}heory\\
-%\textbf{MLE} & \textbf{M}aximum \textbf{L}ikelihood \textbf{E}stimator\\
-%\textbf{MST} & \textbf{M}ulti \textbf{S}tage \textbf{T}esting\\
-%\textbf{NLopt} & \textbf{N}on \textbf{L}inear \textbf{O}ptimizer\\
-%%\textbf{SDDiP} & \textbf{S}tochastic \textbf{D}ual \textbf{D}ynamic \textbf{i}nteger \textbf{P}rogramming\\
-%
-%\end{abbreviations}
-
-%----------------------------------------------------------------------------------------
-%	PHYSICAL CONSTANTS/OTHER DEFINITIONS
-%----------------------------------------------------------------------------------------
-%
-%\begin{constants}{lr@{${}={}$}l} % The list of physical constants is a three column table
-%
-%% The \SI{}{} command is provided by the siunitx package, see its documentation for instructions on how to use it
-%
-%Logistic function & $\Psi{x}=\frac{e^x}{1+e^x}$ & $=\frac{1}{1+e^{-x}}$\\
-%First derivative of the logistic function & $\psi{x}=\frac{e^{-x}}{(1+e^{-x})^2}$&$=\Psi(x)[1-\Psi(x)]=tanh^{-1}(x)$\\
-%pdf of a $N(\mu,\sigma)$ &$\phi(x)$ \\
-%
-%%Constant Name & $Symbol$ & $Constant Value$ with units\\
-%
-%\end{constants}
-%
-%%----------------------------------------------------------------------------------------
-%%	SYMBOLS
-%%----------------------------------------------------------------------------------------
-%
-%\begin{symbols}{lll} % Include a list of Symbols (a three column table)
-%
-%
-%
-%$a$ & discrimination parameter \\
-%$b$ & difficulty parameter \\
-%$c$ & guessing parameter \\
-%$I$ & number of items in the item bank/pool \\
-%$i$ & item index &$i=1,\ldots,I$ \\
-%%$s$ & stage index \\
-%%$S$ & number of stages \\
-%$\mathbf{u}$ & vector of response values\\
-%$\mathbf{U}$ & vector of responses variables\\
-%
-%%Symbol & Name & Unit \\
-%
-%\addlinespace % Gap to separate the Roman symbols from the Greek
-%
-%$\theta$ & ability  \\
-%$\boldsymbol{\xi}$ & items parameters \\
-%
-%
-%\end{symbols}
-
-
-
-%----------------------------------------------------------------------------------------
-%	THESIS CONTENT - CHAPTERS
-%----------------------------------------------------------------------------------------
-
-\mainmatter % Begin numeric (1,2,3...) page numbering
-
-\pagestyle{thesis} % Return the page headers back to the "thesis" style
-
-% Include the chapters of the thesis as separate files from the Chapters folder
-% Uncomment the lines as you write the chapters
-
-%\include{Chapters/Introduction}
-\include{Chapters/Introduction2}
-\include{Chapters/TestTheoriesAndATA}
-\include{Chapters/Julia}
-%\include{Chapters/Uncertainty} 
-\include{Chapters/CCTestAssembly}
-\include{Chapters/Conclusions}
-
-%\include{Chapters/Chapter5} 
-
-%----------------------------------------------------------------------------------------
-%	THESIS CONTENT - APPENDICES
-%----------------------------------------------------------------------------------------
-
-\appendix % Cue to tell LaTeX that the following "chapters" are Appendices
-
-
-% Include the appendices of the thesis as separate files from the Appendices folder
-% Uncomment the lines as you write the Appendices
-
-%\include{Appendices/AppendixA}
-\include{Appendices/TablesAndFigures}
-%\include{Appendices/AppendixB}
-%\include{Appendices/AppendixC}
-
-%----------------------------------------------------------------------------------------
-%	BIBLIOGRAPHY
-%----------------------------------------------------------------------------------------
-% with biblatex
-\printbibliography
-
-%----------------------------------------------------------------------------------------
-
+		Grateful thanks go to Professor Bernard Veldkamp, external co-supervisor of this thesis, for his high experienced advice and assistance in my short PhD visiting at Twente Universiteit in October 2018 which has greatly shed light on all my dilemmas. Acknowledgements are also extended to Dr. Angela Verschoor, from CITO (NL), for her priceless suggestions for the development of the optimization algorithms and for spending time with me talking and discussing about geeky and technical topics in the amazing Roman autumnal atmosphere. 
+		
+		Finally, I wish to thank my collegues and all the staff at the department of statistical sciences of the University of Bologna for their always friendly and welcoming hospitality.
+	\end{acknowledgements}
+	
+	%----------------------------------------------------------------------------------------
+	%	DEDICATION
+	%----------------------------------------------------------------------------------------
+	%
+	\dedicatory{\raggedleft \small{\textit{This thesis is dedicated to my beloved Alex, to my always supportive and loyal friends and to my parents who made this adventure begin.} }}
+	%----------------------------------------------------------------------------------------
+	%	LIST OF CONTENTS/FIGURES/TABLES PAGES
+	%----------------------------------------------------------------------------------------
+	
+	\tableofcontents % Prints the main table of contents
+	
+	\listoffigures % Prints the list of figures
+	
+	\listoftables % Prints the list of tables
+	
+	
+	%----------------------------------------------------------------------------------------
+	%	THESIS CONTENT - CHAPTERS
+	%----------------------------------------------------------------------------------------
+	
+	\mainmatter % Begin numeric (1,2,3...) page numbering
+	
+	\pagestyle{thesis} % Return the page headers back to the "thesis" style
+	
+	% Include the chapters of the thesis as separate files from the Chapters folder
+	% Uncomment the lines as you write the chapters
+	
+	%\include{Chapters/Introduction}
+	\include{Chapters/Introduction2}
+	\include{Chapters/TestTheoriesAndATA}
+	\include{Chapters/Julia}
+	\include{Chapters/CCTestAssembly}
+	\include{Chapters/Conclusions}
+	
+	%\include{Chapters/Chapter5} 
+	
+	%----------------------------------------------------------------------------------------
+	%	THESIS CONTENT - APPENDICES
+	%----------------------------------------------------------------------------------------
+	
+	\appendix % Cue to tell LaTeX that the following "chapters" are Appendices
+	
+	
+	% Include the appendices of the thesis as separate files from the Appendices folder
+	% Uncomment the lines as you write the Appendices
+	
+	\include{Appendices/AppendixA}
+	\include{Appendices/TablesAndFigures}
+	\include{Appendices/Relazione}
+	%\include{Appendices/AppendixB}
+	%\include{Appendices/AppendixC}
+	
+	%----------------------------------------------------------------------------------------
+	%	BIBLIOGRAPHY
+	%----------------------------------------------------------------------------------------
+	% with biblatex
+	\printbibliography
+	
+	%----------------------------------------------------------------------------------------
+	
 \end{document}  

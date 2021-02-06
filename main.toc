@@ -1,71 +1,74 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \babel@toc {english}{}
-\contentsline {chapter}{Preface}{iii}{section*.1}%
-\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.5}%
-\contentsline {section}{\numberline {1.1}Main contributions and outline of the dissertation}{2}{section.6}%
-\contentsline {chapter}{\numberline {2}Test theories and automated test assembly models}{7}{chapter.10}%
-\contentsline {section}{\numberline {2.1}Test Theories}{8}{section.11}%
-\contentsline {subsection}{\numberline {2.1.1}Classical test theory}{8}{subsection.12}%
-\contentsline {subsection}{\numberline {2.1.2}Item response theory}{10}{subsection.15}%
-\contentsline {section}{\numberline {2.2}Automated Test Assembly}{14}{section.24}%
-\contentsline {subsection}{\numberline {2.2.1}The Item Bank}{15}{subsection.25}%
-\contentsline {subsection}{\numberline {2.2.2}Types of Assembly Models}{15}{subsection.26}%
-\contentsline {subsubsection}{Sequential test Assembly}{16}{subsubsection*.28}%
-\contentsline {subsubsection}{Simultaneous test assembly}{16}{subsubsection*.29}%
-\contentsline {subsubsection}{Adaptive tests}{17}{subsubsection*.30}%
-\contentsline {subsection}{\numberline {2.2.3}Single Test Assembly}{17}{subsection.31}%
-\contentsline {subsubsection}{Standard form of a test assembly problem}{19}{subsubsection*.33}%
-\contentsline {subsubsection}{Decision variables}{19}{subsubsection*.35}%
-\contentsline {subsubsection}{The model for assembling a single test}{20}{subsubsection*.36}%
-\contentsline {subsubsection}{Item sets}{21}{subsubsection*.43}%
-\contentsline {subsubsection}{Single test MINIMAX}{22}{subsubsection*.44}%
-\contentsline {subsubsection}{Single test MAXIMIN}{23}{subsubsection*.49}%
-\contentsline {subsection}{\numberline {2.2.4}Multiple Simultaneous Test Assembly}{24}{subsection.53}%
-\contentsline {subsubsection}{The model for assembling multiple tests}{25}{subsubsection*.55}%
-\contentsline {subsubsection}{Item sets}{26}{subsubsection*.65}%
-\contentsline {subsubsection}{Item use}{26}{subsubsection*.66}%
-\contentsline {subsubsection}{Test overlap}{26}{subsubsection*.69}%
-\contentsline {subsubsection}{Multiple MINIMAX}{27}{subsubsection*.77}%
-\contentsline {subsubsection}{Multiple MAXIMIN}{28}{subsubsection*.82}%
-\contentsline {subsection}{\numberline {2.2.5}Lagrange relaxation}{28}{subsection.86}%
-\contentsline {chapter}{\numberline {3}IRT item parameter calibration in Julia}{33}{chapter.98}%
-\contentsline {section}{\numberline {3.1}MML Estimation}{35}{section.100}%
-\contentsline {subsection}{\numberline {3.1.1}E-step}{36}{subsection.102}%
-\contentsline {subsection}{\numberline {3.1.2}M-step}{37}{subsection.105}%
-\contentsline {subsection}{\numberline {3.1.3}The rescale of the latent distribution}{37}{subsection.108}%
-\contentsline {subsection}{\numberline {3.1.4}Ability estimation}{39}{subsection.113}%
-\contentsline {subsubsection}{The algorithm}{39}{subsubsection*.114}%
-\contentsline {subsection}{\numberline {3.1.5}Bootstrap}{40}{subsection.116}%
-\contentsline {subsubsection}{Non-parametric bootstrap}{41}{subsubsection*.117}%
-\contentsline {subsubsection}{Parametric bootstrap}{41}{subsubsection*.119}%
-\contentsline {section}{\numberline {3.2}Simulation study}{41}{section.121}%
-\contentsline {subsection}{\numberline {3.2.1}Simulation settings (Framework for pre-testing)}{43}{subsection.122}%
-\contentsline {subsection}{\numberline {3.2.2}Results}{46}{subsection.136}%
-\contentsline {subsubsection}{Summary of estimation accuracy}{47}{subsubsection*.137}%
-\contentsline {subsubsection}{The \emph {standard setup}}{48}{subsubsection*.140}%
-\contentsline {subsubsection}{Cubic-spline interpolation/extrapolation}{48}{subsubsection*.145}%
-\contentsline {subsubsection}{Computational performance}{48}{subsubsection*.147}%
-\contentsline {subsubsection}{Sampling distribution of IRT item parameters}{49}{subsubsection*.150}%
-\contentsline {chapter}{\numberline {4}Chance-constrained test assembly}{55}{chapter.151}%
-\contentsline {section}{\numberline {4.1}Chance-constrained modeling}{56}{section.153}%
-\contentsline {section}{\numberline {4.2}Chance-constrained test assembly model}{59}{section.158}%
-\contentsline {subsection}{\numberline {4.2.1}Empirical measure of the TIF}{61}{subsection.161}%
-\contentsline {subsection}{\numberline {4.2.2}Solving the CCMAXIMIN model}{63}{subsection.168}%
-\contentsline {subsubsection}{Simulated Annealing}{64}{subsubsection*.169}%
-\contentsline {subsubsection}{Heuristic}{65}{subsubsection*.172}%
-\contentsline {section}{\numberline {4.3}Simulation study}{67}{section.174}%
-\contentsline {subsubsection}{Tests specifications}{68}{subsubsection*.175}%
-\contentsline {subsection}{\numberline {4.3.1}Results}{69}{subsection.178}%
-\contentsline {subsubsection}{Classic MAXIMIN parallel test assembly model}{69}{subsubsection*.179}%
-\contentsline {subsubsection}{CCMAXIMIN parallel test assembly model}{69}{subsubsection*.181}%
-\contentsline {chapter}{\numberline {5}Conclusions and further research}{71}{chapter.183}%
-\contentsline {chapter}{\numberline {A}Tables And Figures}{73}{appendix.184}%
-\contentsline {section}{\numberline {A.1}Items calibration in Julia}{73}{section.189}%
-\contentsline {subsection}{\numberline {A.1.1}Case 1a (Standard setup)}{73}{subsection.190}%
-\contentsline {subsection}{\numberline {A.1.2}Case 1a}{73}{subsection.198}%
-\contentsline {subsection}{\numberline {A.1.3}Case 1b}{73}{subsection.203}%
-\contentsline {subsection}{\numberline {A.1.4}Case 1c}{73}{subsection.208}%
-\contentsline {subsection}{\numberline {A.1.5}Case 2a}{73}{subsection.213}%
-\contentsline {subsection}{\numberline {A.1.6}Case 2b}{73}{subsection.218}%
-\contentsline {subsection}{\numberline {A.1.7}Case 3}{73}{subsection.223}%
-\contentsline {subsection}{\numberline {A.1.8}Case 4}{73}{subsection.228}%
+\contentsline {chapter}{Abstract}{iii}{section*.1}%
+\contentsline {chapter}{Acknowledgements}{v}{section*.2}%
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.7}%
+\contentsline {section}{\numberline {1.1}Main contributions and outline of the dissertation}{2}{section.8}%
+\contentsline {chapter}{\numberline {2}Test theories and automated test assembly models}{7}{chapter.12}%
+\contentsline {section}{\numberline {2.1}Test Theories}{8}{section.13}%
+\contentsline {subsection}{\numberline {2.1.1}Classical test theory}{8}{subsection.14}%
+\contentsline {subsection}{\numberline {2.1.2}Item response theory}{10}{subsection.17}%
+\contentsline {section}{\numberline {2.2}Automated Test Assembly}{14}{section.26}%
+\contentsline {subsection}{\numberline {2.2.1}The Item Bank}{15}{subsection.27}%
+\contentsline {subsection}{\numberline {2.2.2}Types of Assembly Models}{15}{subsection.28}%
+\contentsline {subsubsection}{Sequential test Assembly}{16}{subsubsection*.30}%
+\contentsline {subsubsection}{Simultaneous test assembly}{16}{subsubsection*.31}%
+\contentsline {subsubsection}{Adaptive tests}{17}{subsubsection*.32}%
+\contentsline {subsection}{\numberline {2.2.3}Single Test Assembly}{17}{subsection.33}%
+\contentsline {subsubsection}{Standard form of a test assembly problem}{19}{subsubsection*.35}%
+\contentsline {subsubsection}{Decision variables}{19}{subsubsection*.37}%
+\contentsline {subsubsection}{The model for assembling a single test}{20}{subsubsection*.38}%
+\contentsline {subsubsection}{Item sets}{21}{subsubsection*.45}%
+\contentsline {subsubsection}{Single test MINIMAX}{22}{subsubsection*.46}%
+\contentsline {subsubsection}{Single test MAXIMIN}{23}{subsubsection*.51}%
+\contentsline {subsection}{\numberline {2.2.4}Multiple Simultaneous Test Assembly}{24}{subsection.55}%
+\contentsline {subsubsection}{The model for assembling multiple tests}{25}{subsubsection*.57}%
+\contentsline {subsubsection}{Item sets}{26}{subsubsection*.67}%
+\contentsline {subsubsection}{Item use}{26}{subsubsection*.68}%
+\contentsline {subsubsection}{Test overlap}{26}{subsubsection*.70}%
+\contentsline {subsubsection}{Multiple MINIMAX}{27}{subsubsection*.76}%
+\contentsline {subsubsection}{Multiple MAXIMIN}{28}{subsubsection*.81}%
+\contentsline {subsection}{\numberline {2.2.5}Lagrange relaxation}{28}{subsection.85}%
+\contentsline {chapter}{\numberline {3}IRT item parameter calibration in Julia}{33}{chapter.97}%
+\contentsline {section}{\numberline {3.1}MML Estimation}{35}{section.99}%
+\contentsline {subsection}{\numberline {3.1.1}E-step}{36}{subsection.101}%
+\contentsline {subsection}{\numberline {3.1.2}M-step}{37}{subsection.104}%
+\contentsline {subsection}{\numberline {3.1.3}The rescale of the latent distribution}{38}{subsection.107}%
+\contentsline {subsection}{\numberline {3.1.4}Ability estimation}{39}{subsection.112}%
+\contentsline {subsubsection}{The algorithm}{40}{subsubsection*.113}%
+\contentsline {subsection}{\numberline {3.1.5}Bootstrap}{40}{subsection.115}%
+\contentsline {subsubsection}{Non-parametric bootstrap}{41}{subsubsection*.116}%
+\contentsline {subsubsection}{Parametric bootstrap}{42}{subsubsection*.118}%
+\contentsline {section}{\numberline {3.2}Simulation study}{42}{section.120}%
+\contentsline {subsection}{\numberline {3.2.1}Simulation settings (Framework for pre-testing)}{43}{subsection.121}%
+\contentsline {subsection}{\numberline {3.2.2}Results}{46}{subsection.135}%
+\contentsline {subsubsection}{Summary of estimation accuracy}{47}{subsubsection*.136}%
+\contentsline {subsubsection}{The \emph {standard setup}}{48}{subsubsection*.139}%
+\contentsline {subsubsection}{Cubic-spline interpolation/extrapolation}{48}{subsubsection*.144}%
+\contentsline {subsubsection}{Computational performance}{48}{subsubsection*.146}%
+\contentsline {subsubsection}{Sampling distribution of IRT item parameters}{49}{subsubsection*.149}%
+\contentsline {chapter}{\numberline {4}Chance-constrained test assembly}{55}{chapter.150}%
+\contentsline {section}{\numberline {4.1}Chance-constrained modelling}{56}{section.152}%
+\contentsline {section}{\numberline {4.2}Chance-constrained test assembly model}{59}{section.157}%
+\contentsline {subsection}{\numberline {4.2.1}Empirical measure of the TIF}{61}{subsection.160}%
+\contentsline {subsection}{\numberline {4.2.2}Solving the CCMAXIMIN model}{63}{subsection.167}%
+\contentsline {subsubsection}{Simulated Annealing}{64}{subsubsection*.168}%
+\contentsline {subsubsection}{Heuristic}{65}{subsubsection*.171}%
+\contentsline {section}{\numberline {4.3}Simulation study}{67}{section.173}%
+\contentsline {subsubsection}{Tests specifications}{68}{subsubsection*.174}%
+\contentsline {subsection}{\numberline {4.3.1}Results}{69}{subsection.177}%
+\contentsline {subsubsection}{Classic MAXIMIN parallel test assembly model}{69}{subsubsection*.178}%
+\contentsline {subsubsection}{CCMAXIMIN parallel test assembly model}{69}{subsubsection*.180}%
+\contentsline {chapter}{\numberline {5}Conclusions and further research}{71}{chapter.182}%
+\contentsline {chapter}{\numberline {A}Tables and Figures}{73}{appendix.183}%
+\contentsline {section}{\numberline {A.1}Test theories and ATA}{73}{section.184}%
+\contentsline {section}{\numberline {A.2}Items calibration in Julia}{78}{section.189}%
+\contentsline {subsection}{\numberline {A.2.1}Case 1a (Standard setup)}{78}{subsection.190}%
+\contentsline {subsection}{\numberline {A.2.2}Case 1b}{86}{subsection.200}%
+\contentsline {subsection}{\numberline {A.2.3}Case 1c}{90}{subsection.205}%
+\contentsline {subsection}{\numberline {A.2.4}Case 2a}{94}{subsection.210}%
+\contentsline {subsection}{\numberline {A.2.5}Case 2b}{98}{subsection.215}%
+\contentsline {subsection}{\numberline {A.2.6}Case 3}{102}{subsection.220}%
+\contentsline {subsection}{\numberline {A.2.7}Case 4}{106}{subsection.225}%
+\contentsline {section}{\numberline {A.3}Chance-constrained test assembly}{110}{section.230}%
+\contentsline {subsection}{\numberline {A.3.1}Application on real data}{110}{subsection.231}%

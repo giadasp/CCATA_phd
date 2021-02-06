@@ -29,11 +29,15 @@ In particular, since our heuristic is able also to solve the classical ATA model
 The described algorithms are coded in the open-source framework Julia.
 A package written in Julia has been released \footnote{\url{http:\\github.com\\giadasp\\ATA.jl}}.
 
-\section{Chance-constrained modeling}
+\section{Chance-constrained modelling}
 
-In the past five decades, the developments in the theory of choice under risk in financial applications, e.g. portfolio optimization where the prices of instruments are random variables (see \textcite{rockafellar2000optimization,rockafellar2001uryasev}),  followed the expected mean-variance approach \parencite{chen1973quadratic,freund1956introduction,scott1972practical}). In risk management and reliability applications the decision maker must select a combination of assets for building a portfolio by maximizing their utility function. The latter is defined in terms of the expected mean and variance of the returns or of the prices of the instruments which are uncertain coefficients in the linear objective or constraints of the optimization model. More recently, instead, the regulations for finance businesses require to reformulate the problem in terms of percentiles of loss distributions. These requirements gave rise to the theory of \emph{chance-constraints}, also called probabilistic constraints, originally proposed by \textcite{Charnes1959}. 
+In the past five decades, the developments in the theory of choice under risk in financial applications, e.g. portfolio optimization where the prices of instruments are random variables (see \textcite{rockafellar2000optimization,rockafellar2001uryasev}),  followed the expected mean-variance approach \parencite{chen1973quadratic,freund1956introduction,scott1972practical}).In risk management and in reliability applications, the decision maker must select a combination of assets for building a portfolio by maximizing their utility function.
+The latter is defined in terms of the expected mean and variance of the returns or of the prices of the instruments which are uncertain coefficients in the linear objective or constraints of the optimization model.
+More recently, instead, the regulations for finance businesses require to reformulate the problem in terms of percentiles of loss distributions.
+These requirements gave rise to the theory of \emph{chance-constraints}, also called probabilistic constraints, originally proposed by \textcite{Charnes1959}. 
 
-The probabilistic constraints present coefficients which are assumed to be randomly distributed and they are subject to some predetermined threshold $\alpha$ of the constraints fulfilment. Modifying $\alpha$ it is possible to relax or tighten some constraints modulating the level of conservativeness of the model.
+The probabilistic constraints present coefficients which are assumed to be randomly distributed and they are subject to some predetermined threshold $\alpha$ of the constraints fulfilment.
+Modifying $\alpha$ it is possible to relax or tighten some constraints modulating the level of conservativeness of the model.
 The standard form of a mixed-integer optimization problem can be represented by  
 
 		\begin{alignat}{4}\label{eq:optModel2}	\underset{\mathbf{x}}{\arg \min} \quad & f(\mathbf{x}) &&\quad  & \\

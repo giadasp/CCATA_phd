@@ -2,19 +2,25 @@
 \babel@toc {english}{}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces Example of desiderata.\relax }}{18}{table.caption.32}%
-\contentsline {table}{\numberline {2.2}{\ignorespaces Standard form of a test assembly problem.\relax }}{19}{table.caption.34}%
+\contentsline {table}{\numberline {2.1}{\ignorespaces Example of desiderata.\relax }}{18}{table.caption.34}%
+\contentsline {table}{\numberline {2.2}{\ignorespaces Standard form of a test assembly problem.\relax }}{19}{table.caption.36}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Simulated distributions for item parameters and \hspace {10pt} ability \relax }}{43}{table.caption.123}%
-\contentsline {table}{\numberline {3.2}{\ignorespaces Simulation settings \relax }}{44}{table.caption.124}%
-\contentsline {table}{\numberline {3.3}{\ignorespaces RMSEs averaged across the item pool ($\hat {a}$ and $\hat {b}$) and test-takers ($\hat {\theta }$) \relax }}{47}{table.caption.138}%
-\contentsline {table}{\numberline {3.4}{\ignorespaces BIASs averaged across the item pool ($\hat {a}$ and $\hat {b}$) and test-takers ($\hat {\theta }$) \relax }}{48}{table.caption.139}%
-\contentsline {table}{\numberline {3.5}{\ignorespaces Computational power summary\relax }}{48}{table.caption.148}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces Simulated distributions for item parameters and \hspace {10pt} ability \relax }}{43}{table.caption.122}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Simulation settings \relax }}{44}{table.caption.123}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces RMSEs averaged across the item pool ($\hat {a}$ and $\hat {b}$) and test-takers ($\hat {\theta }$) \relax }}{47}{table.caption.137}%
+\contentsline {table}{\numberline {3.4}{\ignorespaces BIASs averaged across the item pool ($\hat {a}$ and $\hat {b}$) and test-takers ($\hat {\theta }$) \relax }}{48}{table.caption.138}%
+\contentsline {table}{\numberline {3.5}{\ignorespaces Computational power summary\relax }}{48}{table.caption.147}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Test specifications\relax }}{68}{table.caption.176}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces $\qopname \relax m{min}_t\left [TIF_t(0)\right ]$(infeasibility)\relax }}{69}{table.caption.180}%
-\contentsline {table}{\numberline {4.3}{\ignorespaces $\qopname \relax m{min}_t\left [Q(TIF_t(0),0.05)\right ]$(infeasibility)\relax }}{70}{table.caption.182}%
-\contentsline {table}{\numberline {4.4}{\ignorespaces $\qopname \relax m{min}_t\left [Q(TIF_t(0),0.01)\right ]$(infeasibility)\relax }}{70}{table.caption.182}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Test specifications\relax }}{68}{table.caption.175}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces $\qopname \relax m{min}_t\left [TIF_t(0)\right ]$(infeasibility)\relax }}{69}{table.caption.179}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces $\qopname \relax m{min}_t\left [Q(TIF_t(0),0.05)\right ]$(infeasibility)\relax }}{70}{table.caption.181}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces $\qopname \relax m{min}_t\left [Q(TIF_t(0),0.01)\right ]$(infeasibility)\relax }}{70}{table.caption.181}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {A.1}{\ignorespaces Example of item bank.\relax }}{74}{table.caption.185}%
+\contentsline {table}{\numberline {A.1}{\ignorespaces Example of item bank. \relax }}{73}{table.caption.185}%
+\contentsline {table}{\numberline {A.2}{\ignorespaces Case 1a - RMSE and BIAS of item parameters averaged across the simulations, part 1/5\relax }}{78}{table.caption.191}%
+\contentsline {table}{\numberline {A.3}{\ignorespaces Case 1a - RMSE and BIAS of item parameters averaged across the simulations, part 2/5\relax }}{79}{table.caption.192}%
+\contentsline {table}{\numberline {A.4}{\ignorespaces Case 1a - RMSE and BIAS of item parameters averaged across the simulations, part 3/5\relax }}{80}{table.caption.193}%
+\contentsline {table}{\numberline {A.5}{\ignorespaces Case 1a - RMSE and BIAS of item parameters averaged across the simulations, part 4/5\relax }}{81}{table.caption.194}%
+\contentsline {table}{\numberline {A.6}{\ignorespaces Case 1a - RMSE and BIAS of item parameters averaged across the simulations, part 5/5\relax }}{82}{table.caption.195}%
+\contentsline {table}{\numberline {A.7}{\ignorespaces Structure of assembled tests. \relax }}{110}{table.caption.232}%
