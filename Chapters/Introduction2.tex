@@ -14,11 +14,25 @@
 \newcommand{\option}[1]{\texttt{\itshape#1}}
 
 %----------------------------------------------------------------------------------------
-In the field of educational measurement, a test is a collection of items developed to measure students' abilities. In order to make different measurements comparable, tests should be designed and developed providing evidence of fairness, reliability and validity \parencite{AERA2014}. These ideas have evolved together with the development of new test theories but they are all based on the necessity of controlling the testing environment and procedures in such a way differences among testing conditions do not influence the scores. The test assembly is a process by which items from an item pool are selected to build test forms conforming to content and psychometric specifications. Thus, it plays a crucial role in this framework because it allows to control the entire protocol of the test production, from the item construction, since the features of the pool depend on the requirements on the final tests, to the final test building: the core of test assembly. 
+In the field of educational measurement, a test is a collection of items developed to measure students' abilities.
+In order to make different measurements comparable, tests should be designed and developed providing evidence of fairness, reliability and validity \parencite{AERA2014}.
+These ideas have evolved together with the development of new test theories but they are all based on the necessity of controlling the testing environment and procedures in such a way differences among testing conditions do not influence the scores.
+Test assembly is a process by which items from an item pool are selected to build test forms conforming to content and psychometric specifications.
+Thus, it plays a crucial role in this framework because it allows to control the entire protocol of the test production, from the item construction, since the features of the pool depend on the requirements on the final tests, to the final test building: the core of test assembly. 
 
-Large testing programs, having better access to modern digital resources like sophisticated item banking systems, opened the possibility to improve their test assembly process by means of automated test assembly (ATA). ATA differs from manual test assembly because the item selection is performed by optimizing mathematical models through specific softwares, called solvers. Therefore, it has several advantages over manual test assembly. First of all, if the tests specifications are defined rigorously, it will reduce the need to repeat some phases of the test development. More importantly, ATA is the only way to find optimal or near-optimal combinations of items starting from large item banks, for which manual assembly is not feasible due to the large number of possible solutions. As a consequence, ATA is fundamental to make measurements comparable while reducing operational costs. 
+Large testing programs, having better access to modern digital resources like sophisticated item banking systems, opened the possibility to improve their test assembly process by means of automated test assembly (ATA).
+ATA differs from manual test assembly because the item selection is performed by optimizing mathematical models through specific softwares, called solvers.
+Therefore, it has several advantages over item selection by hand.
+First of all, if the tests specifications are defined rigorously, it will reduce the need to repeat some phases of the test development.
+More importantly, ATA is the only way to find optimal or near-optimal combinations of items starting from large item banks, for which manual assembly is not feasible due to the large number of possible solutions.
+As a consequence, ATA is fundamental to make measurements comparable while reducing operational costs. 
 
-In practice the ATA models are not always easy to solve because they involve a very large number of decision variables and constraints. Moreover, with the standard form suggested in \textcite{VDL2005} it is not possible to define any part of the model in a non-linear manner unless one resorts to approximations. Another limit of classical optimization models, until now applied for ATA, is that they consider each variable as fixed or known. This may be valid for prices, quantity of product but not for estimates, key elements in ATA models. In fact, most test assembly models are based on item response theory (IRT) which is used for estimating the item characteristics, a process called parameter calibration, and the ability of the examinees. Subsequently, IRT item parameters and the item information function (IIF) are examples of uncertain inputs in ATA models. 
+In practice, ATA models are not always easy to solve, because they involve a very large number of decision variables and constraints.
+Moreover, with the standard form suggested in \textcite{VDL2005}, it is not possible to define any part of the model in a non-linear manner unless one resorts to approximations.
+Another limit of classical optimization models, until now applied for ATA, is that they consider each variable as fixed or known.
+This may be valid for the item type, the described stimulus but not for item parameters estimates, key elements in ATA models.
+In fact, most test assembly models are based on item response theory (IRT) which is used for estimating the item characteristics, in a process called \emph{parameter calibration}, and the ability of the examinees.
+Subsequently, IRT item parameters and the item information function (IIF) are examples of uncertain inputs in ATA models. 
 
 \section{Main contributions}
 
